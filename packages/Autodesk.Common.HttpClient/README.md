@@ -6,8 +6,7 @@ A TypeScript HTTP client library for Autodesk APS SDK, providing common utilitie
 
 - Simplified HTTP request handling
 - Typed request and response interfaces
-- Error handling utilities
-- Easily extendable for custom needs
+- Resilient (Retry, rate limit handling)
 
 ## Installation
 

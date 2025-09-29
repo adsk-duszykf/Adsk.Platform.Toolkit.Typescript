@@ -6,6 +6,8 @@
 
 A comprehensive TypeScript SDK for Autodesk Platform Services (APS), built using Microsoft Kiota and organized as a monorepo with multiple service-specific packages.
 
+Those SDKs doesn't only wrap the REST API but also provide higher-level abstractions and **utilities** to simplify common tasks, including a resilient HTTP client with **retry** and **rate limit handling**, authentication management, and more.
+
 ## 🚀 Quick Start
 
 1. Install the SDK (select packages as needed):
@@ -21,7 +23,7 @@ This monorepo contains the following SDK packages:
 | Package | Description | Status |
 |---------|-------------|--------|
 | [`@adsk-platform/authentication`](./packages/Autodesk.Authentication/) | Authentication and token management | ✅ Active |
-| [`@adsk-platform/httpclient`](./packages/Autodesk.Common.HttpClient/) | Common HTTP client utilities | ✅ Active |
+| [`@adsk-platform/httpclient`](./packages/Autodesk.Common.HttpClient/) | Common resilient HTTP client | ✅ Active |
 | [`@adsk-platform/data-management`](./packages/Autodesk.DataManagement/) | Data Management API wrapper | 🚧 In Progress |
 | [`@adsk-platform/model-derivative`](./packages/Autodesk.ModelDerivative/) | Model Derivative API wrapper | 🚧 In Progress |
 | [`@adsk-platform/vault-data`](./packages/Autodesk.VaultData/) | Vault Data API wrapper | ✅ Active |
