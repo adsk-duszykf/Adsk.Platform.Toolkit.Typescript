@@ -1,0 +1,16 @@
+{
+  "name": "@adsk-platform/datamanagement",
+  "version": "0.1.0",
+  "description": "See [here](../README.md#how-to-use-the-sdks) for details.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build_pre": "tsdown"
+  },
+  "author": "duszykf",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "type": "module"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@adsk-platform/vaultdata",
+  "version": "0.1.1",
+  "description": "Autodesk Vault Data SDK for TypeScript",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
+    "prepublishOnly": "bun run build",
+    "publish": "bun publish --production",
+    "test": "bun test"
+  },
+  "exports": {
+    ".": {
+      "import": "./_dist/index.js"
+    },
+    "./models": {
+      "import": "./_dist/generatedCode/models/index.js"
+    }
+  },
+  "files": [
+    "./_dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "duszykf",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "dependencies": {
+    "@microsoft/kiota-bundle": "catalog:"
+  },
+  "devDependencies": {
+    "bun-fetch-mock": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  }
+}

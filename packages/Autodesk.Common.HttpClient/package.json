@@ -1,0 +1,35 @@
+{
+  "name": "@adsk-platform/httpclient",
+  "private": false,
+  "version": "0.1.2",
+  "author": "duszykf",
+  "description": "Resilient HttpClient serving the Adsk Toolkit SDKs",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
+    "prepublishOnly": "bun run build",
+    "publish": "bun publish --production",
+    "test": "bun test"
+  },
+  "type": "module",
+  "exports": {
+    "./*": "./_dist/*"
+  },
+  "files": [
+    "_dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@microsoft/kiota-bundle": "catalog:"
+  },
+  "devDependencies": {
+    "bun-fetch-mock": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  }
+}

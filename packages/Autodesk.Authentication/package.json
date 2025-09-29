@@ -1,0 +1,39 @@
+{
+  "name": "@adsk-platform/authentication",
+  "version": "0.1.0",
+  "author": "duszykf",
+  "exports": {
+    ".": {
+      "import": "./_dist/index.js"
+    },
+    "./models": {
+      "import": "./_dist/models/index.js"
+    }
+  },
+  "description": "Autodesk Authentication SDK for TypeScript.",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "files": [
+    "_dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
+    "prepublishOnly": "bun run build",
+    "publish": "bun publish --production",
+    "test": "bun test"
+  },
+  "type": "module",
+  "dependencies": {
+    "@adsk-platform/httpclient": "workspace:*"
+  },
+  "devDependencies": {
+    "bun-fetch-mock": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  }
+}                  

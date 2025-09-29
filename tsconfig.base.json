@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmitOnError": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "composite": true,
+    "module": "NodeNext",
+    "lib": ["dom", "es5", "es6", "DOM.Iterable",]
+  },
+  "references": [
+    {
+      "path": "./packages/Autodesk.Authentication/tsconfig.json"
+    },
+    {
+      "path": "./packages/Autodesk.DataManagement/tsconfig.json"
+    },
+    {
+      "path": "./packages/Autodesk.Common.HttpClient/tsconfig.json"
+    }
+  ],
+  "exclude": ["node_modules", "dist", "tests", "./test/**/*.ts"],
+
+}
