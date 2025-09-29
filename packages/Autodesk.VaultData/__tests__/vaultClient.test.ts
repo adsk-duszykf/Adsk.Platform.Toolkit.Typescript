@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test';
-import { createAnonymousVaultClient, createClientWithVaultUserAccount } from 'utils.js';
+import { createAnonymousVaultClient, createClientWithVaultUserAccount } from '../src/utils.js';
 describe('VaultClient', () => {
     const isHttps = false;
     const vaultServer = "localhost"
@@ -23,7 +23,11 @@ describe('VaultClient', () => {
         //const auth = getVaultUserAccessTokenGenerator(vaultServer, vault, userName, password,isHttps);
         const client = createClientWithVaultUserAccount( vaultServer, vault,userName, password,isHttps);
 
-        var resp = await client?.api.groups.get();
+        const resp = await client?.api.groups.get({
+            queryParameters: {
+                limit: 2
+            }
+        });
 
         expect(resp?.results?.length).toBeDefined();
 
