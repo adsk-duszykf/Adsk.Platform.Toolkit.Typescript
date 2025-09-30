@@ -1,0 +1,40 @@
+{
+  "name": "@adsk-platform/acc-dataconnector",
+  "version": "0.1.0",
+  "description": "Autodesk ACC Data Connector SDK for TypeScript",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "prepublishOnly": "bun run build",
+    "publish": "bun publish --production",
+    "test": "bun test"
+  },
+  "exports": {
+    ".": {
+      "import": "./_dist/dataConnectorClient.js"
+    },
+    "./models": {
+      "import": "./_dist/generatedCode/models/index.js"
+    }
+  },
+  "files": [
+    "./_dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "duszykf",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "dependencies": {
+    "@microsoft/kiota-bundle": "catalog:"
+  },
+  "devDependencies": {
+    "bun-fetch-mock": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  }
+}
