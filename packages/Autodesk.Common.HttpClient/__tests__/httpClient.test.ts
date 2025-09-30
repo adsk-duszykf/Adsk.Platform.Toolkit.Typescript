@@ -43,4 +43,18 @@ describe("Custom Error Handler Tests", () => {
 
         fetchMock.assertAllMocksUsed();
     })
+
+    it("should throw error when http status 500 and custom error handler is enabled again", async () => {
+
+        const httpClient = HttpClientFactory.create();
+
+        const errorHandlerDisabler = { [ErrorHandlerOptionKey]: new ErrorHandlerOptions(false) }
+
+        try {
+            await httpClient.executeFetch(mockedUrl, { method: 'GET' });
+        } catch (error) {
+            expect((error as HttpRequestError).statusCode).toBe(500);
+        }
+        fetchMock.assertAllMocksUsed();
+    })
 })
