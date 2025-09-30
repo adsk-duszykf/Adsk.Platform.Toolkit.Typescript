@@ -10,16 +10,15 @@ export class HttpClientFactory {
         return new HttpClient(customFetch, ...middlewares);
     }
 
-    static createFetchRequestAdapter(getAccessToken: () => Promise<string>, httpClient: HttpClient): FetchRequestAdapter {
+    static createFetchRequestAdapter(getAccessToken: () => Promise<string>, httpClient?: HttpClient): FetchRequestAdapter {
         const auth = new BaseBearerTokenAuthenticationProvider(new AccessTokenProvider(getAccessToken));
+        
+        httpClient = httpClient ?? this.create();
         
         return new FetchRequestAdapter(
             auth,
             undefined,
             undefined,
             httpClient);
-    }
-    private test() {
-        console.log('test');
     }
 }
