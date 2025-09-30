@@ -20,12 +20,20 @@ interface MockResponse<T = unknown> {
 
 export interface MockOpts<T = unknown> extends MockResponse<T> {
 	once?: boolean;
+	requestHeaders?: { [key: string]: string };
 }
 
 export type UrlOrPath = `https://${string}` | `http://${string}` | `/${string}`;
 
 function getKey({ method, url }: { method: HttpMethod; url: string }) {
-	url = new URL(url).toString(); // normalize URL
+	// Normalize URL and sort query parameters alphabetically
+	const urlObj = new URL(url);
+	if (urlObj.search) {
+		const params = Array.from(urlObj.searchParams.entries());
+		params.sort(([a], [b]) => a.localeCompare(b));
+		urlObj.search = params.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join("&");
+	}
+	url = urlObj.toString();
 	return `[${method}] ${url}`;
 }
 
@@ -149,6 +157,23 @@ export class FetchMock {
 		const key = getKey({ method, url });
 
 		const opts = this.mocks.get(key);
+
+		const expectedHeaders = opts?.requestHeaders;
+		if (expectedHeaders) {
+			
+			const incomingReqHeaders = new Headers(init?.headers);
+			
+			for (const [expectedHeaderKey, expectedHeaderValue] of Object.entries(
+				expectedHeaders,
+			)) {
+				const incomingReqHeaderValue = incomingReqHeaders.get(expectedHeaderKey);
+				if (incomingReqHeaderValue !== expectedHeaderValue) {
+					throw new Error(
+						`Fetch mock ${key} expected header ${expectedHeaderKey}: ${expectedHeaderValue}, but got: ${incomingReqHeaderValue}`,
+					);
+				}
+			}
+		}
 
 		if (!opts) {
 			const allMocks = [
