@@ -1,12 +1,32 @@
 {
   "name": "@adsk-platform/datamanagement",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "See [here](../README.md#how-to-use-the-sdks) for details.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build_pre": "tsdown"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
+    "directory": "packages/Autodesk.DataManagement"
+  },
+  "homepage": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/tree/main/packages/Autodesk.DataManagement",
+  "bugs": {
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/issues"
+  },
+  "keywords": [
+    "autodesk",
+    "aps",
+    "forge",
+    "data-management",
+    "bim360",
+    "sdk",
+    "typescript",
+    "api",
+    "kiota"
+  ],
   "author": "duszykf",
   "license": "MIT",
   "engines": {
