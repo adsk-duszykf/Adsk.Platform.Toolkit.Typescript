@@ -1,7 +1,7 @@
 {
   "name": "@adsk-platform/httpclient",
   "private": false,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "duszykf",
   "description": "Resilient HttpClient serving the Adsk Toolkit SDKs",
   "engines": {
@@ -24,6 +24,25 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
+    "directory": "packages/Autodesk.Common.HttpClient"
+  },
+  "homepage": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/tree/main/packages/Autodesk.Common.HttpClient",
+  "bugs": {
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/issues"
+  },
+  "keywords": [
+    "autodesk",
+    "aps",
+    "httpclient",
+    "resilient",
+    "sdk",
+    "typescript",
+    "http",
+    "kiota"
+  ],
   "dependencies": {
     "@microsoft/kiota-bundle": "catalog:"
   },
