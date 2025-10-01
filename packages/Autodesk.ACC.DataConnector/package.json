@@ -1,6 +1,6 @@
 {
   "name": "@adsk-platform/acc-dataconnector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Autodesk ACC Data Connector SDK for TypeScript",
   "type": "module",
   "scripts": {
@@ -24,6 +24,22 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
+    "directory": "packages/Autodesk.ACC.DataConnector"
+  },
+  "keywords": [
+    "autodesk",
+    "aps",
+    "forge",
+    "acc",
+    "data-connector",
+    "sdk",
+    "typescript",
+    "api",
+    "kiota"
+  ],
   "author": "duszykf",
   "license": "MIT",
   "engines": {
