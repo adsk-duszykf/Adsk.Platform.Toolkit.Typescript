@@ -6,6 +6,26 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
+    "directory": "packages/Autodesk.ModelDerivative"
+  },
+  "homepage": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/tree/main/packages/Autodesk.ModelDerivative",
+  "bugs": {
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/issues"
+  },
+  "keywords": [
+    "autodesk",
+    "aps",
+    "forge",
+    "model-derivative",
+    "translation",
+    "sdk",
+    "typescript",
+    "api",
+    "kiota"
+  ],
   "author": "duszykf",
   "license": "MIT",
   "engines": {
