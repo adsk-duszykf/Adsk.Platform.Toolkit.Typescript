@@ -1,6 +1,6 @@
 {
   "name": "@adsk-platform/authentication",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "duszykf",
   "exports": {
     ".": {
@@ -20,6 +20,22 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
+    "directory": "packages/Autodesk.Authentication"
+  },
+  "keywords": [
+    "autodesk",
+    "aps",
+    "forge",
+    "authentication",
+    "oauth",
+    "sdk",
+    "typescript",
+    "api",
+    "kiota"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
