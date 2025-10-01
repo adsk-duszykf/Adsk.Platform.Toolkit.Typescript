@@ -29,6 +29,10 @@
     "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
     "directory": "packages/Autodesk.ACC.DataConnector"
   },
+  "homepage": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/tree/main/packages/Autodesk.ACC.DataConnector",
+  "bugs": {
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/issues"
+  },
   "keywords": [
     "autodesk",
     "aps",
