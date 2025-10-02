@@ -1,0 +1,61 @@
+{
+  "name": "@adsk-platform/secure-service-account",
+  "version": "0.1.0",
+  "description": "Autodesk Secure Service Account SDK for TypeScript",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "publish": "bun run build && bun publish --production",
+    "test": "bun test"
+  },
+  "exports": {
+    ".": {
+      "import": "./_dist/secureServiceAccountClient.js"
+    },
+    "./models": {
+      "import": "./_dist/models/index.js"
+    }
+  },
+  "files": [
+    "./_dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript",
+    "directory": "packages/Autodesk.SecureServiceAccount"
+  },
+  "homepage": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/tree/main/packages/Autodesk.SecureServiceAccount",
+  "bugs": {
+    "url": "https://github.com/adsk-duszykf/Adsk.Platform.Toolkit.Typescript/issues"
+  },
+  "keywords": [
+    "autodesk",
+    "aps",
+    "forge",
+    "secure-service-account",
+    "service-account",
+    "sdk",
+    "typescript",
+    "api",
+    "kiota"
+  ],
+  "author": "duszykf",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "dependencies": {
+    "@microsoft/kiota-bundle": "catalog:",
+    "@adsk-platform/authentication": "workspace:*",
+    "jose": "^6.1.0"
+  },
+  "devDependencies": {
+    "bun-fetch-mock": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  }
+}
