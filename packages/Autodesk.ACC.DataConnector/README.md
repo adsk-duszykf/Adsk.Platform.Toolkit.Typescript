@@ -21,18 +21,22 @@ async function getAccessToken(): Promise<string> {
 }
 
 // Create a client instance
+// ** The underlying HTTP client is resilient with retries and rate limit handling see @adsk-platform/http-client package **
 const client = new DataConnectorClient(getAccessToken);
 
 const accountId = "your-account-id"; // Replace with your ACC account ID
 
 // Get all data requests for an account
+// ** The code reflects the endpoint: GET https://{baseUrl}/accounts/:accountId/requests **
 const requests = await client.api.accounts.byAccountId(accountId).requests.get();
+
+// ** Responses are strongly typed **
 
 // Output:
 // Request: Monthly Project Data Export
 console.log("Data requests:", requests[0].description);
 
-// Use helper methods for paginated results
+// ** Use helper methods for paginated results **
 // Output:
 // Request: Monthly Project Data Export
 // Request: Weekly Project Data Export

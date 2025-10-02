@@ -1,13 +1,12 @@
 {
   "name": "@adsk-platform/acc-dataconnector",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Autodesk ACC Data Connector SDK for TypeScript",
   "type": "module",
   "scripts": {
     "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
     "build:watch": "tsc -p tsconfig.build.json --watch",
-    "prepublishOnly": "bun run build",
-    "publish": "bun publish --production",
+    "publish": "bun run build && bun publish --production",
     "test": "bun test"
   },
   "exports": {
