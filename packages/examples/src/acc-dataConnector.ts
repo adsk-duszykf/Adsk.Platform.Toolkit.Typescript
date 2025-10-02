@@ -5,6 +5,7 @@ const accountId = "your_account_id"; // Replace with your account ID
 // Create a resilient httpclient (with retry, rate limit handling)
 // 1. Create your function to get the access token. See also @adsk-platform/authentication
 const getToken = () => Promise.resolve("your_access_token");
+
 // 2. Create the client
 const client = new DataConnectorClient(getToken);
 
