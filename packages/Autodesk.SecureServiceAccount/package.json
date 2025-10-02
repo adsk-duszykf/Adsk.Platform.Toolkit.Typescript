@@ -1,6 +1,6 @@
 {
   "name": "@adsk-platform/secure-service-account",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Autodesk Secure Service Account SDK for TypeScript",
   "type": "module",
   "scripts": {
