@@ -1,6 +1,6 @@
 {
   "name": "@adsk-platform/authentication",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "duszykf",
   "exports": {
     ".": {
@@ -43,8 +43,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
-    "prepublishOnly": "bun run build",
-    "publish": "bun publish --production",
+    "build:watch": "bun run build --watch",
+    "publish": "bun run build && bun publish --production",
     "test": "bun test"
   },
   "type": "module",

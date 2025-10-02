@@ -364,6 +364,7 @@ export const GranttypeObject = {
     Client_credentials: "client_credentials",
     Authorization_code: "authorization_code",
     Refresh_token: "refresh_token",
+    UrnIetfParamsOauthGrantTypeJwtBearer: "urn:ietf:params:oauth:grant-type:jwt-bearer",
 } as const;
 /* tslint:enable */
 /* eslint-enable */

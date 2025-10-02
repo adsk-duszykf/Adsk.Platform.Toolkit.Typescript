@@ -2,7 +2,6 @@ import { HttpClient } from '@microsoft/kiota-http-fetchlibrary';
 import type { BaseAuthenticationClient } from "./generatedCode/baseAuthenticationClient.js";
 import { TokenPostRequestBody } from "./generatedCode/authentication/v2/token/index.js";
 import { GranttypeObject, AuthToken } from "./generatedCode/models/index.js";
-import { create } from 'domain';
 import { createAuthenticationUrl, createPKCEAuthenticationUrl, createScopeString, encodeBase64, extractCodeFromUrl } from './utils.js';
 
 export interface ITokenStore {
@@ -175,7 +174,7 @@ export class AuthenticationClientHelper {
       const isExpired = !currentToken || (currentToken.expiresAt.getTime() - Date.now()) < 10000;
 
       if (isExpired) {
-        const newToken = await this.getTwoLeggedToken(clientId, clientSecret, scopes);
+        const newToken = await this.generateTwoLeggedToken(clientId, clientSecret, scopes);
         currentToken = newToken;
         authTokenStore.set(currentToken);
       }
@@ -191,7 +190,7 @@ export class AuthenticationClientHelper {
    * @param scopes List of scopes
    * @returns Fresh 2 legged token with expiration date calculated
    */
-  async getTwoLeggedToken(
+  async generateTwoLeggedToken(
     clientId: string,
     clientSecret: string,
     scopes: string[]
@@ -216,6 +215,23 @@ export class AuthenticationClientHelper {
     return this.createAuthTokenExtended(result);
   }
 
+  async generateServiceAccountThreeLeggedToken(clientId: string, clientSecret: string, jwt: string,scope: string[]) {
+    const authString = this.createAuthorizationString(clientId, clientSecret);
+
+    const response = await this.api.authentication.v2.token.post({
+      clientId: clientId,
+      grantType: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion: jwt,
+      scope: createScopeString(scope)
+    }, {
+      headers: {
+        "Authorization": authString
+      }
+    });
+
+    return response;
+  }
+  
   /**
    * Combine client id and client secret to create a base64 encoded string
    * @param clientId Autodesk App Id

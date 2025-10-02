@@ -44,6 +44,7 @@ export function deserializeIntoAuthToken400Error(authToken400Error: Partial<Auth
 // @ts-ignore
 export function deserializeIntoTokenPostRequestBody(tokenPostRequestBody: Partial<TokenPostRequestBody> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
+        "assertion": n => { tokenPostRequestBody.assertion = n.getStringValue(); },
         "client_id": n => { tokenPostRequestBody.clientId = n.getStringValue(); },
         "code": n => { tokenPostRequestBody.code = n.getStringValue(); },
         "code_verifier": n => { tokenPostRequestBody.codeVerifier = n.getStringValue(); },
@@ -73,6 +74,7 @@ export function serializeAuthToken400Error(writer: SerializationWriter, authToke
 // @ts-ignore
 export function serializeTokenPostRequestBody(writer: SerializationWriter, tokenPostRequestBody: Partial<TokenPostRequestBody> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!tokenPostRequestBody || isSerializingDerivedType) { return; }
+    writer.writeStringValue("assertion", tokenPostRequestBody.assertion);
     writer.writeStringValue("client_id", tokenPostRequestBody.clientId);
     writer.writeStringValue("code", tokenPostRequestBody.code);
     writer.writeStringValue("code_verifier", tokenPostRequestBody.codeVerifier);
@@ -83,6 +85,10 @@ export function serializeTokenPostRequestBody(writer: SerializationWriter, token
     writer.writeAdditionalData(tokenPostRequestBody.additionalData);
 }
 export interface TokenPostRequestBody extends AdditionalDataHolder, Parsable {
+    /**
+     * Required if `grant_type` is `urn:ietf:params:oauth:grant-type:jwt-bearer`
+     */
+    assertion?: string | null;
     /**
      * This field is required for public client
      */
