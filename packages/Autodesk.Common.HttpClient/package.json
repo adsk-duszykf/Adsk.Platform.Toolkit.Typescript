@@ -10,8 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
-    "prepublishOnly": "bun run build",
-    "publish": "bun publish --production",
+    "publish": "bun run build && bun publish --production",
     "test": "bun test"
   },
   "type": "module",
