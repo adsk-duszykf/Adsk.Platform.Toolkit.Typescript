@@ -9,7 +9,8 @@
     "@adsk-platform/authentication": "workspace:*",
     "@adsk-platform/vaultdata": "workspace:*",
     "@adsk-platform/acc-dataconnector": "workspace:*",
-    "@adsk-platform/secure-service-account": "workspace:*"
+    "@adsk-platform/secure-service-account": "workspace:*",
+    "@adsk-platform/acc-accountadmin": "workspace:*"
   },
   "peerDependencies": {
     "typescript": "^5"

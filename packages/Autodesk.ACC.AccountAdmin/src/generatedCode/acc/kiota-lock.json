@@ -1,0 +1,44 @@
+{
+  "descriptionHash": "DD4313B03BED2ECBEDD48F1331D92FB0248F52021BB12A40DA74F0B3A66F534C15FE7764B74046BC24CD2297A9526FD2DD6AEA48DC36869B0552B9B85FD23D62",
+  "descriptionLocation": "../../../../../../_spec/Autodesk.ACC.AccountAdmin/OpenAPI/acc-account-admin-nav-openapi.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.28.0",
+  "clientClassName": "BaseAccountAdminClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "Autodesk.ACC.AccountAdmin",
+  "language": "TypeScript",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [
+    "/construction/admin/v1/accounts/{accountId}/projects#GET",
+    "/construction/admin/v1/accounts/{accountId}/projects#POST",
+    "/construction/admin/v1/projects/{projectId}#GET",
+    "/construction/admin/v1/projects/{projectId}/users#GET",
+    "/construction/admin/v1/projects/{projectId}/users#POST",
+    "/construction/admin/v1/projects/{projectId}/users/{userId}#DELETE",
+    "/construction/admin/v1/projects/{projectId}/users/{userId}#GET",
+    "/construction/admin/v1/projects/{projectId}/users/{userId}#PATCH",
+    "/construction/admin/v2/projects/{projectId}/users:import#POST"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

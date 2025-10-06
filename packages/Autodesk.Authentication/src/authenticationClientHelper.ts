@@ -1,8 +1,9 @@
-import { HttpClient } from '@microsoft/kiota-http-fetchlibrary';
+import { type HttpClient } from '@microsoft/kiota-http-fetchlibrary';
 import type { BaseAuthenticationClient } from "./generatedCode/baseAuthenticationClient.js";
 import { TokenPostRequestBody } from "./generatedCode/authentication/v2/token/index.js";
 import { GranttypeObject, AuthToken } from "./generatedCode/models/index.js";
 import { createAuthenticationUrl, createPKCEAuthenticationUrl, createScopeString, encodeBase64, extractCodeFromUrl } from './utils.js';
+
 
 export interface ITokenStore {
   get(): AuthTokenExtended | null;

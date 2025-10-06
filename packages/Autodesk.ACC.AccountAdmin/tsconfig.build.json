@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "incremental": false,
+    "composite": false,
+    "outDir": "./_dist"
+  },
+  "exclude": ["generatedCode/**/*","__tests__/**/*","node_modules","_dist","**/*.test.ts","**/*.spec.ts"]
+}
