@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { useFetchMock, type UrlOrPath } from "./index.js";
+import { type UrlOrPath, useFetchMock } from "./index.js";
 
 describe("bun-fetch-mock", () => {
 	describe("Basic HTTP methods", () => {

@@ -9,16 +9,15 @@ const getToken = () => Promise.resolve("your_access_token");
 // 2. Create the client
 const client = new AccountAdminClient(getToken);
 
-
 // Get a project by name
 // The code reflects the API structure
 // GET https://developer.api.autodesk.com/construction/admin/v1/accounts/:accountId/projects?filter[name]=myproject
-const resp = await client?.api.construction.admin.v1.accounts.byAccountId(accountId).projects.get(
-    {queryParameters: {filtername:"My Project"}});
+const resp = await client?.api.construction.admin.v1.accounts
+	.byAccountId(accountId)
+	.projects.get({ queryParameters: { filtername: "My Project" } });
 
 // output:
 // Result: My Project => (Paris)
 if (resp?.results && resp.results.length > 0)
-    console.log(`Result: ${resp?.results[0].name} => (${resp?.results[0].city})`);
-else
-    console.log("No project found");
+	console.log(`Result: ${resp?.results[0].name} => (${resp?.results[0].city})`);
+else console.log("No project found");

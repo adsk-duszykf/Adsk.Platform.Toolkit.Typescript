@@ -31,7 +31,9 @@ function getKey({ method, url }: { method: HttpMethod; url: string }) {
 	if (urlObj.search) {
 		const params = Array.from(urlObj.searchParams.entries());
 		params.sort(([a], [b]) => a.localeCompare(b));
-		urlObj.search = params.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join("&");
+		urlObj.search = params
+			.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+			.join("&");
 	}
 	url = urlObj.toString();
 	return `[${method}] ${url}`;
@@ -160,9 +162,8 @@ export class FetchMock {
 
 		const expectedHeaders = opts?.requestHeaders;
 		if (expectedHeaders) {
-			
 			const incomingReqHeaders = new Headers(init?.headers);
-			
+
 			for (const [expectedHeaderKey, expectedHeaderValue] of Object.entries(
 				expectedHeaders,
 			)) {
@@ -252,7 +253,7 @@ export class FetchMock {
  * Creates and sets up a FetchMock instance, and spies on the global fetch function to route calls through the mock.
  *
  * @param {FetchMockOpts} [opts={}]
- * @return {*} 
+ * @return {*}
  */
 export function useFetchMock(opts: FetchMockOpts = {}) {
 	const mock = new FetchMock(opts);

@@ -21,7 +21,7 @@
     "sourceMap": true,
     "composite": true,
     "module": "NodeNext",
-    "lib": ["dom", "es5", "es6", "DOM.Iterable",]
+    "lib": ["dom", "es5", "es6", "DOM.Iterable"]
   },
   "references": [
     {
@@ -32,8 +32,10 @@
     },
     {
       "path": "./packages/Autodesk.Common.HttpClient/tsconfig.json"
+    },
+    {
+      "path": "./packages/Autodesk.ACC.AccountAdmin/tsconfig.json"
     }
   ],
-  "exclude": ["node_modules", "dist", "tests", "./test/**/*.ts"],
-
+  "exclude": ["node_modules", "dist", "tests", "./test/**/*.ts"]
 }

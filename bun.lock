@@ -4,9 +4,12 @@
     "": {
       "name": "aps.kiota.sdk-typescript",
       "dependencies": {
+        "@microsoft/kiota-abstractions": "^1.0.0-preview.98",
         "@microsoft/kiota-bundle": "^1.0.0-preview.98",
+        "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.98",
       },
       "devDependencies": {
+        "@biomejs/biome": "2.2.5",
         "@types/bun": "^1.2.22",
         "@types/node": "^24.3.1",
         "turbo": "^2.5.6",
@@ -16,9 +19,22 @@
         "vite-tsconfig-paths": "^5.1.4",
       },
     },
+    "packages/Autodesk.ACC.AccountAdmin": {
+      "name": "@adsk-platform/acc-accountadmin",
+      "version": "0.1.0",
+      "dependencies": {
+        "@adsk-platform/httpclient": "workspace:*",
+        "@microsoft/kiota-bundle": "catalog:",
+      },
+      "devDependencies": {
+        "bun-fetch-mock": "workspace:*",
+        "rimraf": "^6.0.1",
+        "typescript": "^5.9.2",
+      },
+    },
     "packages/Autodesk.ACC.DataConnector": {
       "name": "@adsk-platform/acc-dataconnector",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": {
         "@microsoft/kiota-bundle": "catalog:",
       },
@@ -30,19 +46,20 @@
     },
     "packages/Autodesk.Authentication": {
       "name": "@adsk-platform/authentication",
-      "version": "0.1.0",
+      "version": "0.1.3",
       "dependencies": {
         "@adsk-platform/httpclient": "workspace:*",
+        "@microsoft/kiota-bundle": "catalog:",
       },
       "devDependencies": {
         "bun-fetch-mock": "workspace:*",
         "rimraf": "^6.0.1",
-        "typescript": "^5.9.2",
+        "typescript": "catalog:",
       },
     },
     "packages/Autodesk.Common.HttpClient": {
       "name": "@adsk-platform/httpclient",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "dependencies": {
         "@microsoft/kiota-bundle": "catalog:",
       },
@@ -54,15 +71,29 @@
     },
     "packages/Autodesk.DataManagement": {
       "name": "@adsk-platform/datamanagement",
-      "version": "0.1.0",
+      "version": "0.1.1",
     },
     "packages/Autodesk.ModelDerivative": {
       "name": "@adsk-platform/modelderivative",
       "version": "0.1.0",
     },
+    "packages/Autodesk.SecureServiceAccount": {
+      "name": "@adsk-platform/secure-service-account",
+      "version": "0.1.1",
+      "dependencies": {
+        "@adsk-platform/authentication": "workspace:*",
+        "@microsoft/kiota-bundle": "catalog:",
+        "jose": "^6.1.0",
+      },
+      "devDependencies": {
+        "bun-fetch-mock": "workspace:*",
+        "rimraf": "^6.0.1",
+        "typescript": "^5.9.2",
+      },
+    },
     "packages/Autodesk.VaultData": {
       "name": "@adsk-platform/vaultdata",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
         "@microsoft/kiota-bundle": "catalog:",
       },
@@ -75,8 +106,10 @@
     "packages/examples": {
       "name": "examples",
       "dependencies": {
+        "@adsk-platform/acc-accountadmin": "workspace:*",
         "@adsk-platform/acc-dataconnector": "workspace:*",
         "@adsk-platform/authentication": "workspace:*",
+        "@adsk-platform/secure-service-account": "workspace:*",
         "@adsk-platform/vaultdata": "workspace:*",
       },
       "devDependencies": {
@@ -96,10 +129,14 @@
     },
   },
   "catalog": {
+    "@microsoft/kiota-abstractions": "^1.0.0-preview.98",
     "@microsoft/kiota-bundle": "^1.0.0-preview.98",
+    "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.98",
     "typescript": "^5",
   },
   "packages": {
+    "@adsk-platform/acc-accountadmin": ["@adsk-platform/acc-accountadmin@workspace:packages/Autodesk.ACC.AccountAdmin"],
+
     "@adsk-platform/acc-dataconnector": ["@adsk-platform/acc-dataconnector@workspace:packages/Autodesk.ACC.DataConnector"],
 
     "@adsk-platform/authentication": ["@adsk-platform/authentication@workspace:packages/Autodesk.Authentication"],
@@ -110,6 +147,8 @@
 
     "@adsk-platform/modelderivative": ["@adsk-platform/modelderivative@workspace:packages/Autodesk.ModelDerivative"],
 
+    "@adsk-platform/secure-service-account": ["@adsk-platform/secure-service-account@workspace:packages/Autodesk.SecureServiceAccount"],
+
     "@adsk-platform/vaultdata": ["@adsk-platform/vaultdata@workspace:packages/Autodesk.VaultData"],
 
     "@babel/helper-string-parser": ["@babel/helper-string-parser@7.27.1", "", {}, "sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA=="],
@@ -119,6 +158,24 @@
     "@babel/parser": ["@babel/parser@7.28.4", "", { "dependencies": { "@babel/types": "^7.28.4" }, "bin": "./bin/babel-parser.js" }, "sha512-yZbBqeM6TkpP9du/I2pUZnJsRMGGvOuIrhjzC1AwHwW+6he4mni6Bp/m8ijn0iOuZuPI2BfkCoSRunpyjnrQKg=="],
 
     "@babel/types": ["@babel/types@7.28.4", "", { "dependencies": { "@babel/helper-string-parser": "^7.27.1", "@babel/helper-validator-identifier": "^7.27.1" } }, "sha512-bkFqkLhh3pMBUQQkpVgWDWq/lqzc2678eUyDlTBhRqhCHFguYYGM0Efga7tYk4TogG/3x0EEl66/OQ+WGbWB/Q=="],
+
+    "@biomejs/biome": ["@biomejs/biome@2.2.5", "", { "optionalDependencies": { "@biomejs/cli-darwin-arm64": "2.2.5", "@biomejs/cli-darwin-x64": "2.2.5", "@biomejs/cli-linux-arm64": "2.2.5", "@biomejs/cli-linux-arm64-musl": "2.2.5", "@biomejs/cli-linux-x64": "2.2.5", "@biomejs/cli-linux-x64-musl": "2.2.5", "@biomejs/cli-win32-arm64": "2.2.5", "@biomejs/cli-win32-x64": "2.2.5" }, "bin": { "biome": "bin/biome" } }, "sha512-zcIi+163Rc3HtyHbEO7CjeHq8DjQRs40HsGbW6vx2WI0tg8mYQOPouhvHSyEnCBAorfYNnKdR64/IxO7xQ5faw=="],
+
+    "@biomejs/cli-darwin-arm64": ["@biomejs/cli-darwin-arm64@2.2.5", "", { "os": "darwin", "cpu": "arm64" }, "sha512-MYT+nZ38wEIWVcL5xLyOhYQQ7nlWD0b/4mgATW2c8dvq7R4OQjt/XGXFkXrmtWmQofaIM14L7V8qIz/M+bx5QQ=="],
+
+    "@biomejs/cli-darwin-x64": ["@biomejs/cli-darwin-x64@2.2.5", "", { "os": "darwin", "cpu": "x64" }, "sha512-FLIEl73fv0R7dI10EnEiZLw+IMz3mWLnF95ASDI0kbx6DDLJjWxE5JxxBfmG+udz1hIDd3fr5wsuP7nwuTRdAg=="],
+
+    "@biomejs/cli-linux-arm64": ["@biomejs/cli-linux-arm64@2.2.5", "", { "os": "linux", "cpu": "arm64" }, "sha512-5DjiiDfHqGgR2MS9D+AZ8kOfrzTGqLKywn8hoXpXXlJXIECGQ32t+gt/uiS2XyGBM2XQhR6ztUvbjZWeccFMoQ=="],
+
+    "@biomejs/cli-linux-arm64-musl": ["@biomejs/cli-linux-arm64-musl@2.2.5", "", { "os": "linux", "cpu": "arm64" }, "sha512-5Ov2wgAFwqDvQiESnu7b9ufD1faRa+40uwrohgBopeY84El2TnBDoMNXx6iuQdreoFGjwW8vH6k68G21EpNERw=="],
+
+    "@biomejs/cli-linux-x64": ["@biomejs/cli-linux-x64@2.2.5", "", { "os": "linux", "cpu": "x64" }, "sha512-fq9meKm1AEXeAWan3uCg6XSP5ObA6F/Ovm89TwaMiy1DNIwdgxPkNwxlXJX8iM6oRbFysYeGnT0OG8diCWb9ew=="],
+
+    "@biomejs/cli-linux-x64-musl": ["@biomejs/cli-linux-x64-musl@2.2.5", "", { "os": "linux", "cpu": "x64" }, "sha512-AVqLCDb/6K7aPNIcxHaTQj01sl1m989CJIQFQEaiQkGr2EQwyOpaATJ473h+nXDUuAcREhccfRpe/tu+0wu0eQ=="],
+
+    "@biomejs/cli-win32-arm64": ["@biomejs/cli-win32-arm64@2.2.5", "", { "os": "win32", "cpu": "arm64" }, "sha512-xaOIad4wBambwJa6mdp1FigYSIF9i7PCqRbvBqtIi9y29QtPVQ13sDGtUnsRoe6SjL10auMzQ6YAe+B3RpZXVg=="],
+
+    "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@2.2.5", "", { "os": "win32", "cpu": "x64" }, "sha512-F/jhuXCssPFAuciMhHKk00xnCAxJRS/pUzVfXYmOMUp//XW7mO6QeCjsjvnm8L4AO/dG2VOB0O+fJPiJ2uXtIw=="],
 
     "@esbuild/aix-ppc64": ["@esbuild/aix-ppc64@0.25.10", "", { "os": "aix", "cpu": "ppc64" }, "sha512-0NFWnA+7l41irNuaSVlLfgNT12caWJVLzp5eAVhZ0z1qpxbockccEt3s+149rE64VUI3Ml2zt8Nv5JVc4QXTsw=="],
 
@@ -375,6 +432,8 @@
     "jackspeak": ["jackspeak@4.1.1", "", { "dependencies": { "@isaacs/cliui": "^8.0.2" } }, "sha512-zptv57P3GpL+O0I7VdMJNBZCu+BPHVQUk55Ft8/QCJjTVxrnJHuVuX/0Bl2A6/+2oyR/ZMEuFKwmzqqZ/U5nPQ=="],
 
     "jju": ["jju@1.4.0", "", {}, "sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA=="],
+
+    "jose": ["jose@6.1.0", "", {}, "sha512-TTQJyoEoKcC1lscpVDCSsVgYzUDg/0Bt3WE//WiTPK6uOCQC2KZS4MpugbMWt/zyjkopgZoXhZuCi00gLudfUA=="],
 
     "json-schema-traverse": ["json-schema-traverse@1.0.0", "", {}, "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug=="],
 

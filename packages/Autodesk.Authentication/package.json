@@ -51,13 +51,10 @@
   "dependencies": {
     "@adsk-platform/httpclient": "workspace:*",
     "@microsoft/kiota-bundle": "catalog:"
-
-
-    
   },
   "devDependencies": {
     "bun-fetch-mock": "workspace:*",
     "rimraf": "^6.0.1",
     "typescript": "catalog:"
   }
-}                  
+}

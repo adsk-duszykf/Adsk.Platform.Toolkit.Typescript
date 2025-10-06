@@ -14,11 +14,13 @@
     ],
     "catalog": {
       "@microsoft/kiota-bundle": "^1.0.0-preview.98",
-          "typescript": "^5"
-
+      "@microsoft/kiota-abstractions": "^1.0.0-preview.98",
+      "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.98",
+      "typescript": "^5"
     }
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.5",
     "@types/bun": "^1.2.22",
     "@types/node": "^24.3.1",
     "turbo": "^2.5.6",
@@ -28,7 +30,9 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
-    "@microsoft/kiota-bundle": "^1.0.0-preview.98"
+    "@microsoft/kiota-abstractions": "^1.0.0-preview.98",
+    "@microsoft/kiota-bundle": "^1.0.0-preview.98",
+    "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.98"
   },
   "engines": {
     "bun": ">=1.0.0"

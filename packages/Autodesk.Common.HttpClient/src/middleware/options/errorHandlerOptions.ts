@@ -1,10 +1,10 @@
-import { type RequestOption } from "@microsoft/kiota-abstractions";
+import type { RequestOption } from "@microsoft/kiota-abstractions";
 
 export const ErrorHandlerOptionKey = "ErrorHandlerOptionKey";
 export class ErrorHandlerOptions implements RequestOption {
-    constructor(public enabled: boolean = true) { }
+	constructor(public enabled: boolean = true) {}
 
-    getKey(): string {
-        return ErrorHandlerOptionKey;
-    }
+	getKey(): string {
+		return ErrorHandlerOptionKey;
+	}
 }

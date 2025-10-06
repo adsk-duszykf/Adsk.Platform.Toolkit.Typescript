@@ -1,115 +1,118 @@
-import { useFetchMock } from 'bun-fetch-mock';
-import { AuthenticationClient } from './../src/authenticationClient.js';
-import { describe, it, expect } from 'bun:test';
-import { AuthToken } from '../src/generatedCode/models/index.js';
-import { createAuthenticationUrl, createPKCEAuthenticationUrl, extractCodeFromUrl } from '../src/utils.js';
+import { describe, expect, it } from "bun:test";
+import { useFetchMock } from "bun-fetch-mock";
+import { AuthenticationClient } from "./../src/authenticationClient.js";
+import type { AuthToken } from "../src/generatedCode/models/index.js";
+import {
+	createAuthenticationUrl,
+	createPKCEAuthenticationUrl,
+	extractCodeFromUrl,
+} from "../src/utils.js";
 
+describe("AuthenticationClientHelper", () => {
+	const authClient = new AuthenticationClient();
+	const adskServiceMock = useFetchMock({
+		baseUrl: "https://developer.api.autodesk.com",
+	});
 
-describe('AuthenticationClientHelper', () => {
-    let authClient = new AuthenticationClient();
-    let adskServiceMock = useFetchMock({
-        baseUrl: 'https://developer.api.autodesk.com'
-    });
+	const mockClientId = "test-client-id";
+	const mockRedirectUri = "http://localhost:3000/callback";
+	const mockScopes = ["data:read", "data:write"];
+	const mockCodeChallenge = "test-code-challenge";
 
-    const mockClientId = 'test-client-id';
-    const mockRedirectUri = 'http://localhost:3000/callback';
-    const mockScopes = ['data:read', 'data:write'];
-    const mockCodeChallenge = 'test-code-challenge';
+	describe("URL Generation", () => {
+		it("should create a valid authentication URL", () => {
+			const url = createAuthenticationUrl(
+				mockClientId,
+				mockRedirectUri,
+				mockScopes,
+			);
 
-    describe('URL Generation', () => {
-        it('should create a valid authentication URL', () => {
-            const url = createAuthenticationUrl(
-                mockClientId,
-                mockRedirectUri,
-                mockScopes
-            );
+			expect(url).toContain(
+				"https://developer.api.autodesk.com/authentication/v2/authorize",
+			);
+			expect(url).toContain(`client_id=${encodeURIComponent(mockClientId)}`);
+			expect(url).toContain(`redirect_uri=${encodeURIComponent(mockRedirectUri)}`);
+			expect(url).toContain(`scope=${encodeURIComponent(mockScopes.join(" "))}`);
+		});
 
-            expect(url).toContain('https://developer.api.autodesk.com/authentication/v2/authorize');
-            expect(url).toContain(`client_id=${encodeURIComponent(mockClientId)}`);
-            expect(url).toContain(`redirect_uri=${encodeURIComponent(mockRedirectUri)}`);
-            expect(url).toContain(`scope=${encodeURIComponent(mockScopes.join(' '))}`);
-        });
+		it("should create a valid PKCE authentication URL", () => {
+			const url = createPKCEAuthenticationUrl(
+				mockClientId,
+				mockRedirectUri,
+				mockScopes,
+				mockCodeChallenge,
+			);
 
-        it('should create a valid PKCE authentication URL', () => {
-            const url = createPKCEAuthenticationUrl(
-                mockClientId,
-                mockRedirectUri,
-                mockScopes,
-                mockCodeChallenge
-            );
+			expect(url).toContain(
+				"https://developer.api.autodesk.com/authentication/v2/authorize",
+			);
+			expect(url).toContain(
+				`code_challenge=${encodeURIComponent(mockCodeChallenge)}`,
+			);
+			expect(url).toContain("code_challenge_method=S256");
+		});
 
-            expect(url).toContain('https://developer.api.autodesk.com/authentication/v2/authorize');
-            expect(url).toContain(`code_challenge=${encodeURIComponent(mockCodeChallenge)}`);
-            expect(url).toContain('code_challenge_method=S256');
-        });
+		it("should include optional parameters when provided", () => {
+			const nonce = "test-nonce";
+			const state = "test-state";
+			const forceLogin = true;
 
-        it('should include optional parameters when provided', () => {
-            const nonce = 'test-nonce';
-            const state = 'test-state';
-            const forceLogin = true;
+			const url = createAuthenticationUrl(
+				mockClientId,
+				mockRedirectUri,
+				mockScopes,
+				nonce,
+				state,
+				forceLogin,
+			);
 
-            const url = createAuthenticationUrl(
-                mockClientId,
-                mockRedirectUri,
-                mockScopes,
-                nonce,
-                state,
-                forceLogin
-            );
+			expect(url).toContain(`nonce=${encodeURIComponent(nonce)}`);
+			expect(url).toContain(`state=${encodeURIComponent(state)}`);
+			expect(url).toContain("prompt=login");
+		});
+	});
 
-            expect(url).toContain(`nonce=${encodeURIComponent(nonce)}`);
-            expect(url).toContain(`state=${encodeURIComponent(state)}`);
-            expect(url).toContain('prompt=login');
-        });
-    });
+	describe("Code Extraction", () => {
+		it("should extract code from URL", () => {
+			const code = "test-auth-code";
+			const url = `http://localhost:3000/callback?code=${code}&state=test-state`;
 
-    describe('Code Extraction', () => {
-        it('should extract code from URL', () => {
-            const code = 'test-auth-code';
-            const url = `http://localhost:3000/callback?code=${code}&state=test-state`;
+			const extractedCode = extractCodeFromUrl(url);
+			expect(extractedCode).toBe(code);
+		});
 
-            const extractedCode = extractCodeFromUrl(url);
-            expect(extractedCode).toBe(code);
-        });
+		it("should return null when no code in URL", () => {
+			const url = "http://localhost:3000/callback?state=test-state";
 
-        it('should return null when no code in URL', () => {
-            const url = 'http://localhost:3000/callback?state=test-state';
+			const extractedCode = extractCodeFromUrl(url);
+			expect(extractedCode).toBeNull();
+		});
+	});
 
-            const extractedCode = extractCodeFromUrl(url);
-            expect(extractedCode).toBeNull();
-        });
-    });
+	describe("Token Management", () => {
+		it("should get two-legged token", async () => {
+			const tokenMock = {
+				access_token: "test-access-token",
+				expires_in: 3600,
+				refreshToken: "test-refresh-token",
+			};
 
-    describe('Token Management', () => {
-        const mockToken: AuthToken = {
-            accessToken: 'test-access-token',
-            expiresIn: 3600,
-            refreshToken: 'test-refresh-token'
-        };
+			adskServiceMock.post<AuthToken>("/authentication/v2/token", {
+				status: 200,
+				data: tokenMock,
+			});
 
-        it('should get two-legged token', async () => {
+			const resp = await authClient.helper.getTwoLeggedToken(
+				"clientId",
+				"clientSecret",
+				[],
+			);
+			expect(resp.accessToken).toBe(tokenMock.access_token as string);
+			adskServiceMock.assertAllMocksUsed();
+		});
+	});
 
-            const tokenMock = {
-                access_token: 'test-access-token',
-                expires_in: 3600,
-                refreshToken: 'test-refresh-token'
-            };
-
-            adskServiceMock.post<AuthToken>('/authentication/v2/token', {
-                status: 200,
-                data: tokenMock
-            });
-
-            const resp=await authClient.helper.getTwoLeggedToken("clientId", "clientSecret", []);
-            expect(resp.accessToken).toBe(tokenMock.access_token as string);
-            adskServiceMock.assertAllMocksUsed();
-            
-        });
-
-
-    });
-
-/*     describe('Token Store', () => {
+	/*     describe('Token Store', () => {
         let tokenStore: ITokenStore;
         let storedToken: AuthTokenExtended | null = null;
 
@@ -157,7 +160,7 @@ describe('AuthenticationClientHelper', () => {
         });
     }); */
 
-/*     describe('Helper Methods', () => {
+	/*     describe('Helper Methods', () => {
         it('should create authorization string', () => {
             const authString = AuthenticationClientHelper.createAuthorizationString(
                 mockClientId,

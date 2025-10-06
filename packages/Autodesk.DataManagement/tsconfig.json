@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./_dist",
     "rootDir": "./src",
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
   "exclude": ["generatedCode/**/*"]
 }
