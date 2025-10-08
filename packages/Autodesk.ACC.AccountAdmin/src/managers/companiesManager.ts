@@ -22,10 +22,14 @@ export class CompaniesManager {
 	 */
 	async listCompanies(
 		accountId: string,
-	): Promise<CompaniesGetResponse | undefined> {
+	): Promise<CompaniesGetResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)
 			.companies.get();
+
+		if (!result) {
+			throw new Error("Unexpected null response");
+		}
 
 		return result;
 	}
@@ -40,10 +44,14 @@ export class CompaniesManager {
 	async createCompany(
 		accountId: string,
 		companyData: CompaniesPostRequestBody,
-	): Promise<CompaniesPostResponse | undefined> {
+	): Promise<CompaniesPostResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)
 			.companies.post(companyData);
+
+		if (!result) {
+			throw new Error("Unexpected null response");
+		}
 
 		return result;
 	}

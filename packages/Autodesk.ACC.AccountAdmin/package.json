@@ -1,6 +1,6 @@
 {
   "name": "@adsk-platform/acc-accountadmin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Autodesk ACC Account Admin SDK for TypeScript",
   "type": "module",
   "scripts": {

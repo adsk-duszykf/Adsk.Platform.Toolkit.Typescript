@@ -14,7 +14,7 @@ import type {
 	UsersImportPostRequestBody,
 	UsersImportPostResponse,
 } from "../generatedCode/acc/construction/admin/v2/projects/item/usersImport/index.js";
-
+import type { WithUserItemRequestBuilderGetQueryParameters, WithUserGetResponse } from "../generatedCode/acc/construction/admin/v1/projects/item/users/item/index.js";
 /**
  * Manager for Project Users operations
  */
@@ -105,10 +105,10 @@ export class ProjectUsersManager {
 	async getProjectUser(
 		projectId: string,
 		userIdOrAutodeskId: string,
-		fields?: string[],
+		fields?: WithUserItemRequestBuilderGetQueryParameters|undefined,
 		region?: string,
 		userId?: string,
-	): Promise<UsersGetResponse_results> {
+	): Promise<WithUserGetResponse> {
 		const result = await this.api.construction.admin.v1.projects
 			.byProjectId(projectId)
 			.users.byUserId(userIdOrAutodeskId)
@@ -117,7 +117,7 @@ export class ProjectUsersManager {
 					...(region && { Region: region }),
 					...(userId && { "User-Id": userId }),
 				},
-				queryParameters: fields ? { fields } : undefined,
+				queryParameters: fields,
 			});
 
 		if (!result) {

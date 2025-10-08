@@ -6,7 +6,7 @@ import type {
 	ProjectsPostResponse,
 	ProjectsRequestBuilderGetQueryParameters,
 } from "../generatedCode/acc/construction/admin/v1/accounts/item/projects/index.js";
-import type { WithProjectGetResponse } from "../generatedCode/acc/construction/admin/v1/projects/item/index.js";
+import type { WithProjectGetResponse, WithProjectItemRequestBuilderGetQueryParameters } from "../generatedCode/acc/construction/admin/v1/projects/item/index.js";
 
 /**
  * Manager for Projects operations
@@ -68,7 +68,7 @@ export class ProjectsManager {
 		projectData: ProjectsPostRequestBody,
 		region?: string,
 		userId?: string,
-	): Promise<ProjectsPostResponse | undefined> {
+	): Promise<ProjectsPostResponse> {
 		const result = await this.api.construction.admin.v1.accounts
 			.byAccountId(accountId)
 			.projects.post(projectData, {
@@ -77,6 +77,10 @@ export class ProjectsManager {
 					...(userId && { "User-Id": userId }),
 				},
 			});
+
+		if (!result) {
+			throw new Error("Unexpected null response");
+		}
 
 		return result;
 	}
@@ -92,10 +96,10 @@ export class ProjectsManager {
 	 */
 	async getProject(
 		projectId: string,
-		fields?: string[],
+		fields?: WithProjectItemRequestBuilderGetQueryParameters|undefined,
 		region?: string,
 		userId?: string,
-	): Promise<WithProjectGetResponse | undefined> {
+	): Promise<WithProjectGetResponse> {
 		const result = await this.api.construction.admin.v1.projects
 			.byProjectId(projectId)
 			.get({
@@ -103,8 +107,12 @@ export class ProjectsManager {
 					...(region && { Region: region }),
 					...(userId && { "User-Id": userId }),
 				},
-				queryParameters: fields ? { fields } : undefined,
+				queryParameters: fields,
 			});
+
+		if (!result) {
+			throw new Error("Unexpected null response");
+		}
 
 		return result;
 	}
