@@ -1,6 +1,6 @@
 {
-  "descriptionHash": "8C26570D90A97662FE3F2387BE9A6EA8426D71FC5FD55D9AC3B0166D3E0BA92392848A547B444F3F5B840B26CD55E772FEA1D848B217D192265028D099E96B1A",
-  "descriptionLocation": "../../../_spec/Autodesk.Vault/OpenAPI/Autodesk.Vault.yaml",
+  "descriptionHash": "A42A56F1F4CB13A7ECB9F102443CA1F00F5359CA8FAAD89ABA66C63C55D5103B2475AA5EE935B8384AFF0DFBBA715AE9D3FB334DD2B301E953BA255722016593",
+  "descriptionLocation": "../../../../../_spec/Autodesk.Vault/OpenAPI/Autodesk.Vault.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.28.0",
   "clientClassName": "BaseVaultDataClient",

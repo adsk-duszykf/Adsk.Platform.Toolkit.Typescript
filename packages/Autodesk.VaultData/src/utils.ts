@@ -6,72 +6,90 @@ import {
 } from "./generatedCode/baseVaultDataClient.js";
 import { VaultClient } from "./vaultClient.js";
 
+/**
+ * Create a Vault client with Vault user account
+ *
+ * @param vaultServerBaseUrl - Base URL of the vault server. Example: https://10.12.125.240, http://localhost
+ * @param vault - Name of the vault
+ * @param userName - Vault user name
+ * @param password - Vault user password
+ * @param appCode - Optional app code, used for server side logging
+ * @returns Access token generator function
+ */
 export function createClientWithVaultUserAccount(
-	vaultServer: string,
+	vaultServerBaseUrl: string,
 	vault: string,
 	userName: string,
 	password: string,
-	isHttps: boolean = true,
 	appCode?: string,
 ) {
 	const getToken = getVaultUserAccessTokenGenerator(
-		vaultServer,
+		vaultServerBaseUrl,
 		vault,
 		userName,
 		password,
-		isHttps,
 		appCode,
 	);
 
-	return new VaultClient(getToken, vaultServer, isHttps);
+	return new VaultClient(getToken, vaultServerBaseUrl);
 }
 
+/**
+ * Create a Vault client with Windows account
+ *
+ * @param vaultServerBaseUrl - Base URL of the vault server. Example: https://10.12.125.240, http://localhost
+ * @param vault - Name of the vault
+ * @param appCode - Optional app code, used for server side logging
+ * @returns Access token generator function
+ */
 export function createClientWithWindowsAccount(
-	vaultServer: string,
+	vaultServerBaseUrl: string,
 	vault: string,
-	isHttps: boolean = true,
 	appCode?: string,
 ) {
 	const getToken = getWindowsUserAccessTokenGenerator(
-		vaultServer,
+		vaultServerBaseUrl,
 		vault,
-		isHttps,
 		appCode,
 	);
 
-	return new VaultClient(getToken, vaultServer, isHttps);
+	return new VaultClient(getToken, vaultServerBaseUrl);
 }
 
+/**
+ * Create an anonymous Vault client
+ *
+ * @param vaultServerBaseUrl - Base URL of the vault server. Example: https://10.12.125.240, http://localhost
+ * @returns Base Vault Data Client
+ */
 export function createAnonymousVaultClient(
-	vaultServer: string,
-	isHttps: boolean = true,
+	vaultServerBaseUrl: string,
 ): BaseVaultDataClient {
 	const adapter = new DefaultRequestAdapter(
 		new AnonymousAuthenticationProvider(),
 	);
-	adapter.baseUrl = `${isHttps ? "https" : "http"}://${vaultServer}/AutodeskDM/Services/api/vault/v2`;
+	adapter.baseUrl = `${vaultServerBaseUrl}/AutodeskDM/Services/api/vault/v2`;
 	return createBaseVaultDataClient(adapter);
 }
 
 /**
  * Get access token generator for Vault user
  *
- * @export
- * @param {string} vault Name of the vault
- * @param {string} userName Vault user name
- * @param {string} password Vault user password
- * @param {string} [appCode] Optional app code, used for server side logging
- * @return {() => Promise<string>} Access token generator function
+ * @param vaultServerBaseUrl - Base URL of the vault server. Example: https://10.12.125.240, http://localhost
+ * @param vault - Name of the vault
+ * @param userName - Vault user name
+ * @param password - Vault user password
+ * @param appCode - Optional app code, used for server side logging
+ * @returns Access token generator function
  */
 function getVaultUserAccessTokenGenerator(
-	vaultServer: string,
+	vaultServerBaseUrl: string,
 	vault: string,
 	userName: string,
 	password: string,
-	isHttp: boolean = true,
 	appCode?: string,
 ) {
-	const vaultClient = createAnonymousVaultClient(vaultServer, isHttp);
+	const vaultClient = createAnonymousVaultClient(vaultServerBaseUrl);
 
 	return async () => {
 		const resp = await vaultClient.sessions.post({
@@ -86,20 +104,19 @@ function getVaultUserAccessTokenGenerator(
 }
 
 /**
- * Get access token generator for Vault user
+ * Get access token generator for Windows user
  *
- * @export
- * @param {string} vault Name of the vault
- * @param {string} [appCode] Optional app code, used for server side logging
- * @return {() => Promise<string>} Access token generator function
+ * @param vaultServerBaseUrl - Base URL of the vault server. Example: https://10.12.125.240, http://localhost
+ * @param vault - Name of the vault
+ * @param appCode - Optional app code, used for server side logging
+ * @returns Access token generator function
  */
 function getWindowsUserAccessTokenGenerator(
-	vaultServer: string,
+	vaultServerBaseUrl: string,
 	vault: string,
-	isHttp: boolean = true,
 	appCode?: string,
 ) {
-	const vaultClient = createAnonymousVaultClient(vaultServer, isHttp);
+	const vaultClient = createAnonymousVaultClient(vaultServerBaseUrl);
 
 	return async () => {
 		const resp = await vaultClient.sessions.winAuth.post({
@@ -111,4 +128,34 @@ function getWindowsUserAccessTokenGenerator(
 		}
 		return resp.accessToken;
 	};
+}
+
+/**
+ * Iterate through all pages of a paginated API
+ *
+ * @param pageGetter - Function to get a page of results
+ * @param cursor - Cursor state for the next page
+ * @returns Iterator of all results
+ */
+export async function* iterateAllPages<T>(
+	pageGetter: (cursor: string) => Promise<{
+		pagination: Partial<{ nextUrl?: string | null }>;
+		results: T[];
+	}>,
+) {
+	let response = await pageGetter("");
+	for (const item of response?.results ?? []) {
+		yield item;
+	}
+
+	while (response?.pagination?.nextUrl) {
+		const tmpNextUrl = new URL(`http://mock/${response.pagination.nextUrl}`);
+		const cursorState = tmpNextUrl.searchParams.get("cursorState");
+		if (!cursorState) break;
+
+		response = await pageGetter(cursorState);
+		for (const item of response?.results ?? []) {
+			yield item;
+		}
+	}
 }

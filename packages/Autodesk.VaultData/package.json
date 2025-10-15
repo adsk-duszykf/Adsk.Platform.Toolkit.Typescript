@@ -1,12 +1,13 @@
 {
   "name": "@adsk-platform/vaultdata",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Autodesk Vault Data SDK for TypeScript",
   "type": "module",
   "scripts": {
     "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
     "prepublishOnly": "bun run build",
     "publish": "bun publish --production",
+    "lint": "bun biome check --write",
     "test": "bun test"
   },
   "exports": {
@@ -47,7 +48,7 @@
     "bun": ">=1.0.0"
   },
   "dependencies": {
-    "@microsoft/kiota-bundle": "catalog:"
+    "@microsoft/kiota-bundle": "catalog:",
   },
   "devDependencies": {
     "bun-fetch-mock": "workspace:*",

@@ -1835,7 +1835,7 @@ export function deserializeIntoItemCollection(itemCollection: Partial<ItemCollec
     return {
         "included": n => { itemCollection.included = n.getObjectValue<ItemCollection_included>(createItemCollection_includedFromDiscriminatorValue); },
         "pagination": n => { itemCollection.pagination = n.getObjectValue<CursorBasedPagination>(createCursorBasedPaginationFromDiscriminatorValue); },
-        "results": n => { itemCollection.results = n.getObjectValue<Item>(createItemFromDiscriminatorValue); },
+        "results": n => { itemCollection.results = n.getCollectionOfObjectValues<Item>(createItemFromDiscriminatorValue); },
     }
 }
 /**
@@ -3247,9 +3247,9 @@ export interface ItemCollection extends AdditionalDataHolder, Parsable {
      */
     pagination?: CursorBasedPagination | null;
     /**
-     * Item object.
+     * The results property
      */
-    results?: Item | null;
+    results?: Item[] | null;
 }
 export interface ItemCollection_included extends AdditionalDataHolder, Parsable {
     /**
@@ -4547,7 +4547,7 @@ export function serializeItemCollection(writer: SerializationWriter, itemCollect
     if (!itemCollection || isSerializingDerivedType) { return; }
     writer.writeObjectValue<ItemCollection_included>("included", itemCollection.included, serializeItemCollection_included);
     writer.writeObjectValue<CursorBasedPagination>("pagination", itemCollection.pagination, serializeCursorBasedPagination);
-    writer.writeObjectValue<Item>("results", itemCollection.results, serializeItem);
+    writer.writeCollectionOfObjectValues<Item>("results", itemCollection.results, serializeItem);
     writer.writeAdditionalData(itemCollection.additionalData);
 }
 /**
