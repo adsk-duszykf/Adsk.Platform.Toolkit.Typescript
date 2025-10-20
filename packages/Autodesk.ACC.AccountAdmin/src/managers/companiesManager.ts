@@ -20,9 +20,7 @@ export class CompaniesManager {
 	 * @param accountId - The account ID of the company
 	 * @returns Company data
 	 */
-	async listCompanies(
-		accountId: string,
-	): Promise<CompaniesGetResponse> {
+	async listCompanies(accountId: string): Promise<CompaniesGetResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)
 			.companies.get();

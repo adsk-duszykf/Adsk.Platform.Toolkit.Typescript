@@ -7,6 +7,8 @@ import type {
 	UsersRequestBuilderGetQueryParameters,
 } from "../generatedCode/acc/construction/admin/v1/projects/item/users/index.js";
 import type {
+	WithUserGetResponse,
+	WithUserItemRequestBuilderGetQueryParameters,
 	WithUserPatchRequestBody,
 	WithUserPatchResponse,
 } from "../generatedCode/acc/construction/admin/v1/projects/item/users/item/index.js";
@@ -14,7 +16,6 @@ import type {
 	UsersImportPostRequestBody,
 	UsersImportPostResponse,
 } from "../generatedCode/acc/construction/admin/v2/projects/item/usersImport/index.js";
-import type { WithUserItemRequestBuilderGetQueryParameters, WithUserGetResponse } from "../generatedCode/acc/construction/admin/v1/projects/item/users/item/index.js";
 /**
  * Manager for Project Users operations
  */
@@ -105,7 +106,7 @@ export class ProjectUsersManager {
 	async getProjectUser(
 		projectId: string,
 		userIdOrAutodeskId: string,
-		fields?: WithUserItemRequestBuilderGetQueryParameters|undefined,
+		fields?: WithUserItemRequestBuilderGetQueryParameters | undefined,
 		region?: string,
 		userId?: string,
 	): Promise<WithUserGetResponse> {

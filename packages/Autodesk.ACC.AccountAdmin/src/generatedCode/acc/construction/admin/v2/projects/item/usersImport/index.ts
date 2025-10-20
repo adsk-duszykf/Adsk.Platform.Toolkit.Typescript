@@ -76,7 +76,7 @@ export function deserializeIntoUsersImportPostRequestBody_users(usersImportPostR
 // @ts-ignore
 export function deserializeIntoUsersImportPostRequestBody_users_products(usersImportPostRequestBody_users_products: Partial<UsersImportPostRequestBody_users_products> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "access": n => { usersImportPostRequestBody_users_products.access = n.getStringValue(); },
+        "access": n => { usersImportPostRequestBody_users_products.access = n.getEnumValue<UsersImportPostRequestBody_users_products_access>(UsersImportPostRequestBody_users_products_accessObject); },
         "key": n => { usersImportPostRequestBody_users_products.key = n.getStringValue(); },
     }
 }
@@ -130,7 +130,7 @@ export function serializeUsersImportPostRequestBody_users(writer: SerializationW
 // @ts-ignore
 export function serializeUsersImportPostRequestBody_users_products(writer: SerializationWriter, usersImportPostRequestBody_users_products: Partial<UsersImportPostRequestBody_users_products> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!usersImportPostRequestBody_users_products || isSerializingDerivedType) { return; }
-    writer.writeStringValue("access", usersImportPostRequestBody_users_products.access);
+    writer.writeEnumValue<UsersImportPostRequestBody_users_products_access>("access", usersImportPostRequestBody_users_products.access);
     writer.writeStringValue("key", usersImportPostRequestBody_users_products.key);
     writer.writeAdditionalData(usersImportPostRequestBody_users_products.additionalData);
 }
@@ -158,15 +158,15 @@ export interface UsersImportPostRequestBody_users extends AdditionalDataHolder, 
      */
     companyId?: string | null;
     /**
-     * The email of the user.
+     * The email of the user.Max length: 255
      */
     email?: string | null;
     /**
-     * The first name of the user.
+     * The first name of the user.Max length: 255
      */
     firstName?: string | null;
     /**
-     * The last name of the user.
+     * The last name of the user.Max length: 255
      */
     lastName?: string | null;
     /**
@@ -174,7 +174,7 @@ export interface UsersImportPostRequestBody_users extends AdditionalDataHolder, 
      */
     products?: UsersImportPostRequestBody_users_products[] | null;
     /**
-     * A list of the IDs of the user's roles in the project.
+     * A list of the IDs of the user's roles in the project.To obtain role IDs for this parameter, you can call `GET projects/:projectId/users </en/docs/acc/v1/reference/http/admin-projects-projectId-users-GET/>`_ endpoint or `GET projects/:projectId/users/:userId </en/docs/acc/v1/reference/http/admin-projects-projectId-users-userId-GET/>`_ and inspect the ``roleId`` field in the response.
      */
     roleIds?: string[] | null;
     /**
@@ -184,17 +184,18 @@ export interface UsersImportPostRequestBody_users extends AdditionalDataHolder, 
 }
 export interface UsersImportPostRequestBody_users_products extends AdditionalDataHolder, Parsable {
     /**
-     * The user's type of access to the product identified by ``key``. Possible values:
+     * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
      */
-    access?: string | null;
+    access?: UsersImportPostRequestBody_users_products_access | null;
     /**
-     * A keyword that identifies the product.
+     * A keyword that identifies the product.Possible values: ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.
      */
     key?: string | null;
 }
+export type UsersImportPostRequestBody_users_products_access = (typeof UsersImportPostRequestBody_users_products_accessObject)[keyof typeof UsersImportPostRequestBody_users_products_accessObject];
 export interface UsersImportPostResponse extends AdditionalDataHolder, Parsable {
     /**
-     * We don't currently support this field, but expect to in a future release.
+     * We don't currently support this field, but expect to in a future release.If the response returns ``jobId`` with a valid UUID value, the user import operation was successful.
      */
     jobId?: Guid | null;
 }
@@ -221,6 +222,17 @@ export interface UsersImportRequestBuilder extends BaseRequestBuilder<UsersImpor
  * Uri template for the request builder.
  */
 export const UsersImportRequestBuilderUriTemplate = "{+baseurl}/construction/admin/v2/projects/{projectId}/users:import";
+/**
+ * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
+ */
+export const UsersImportPostRequestBody_users_products_accessObject = {
+    Key: "key",
+    Administrator: "administrator",
+    Member: "member",
+    None: "none",
+    ProjectAdministration: "projectAdministration",
+    Access: "access",
+} as const;
 /**
  * Metadata for all the requests in the request builder.
  */

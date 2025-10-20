@@ -51,13 +51,13 @@ export function deserializeIntoImportPostRequestBody(importPostRequestBody: Part
         "address_line_1": n => { importPostRequestBody.addressLine1 = n.getStringValue(); },
         "address_line_2": n => { importPostRequestBody.addressLine2 = n.getStringValue(); },
         "city": n => { importPostRequestBody.city = n.getStringValue(); },
-        "country": n => { importPostRequestBody.country = n.getStringValue(); },
+        "country": n => { importPostRequestBody.country = n.getEnumValue<ImportPostRequestBody_country>(ImportPostRequestBody_countryObject); },
         "description": n => { importPostRequestBody.description = n.getStringValue(); },
         "erp_id": n => { importPostRequestBody.erpId = n.getStringValue(); },
         "name": n => { importPostRequestBody.name = n.getStringValue(); },
         "phone": n => { importPostRequestBody.phone = n.getStringValue(); },
         "postal_code": n => { importPostRequestBody.postalCode = n.getStringValue(); },
-        "state_or_province": n => { importPostRequestBody.stateOrProvince = n.getStringValue(); },
+        "state_or_province": n => { importPostRequestBody.stateOrProvince = n.getEnumValue<ImportPostRequestBody_state_or_province>(ImportPostRequestBody_state_or_provinceObject); },
         "tax_id": n => { importPostRequestBody.taxId = n.getStringValue(); },
         "trade": n => { importPostRequestBody.trade = n.getStringValue(); },
         "website_url": n => { importPostRequestBody.websiteUrl = n.getStringValue(); },
@@ -116,23 +116,23 @@ export function deserializeIntoImportPostResponse_success_items(importPostRespon
 }
 export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
-     * | Company address line 1 | | Max length: 255
+     * | Company address line 1|| Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * | Company address line 2 | | Max length: 255
+     * | Company address line 2|| Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * | City in which company is located | | Max length: 255
+     * | City in which company is located|| Max length: 255
      */
     city?: string | null;
     /**
-     * | Country for this company | | Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Country for this company|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: string | null;
+    country?: ImportPostRequestBody_country | null;
     /**
-     * | Short description or overview for company | | Max length: 255
+     * | Short description or overview for company|| Max length: 255
      */
     description?: string | null;
     /**
@@ -140,34 +140,36 @@ export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
      */
     erpId?: string | null;
     /**
-     * | Company name should be unique under an account | | Max length: 255
+     * | Company name should be unique under an account|| Max length: 255
      */
     name?: string | null;
     /**
-     * | Business phone number for the company | | Max length: 255
+     * | Business phone number for the company|| Max length: 255
      */
     phone?: string | null;
     /**
-     * | Postal code for the company location | | Max length: 255
+     * | Postal code for the company location|| Max length: 255
      */
     postalCode?: string | null;
     /**
-     * | State or province in which company is located | | Max length: 255 | | Note that the ``state_or_province`` value depends on the selected ``country`` value; see the valid values in the ``state_or_province`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | State or province in which company is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: string | null;
+    stateOrProvince?: ImportPostRequestBody_state_or_province | null;
     /**
      * Used to associate a company in BIM 360 with the company data from public and industry sources
      */
     taxId?: string | null;
     /**
-     * | Trade type based on specialization | | Refer to the ``trade`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Trade type based on specialization|| Refer to the ``trade`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
     trade?: string | null;
     /**
-     * | Company website | | Max length: 255
+     * | Company website|| Max length: 255
      */
     websiteUrl?: string | null;
 }
+export type ImportPostRequestBody_country = (typeof ImportPostRequestBody_countryObject)[keyof typeof ImportPostRequestBody_countryObject];
+export type ImportPostRequestBody_state_or_province = (typeof ImportPostRequestBody_state_or_provinceObject)[keyof typeof ImportPostRequestBody_state_or_provinceObject];
 export interface ImportPostResponse extends AdditionalDataHolder, Parsable {
     /**
      * Import failure company count
@@ -289,13 +291,13 @@ export function serializeImportPostRequestBody(writer: SerializationWriter, impo
     writer.writeStringValue("address_line_1", importPostRequestBody.addressLine1);
     writer.writeStringValue("address_line_2", importPostRequestBody.addressLine2);
     writer.writeStringValue("city", importPostRequestBody.city);
-    writer.writeStringValue("country", importPostRequestBody.country);
+    writer.writeEnumValue<ImportPostRequestBody_country>("country", importPostRequestBody.country);
     writer.writeStringValue("description", importPostRequestBody.description);
     writer.writeStringValue("erp_id", importPostRequestBody.erpId);
     writer.writeStringValue("name", importPostRequestBody.name);
     writer.writeStringValue("phone", importPostRequestBody.phone);
     writer.writeStringValue("postal_code", importPostRequestBody.postalCode);
-    writer.writeStringValue("state_or_province", importPostRequestBody.stateOrProvince);
+    writer.writeEnumValue<ImportPostRequestBody_state_or_province>("state_or_province", importPostRequestBody.stateOrProvince);
     writer.writeStringValue("tax_id", importPostRequestBody.taxId);
     writer.writeStringValue("trade", importPostRequestBody.trade);
     writer.writeStringValue("website_url", importPostRequestBody.websiteUrl);
@@ -359,6 +361,19 @@ export function serializeImportPostResponse_success_items(writer: SerializationW
  * Uri template for the request builder.
  */
 export const ImportRequestBuilderUriTemplate = "{+baseurl}/hq/v1/accounts/{account_id}/companies/import";
+/**
+ * | Country for this company|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const ImportPostRequestBody_countryObject = {
+    Country: "country",
+} as const;
+/**
+ * | State or province in which company is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const ImportPostRequestBody_state_or_provinceObject = {
+    State_or_province: "state_or_province",
+    Country: "country",
+} as const;
 /**
  * Metadata for all the requests in the request builder.
  */

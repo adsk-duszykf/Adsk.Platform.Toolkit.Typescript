@@ -29,7 +29,7 @@ export function deserializeIntoWithUser_GetResponse(withUser_GetResponse: Partia
         "company": n => { withUser_GetResponse.company = n.getStringValue(); },
         "company_id": n => { withUser_GetResponse.companyId = n.getGuidValue(); },
         "company_name": n => { withUser_GetResponse.companyName = n.getStringValue(); },
-        "country": n => { withUser_GetResponse.country = n.getStringValue(); },
+        "country": n => { withUser_GetResponse.country = n.getEnumValue<WithUser_GetResponse_country>(WithUser_GetResponse_countryObject); },
         "created_at": n => { withUser_GetResponse.createdAt = n.getDateValue(); },
         "default_role": n => { withUser_GetResponse.defaultRole = n.getStringValue(); },
         "default_role_id": n => { withUser_GetResponse.defaultRoleId = n.getStringValue(); },
@@ -46,7 +46,7 @@ export function deserializeIntoWithUser_GetResponse(withUser_GetResponse: Partia
         "phone": n => { withUser_GetResponse.phone = n.getStringValue(); },
         "postal_code": n => { withUser_GetResponse.postalCode = n.getStringValue(); },
         "role": n => { withUser_GetResponse.role = n.getStringValue(); },
-        "state_or_province": n => { withUser_GetResponse.stateOrProvince = n.getStringValue(); },
+        "state_or_province": n => { withUser_GetResponse.stateOrProvince = n.getEnumValue<WithUser_GetResponse_state_or_province>(WithUser_GetResponse_state_or_provinceObject); },
         "status": n => { withUser_GetResponse.status = n.getStringValue(); },
         "uid": n => { withUser_GetResponse.uid = n.getStringValue(); },
         "updated_at": n => { withUser_GetResponse.updatedAt = n.getDateValue(); },
@@ -69,7 +69,7 @@ export function serializeWithUser_GetResponse(writer: SerializationWriter, withU
     writer.writeStringValue("company", withUser_GetResponse.company);
     writer.writeGuidValue("company_id", withUser_GetResponse.companyId);
     writer.writeStringValue("company_name", withUser_GetResponse.companyName);
-    writer.writeStringValue("country", withUser_GetResponse.country);
+    writer.writeEnumValue<WithUser_GetResponse_country>("country", withUser_GetResponse.country);
     writer.writeDateValue("created_at", withUser_GetResponse.createdAt);
     writer.writeStringValue("default_role", withUser_GetResponse.defaultRole);
     writer.writeStringValue("default_role_id", withUser_GetResponse.defaultRoleId);
@@ -86,7 +86,7 @@ export function serializeWithUser_GetResponse(writer: SerializationWriter, withU
     writer.writeStringValue("phone", withUser_GetResponse.phone);
     writer.writeStringValue("postal_code", withUser_GetResponse.postalCode);
     writer.writeStringValue("role", withUser_GetResponse.role);
-    writer.writeStringValue("state_or_province", withUser_GetResponse.stateOrProvince);
+    writer.writeEnumValue<WithUser_GetResponse_state_or_province>("state_or_province", withUser_GetResponse.stateOrProvince);
     writer.writeStringValue("status", withUser_GetResponse.status);
     writer.writeStringValue("uid", withUser_GetResponse.uid);
     writer.writeDateValue("updated_at", withUser_GetResponse.updatedAt);
@@ -94,7 +94,7 @@ export function serializeWithUser_GetResponse(writer: SerializationWriter, withU
 }
 export interface WithUser_GetResponse extends AdditionalDataHolder, Parsable {
     /**
-     * | Short description about the user | | Max length: 255
+     * | Short description about the user|| Max length: 255
      */
     aboutMe?: string | null;
     /**
@@ -102,19 +102,19 @@ export interface WithUser_GetResponse extends AdditionalDataHolder, Parsable {
      */
     accountId?: Guid | null;
     /**
-     * | User's address line 1 | | Max length: 255
+     * | User's address line 1|| Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * | User's address line 2 | | Max length: 255
+     * | User's address line 2|| Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * | City in which user is located | | Max length: 255
+     * | City in which user is located|| Max length: 255
      */
     city?: string | null;
     /**
-     * | Company information from the Autodesk user profile | | Max length: 255 | | Note that this is different from company in BIM 360.
+     * | Company information from the Autodesk user profile|| Max length: 255|| Note that this is different from company in BIM 360.
      */
     company?: string | null;
     /**
@@ -126,27 +126,27 @@ export interface WithUser_GetResponse extends AdditionalDataHolder, Parsable {
      */
     companyName?: string | null;
     /**
-     * | Country for this user | | Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: string | null;
+    country?: WithUser_GetResponse_country | null;
     /**
      * | ``YYYY-MM-DDThh:mm:ss.sssZ`` format
      */
     createdAt?: Date | null;
     /**
-     * | The user's default role. |
+     * | The user's default role.|
      */
     defaultRole?: string | null;
     /**
-     * | The ID of the default role. |
+     * | The ID of the default role.|
      */
     defaultRoleId?: string | null;
     /**
-     * | User's email | | Max length: 255
+     * | User's email|| Max length: 255
      */
     email?: string | null;
     /**
-     * | User's first name | | Max length: 255
+     * | User's first name|| Max length: 255
      */
     firstName?: string | null;
     /**
@@ -154,19 +154,19 @@ export interface WithUser_GetResponse extends AdditionalDataHolder, Parsable {
      */
     id?: Guid | null;
     /**
-     * | URL for user's profile image | | Max length: 255
+     * | URL for user's profile image|| Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * | Industry information for user | | Max length: 255
+     * | Industry information for user|| Max length: 255
      */
     industry?: string | null;
     /**
-     * | User's job title | | Max length: 255
+     * | User's job title|| Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * | User's last name | | Max length: 255
+     * | User's last name|| Max length: 255
      */
     lastName?: string | null;
     /**
@@ -174,31 +174,31 @@ export interface WithUser_GetResponse extends AdditionalDataHolder, Parsable {
      */
     lastSignIn?: Date | null;
     /**
-     * | Default display name | | Max length: 255
+     * | Default display name|| Max length: 255
      */
     name?: string | null;
     /**
-     * | Nick name for user | | Max length: 255
+     * | Nick name for user|| Max length: 255
      */
     nickname?: string | null;
     /**
-     * | Contact phone number for the user | | Max length: 255
+     * | Contact phone number for the user|| Max length: 255
      */
     phone?: string | null;
     /**
-     * | Postal code for the user's location | | Max length: 255
+     * | Postal code for the user's location|| Max length: 255
      */
     postalCode?: string | null;
     /**
-     * | The role of the user in the account | | Possible values: | ``account_admin``: user has BIM 360 account administration access | ``account_user`` : normal project user | ``project_admin``: user has Project administration privileges at a service level
+     * | The role of the user in the account|| Possible values:| ``account_admin``: user has BIM 360 account administration access| ``account_user`` : normal project user| ``project_admin``: user has Project administration privileges at a service level
      */
     role?: string | null;
     /**
-     * | State or province in which user is located | | Max length: 255 | | Note that the ``state_or_province`` value depends on the selected ``country`` value; see the valid values in the ``state_or_province`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: string | null;
+    stateOrProvince?: WithUser_GetResponse_state_or_province | null;
     /**
-     * | Status of the user in the system | | Possible values: | ``active``: user is active and has logged into the system sucessfully | ``inactive``: user is disabled | ``pending``: user is invited and is yet to accept the invitation | ``not_invited``: user is not invited
+     * | Status of the user in the system|| Possible values:| ``active``: user is active and has logged into the system sucessfully| ``inactive``: user is disabled| ``pending``: user is invited and is yet to accept the invitation| ``not_invited``: user is not invited
      */
     status?: string | null;
     /**
@@ -210,6 +210,8 @@ export interface WithUser_GetResponse extends AdditionalDataHolder, Parsable {
      */
     updatedAt?: Date | null;
 }
+export type WithUser_GetResponse_country = (typeof WithUser_GetResponse_countryObject)[keyof typeof WithUser_GetResponse_countryObject];
+export type WithUser_GetResponse_state_or_province = (typeof WithUser_GetResponse_state_or_provinceObject)[keyof typeof WithUser_GetResponse_state_or_provinceObject];
 /**
  * Builds and executes requests for operations under /hq/v1/accounts/{account_id}/users/{user_id}
  */
@@ -231,6 +233,19 @@ export interface WithUser_ItemRequestBuilder extends BaseRequestBuilder<WithUser
  * Uri template for the request builder.
  */
 export const WithUser_ItemRequestBuilderUriTemplate = "{+baseurl}/hq/v1/accounts/{account_id}/users/{user_id}";
+/**
+ * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const WithUser_GetResponse_countryObject = {
+    Country: "country",
+} as const;
+/**
+ * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const WithUser_GetResponse_state_or_provinceObject = {
+    State_or_province: "state_or_province",
+    Country: "country",
+} as const;
 /**
  * Metadata for all the requests in the request builder.
  */

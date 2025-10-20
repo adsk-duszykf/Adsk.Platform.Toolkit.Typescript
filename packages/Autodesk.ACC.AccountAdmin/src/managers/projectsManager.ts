@@ -6,7 +6,10 @@ import type {
 	ProjectsPostResponse,
 	ProjectsRequestBuilderGetQueryParameters,
 } from "../generatedCode/acc/construction/admin/v1/accounts/item/projects/index.js";
-import type { WithProjectGetResponse, WithProjectItemRequestBuilderGetQueryParameters } from "../generatedCode/acc/construction/admin/v1/projects/item/index.js";
+import type {
+	WithProjectGetResponse,
+	WithProjectItemRequestBuilderGetQueryParameters,
+} from "../generatedCode/acc/construction/admin/v1/projects/item/index.js";
 
 /**
  * Manager for Projects operations
@@ -96,7 +99,7 @@ export class ProjectsManager {
 	 */
 	async getProject(
 		projectId: string,
-		fields?: WithProjectItemRequestBuilderGetQueryParameters|undefined,
+		fields?: WithProjectItemRequestBuilderGetQueryParameters | undefined,
 		region?: string,
 		userId?: string,
 	): Promise<WithProjectGetResponse> {

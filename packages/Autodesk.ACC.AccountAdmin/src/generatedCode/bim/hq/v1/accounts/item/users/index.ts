@@ -51,7 +51,7 @@ export function deserializeIntoUsersGetResponse(usersGetResponse: Partial<UsersG
         "company": n => { usersGetResponse.company = n.getStringValue(); },
         "company_id": n => { usersGetResponse.companyId = n.getGuidValue(); },
         "company_name": n => { usersGetResponse.companyName = n.getStringValue(); },
-        "country": n => { usersGetResponse.country = n.getStringValue(); },
+        "country": n => { usersGetResponse.country = n.getEnumValue<UsersGetResponse_country>(UsersGetResponse_countryObject); },
         "created_at": n => { usersGetResponse.createdAt = n.getDateValue(); },
         "default_role": n => { usersGetResponse.defaultRole = n.getStringValue(); },
         "default_role_id": n => { usersGetResponse.defaultRoleId = n.getStringValue(); },
@@ -68,7 +68,7 @@ export function deserializeIntoUsersGetResponse(usersGetResponse: Partial<UsersG
         "phone": n => { usersGetResponse.phone = n.getStringValue(); },
         "postal_code": n => { usersGetResponse.postalCode = n.getStringValue(); },
         "role": n => { usersGetResponse.role = n.getStringValue(); },
-        "state_or_province": n => { usersGetResponse.stateOrProvince = n.getStringValue(); },
+        "state_or_province": n => { usersGetResponse.stateOrProvince = n.getEnumValue<UsersGetResponse_state_or_province>(UsersGetResponse_state_or_provinceObject); },
         "status": n => { usersGetResponse.status = n.getStringValue(); },
         "uid": n => { usersGetResponse.uid = n.getStringValue(); },
         "updated_at": n => { usersGetResponse.updatedAt = n.getDateValue(); },
@@ -88,7 +88,7 @@ export function deserializeIntoUsersPostRequestBody(usersPostRequestBody: Partia
         "city": n => { usersPostRequestBody.city = n.getStringValue(); },
         "company": n => { usersPostRequestBody.company = n.getStringValue(); },
         "company_id": n => { usersPostRequestBody.companyId = n.getGuidValue(); },
-        "country": n => { usersPostRequestBody.country = n.getStringValue(); },
+        "country": n => { usersPostRequestBody.country = n.getEnumValue<UsersPostRequestBody_country>(UsersPostRequestBody_countryObject); },
         "default_role": n => { usersPostRequestBody.defaultRole = n.getStringValue(); },
         "email": n => { usersPostRequestBody.email = n.getStringValue(); },
         "first_name": n => { usersPostRequestBody.firstName = n.getStringValue(); },
@@ -99,7 +99,7 @@ export function deserializeIntoUsersPostRequestBody(usersPostRequestBody: Partia
         "nickname": n => { usersPostRequestBody.nickname = n.getStringValue(); },
         "phone": n => { usersPostRequestBody.phone = n.getStringValue(); },
         "postal_code": n => { usersPostRequestBody.postalCode = n.getStringValue(); },
-        "state_or_province": n => { usersPostRequestBody.stateOrProvince = n.getStringValue(); },
+        "state_or_province": n => { usersPostRequestBody.stateOrProvince = n.getEnumValue<UsersPostRequestBody_state_or_province>(UsersPostRequestBody_state_or_provinceObject); },
     }
 }
 /**
@@ -118,7 +118,7 @@ export function deserializeIntoUsersPostResponse(usersPostResponse: Partial<User
         "company": n => { usersPostResponse.company = n.getStringValue(); },
         "company_id": n => { usersPostResponse.companyId = n.getGuidValue(); },
         "company_name": n => { usersPostResponse.companyName = n.getStringValue(); },
-        "country": n => { usersPostResponse.country = n.getStringValue(); },
+        "country": n => { usersPostResponse.country = n.getEnumValue<UsersPostResponse_country>(UsersPostResponse_countryObject); },
         "created_at": n => { usersPostResponse.createdAt = n.getDateValue(); },
         "default_role": n => { usersPostResponse.defaultRole = n.getStringValue(); },
         "default_role_id": n => { usersPostResponse.defaultRoleId = n.getStringValue(); },
@@ -135,7 +135,7 @@ export function deserializeIntoUsersPostResponse(usersPostResponse: Partial<User
         "phone": n => { usersPostResponse.phone = n.getStringValue(); },
         "postal_code": n => { usersPostResponse.postalCode = n.getStringValue(); },
         "role": n => { usersPostResponse.role = n.getStringValue(); },
-        "state_or_province": n => { usersPostResponse.stateOrProvince = n.getStringValue(); },
+        "state_or_province": n => { usersPostResponse.stateOrProvince = n.getEnumValue<UsersPostResponse_state_or_province>(UsersPostResponse_state_or_provinceObject); },
         "status": n => { usersPostResponse.status = n.getStringValue(); },
         "uid": n => { usersPostResponse.uid = n.getStringValue(); },
         "updated_at": n => { usersPostResponse.updatedAt = n.getDateValue(); },
@@ -158,7 +158,7 @@ export function serializeUsersGetResponse(writer: SerializationWriter, usersGetR
     writer.writeStringValue("company", usersGetResponse.company);
     writer.writeGuidValue("company_id", usersGetResponse.companyId);
     writer.writeStringValue("company_name", usersGetResponse.companyName);
-    writer.writeStringValue("country", usersGetResponse.country);
+    writer.writeEnumValue<UsersGetResponse_country>("country", usersGetResponse.country);
     writer.writeDateValue("created_at", usersGetResponse.createdAt);
     writer.writeStringValue("default_role", usersGetResponse.defaultRole);
     writer.writeStringValue("default_role_id", usersGetResponse.defaultRoleId);
@@ -175,7 +175,7 @@ export function serializeUsersGetResponse(writer: SerializationWriter, usersGetR
     writer.writeStringValue("phone", usersGetResponse.phone);
     writer.writeStringValue("postal_code", usersGetResponse.postalCode);
     writer.writeStringValue("role", usersGetResponse.role);
-    writer.writeStringValue("state_or_province", usersGetResponse.stateOrProvince);
+    writer.writeEnumValue<UsersGetResponse_state_or_province>("state_or_province", usersGetResponse.stateOrProvince);
     writer.writeStringValue("status", usersGetResponse.status);
     writer.writeStringValue("uid", usersGetResponse.uid);
     writer.writeDateValue("updated_at", usersGetResponse.updatedAt);
@@ -196,7 +196,7 @@ export function serializeUsersPostRequestBody(writer: SerializationWriter, users
     writer.writeStringValue("city", usersPostRequestBody.city);
     writer.writeStringValue("company", usersPostRequestBody.company);
     writer.writeGuidValue("company_id", usersPostRequestBody.companyId);
-    writer.writeStringValue("country", usersPostRequestBody.country);
+    writer.writeEnumValue<UsersPostRequestBody_country>("country", usersPostRequestBody.country);
     writer.writeStringValue("default_role", usersPostRequestBody.defaultRole);
     writer.writeStringValue("email", usersPostRequestBody.email);
     writer.writeStringValue("first_name", usersPostRequestBody.firstName);
@@ -207,7 +207,7 @@ export function serializeUsersPostRequestBody(writer: SerializationWriter, users
     writer.writeStringValue("nickname", usersPostRequestBody.nickname);
     writer.writeStringValue("phone", usersPostRequestBody.phone);
     writer.writeStringValue("postal_code", usersPostRequestBody.postalCode);
-    writer.writeStringValue("state_or_province", usersPostRequestBody.stateOrProvince);
+    writer.writeEnumValue<UsersPostRequestBody_state_or_province>("state_or_province", usersPostRequestBody.stateOrProvince);
     writer.writeAdditionalData(usersPostRequestBody.additionalData);
 }
 /**
@@ -227,7 +227,7 @@ export function serializeUsersPostResponse(writer: SerializationWriter, usersPos
     writer.writeStringValue("company", usersPostResponse.company);
     writer.writeGuidValue("company_id", usersPostResponse.companyId);
     writer.writeStringValue("company_name", usersPostResponse.companyName);
-    writer.writeStringValue("country", usersPostResponse.country);
+    writer.writeEnumValue<UsersPostResponse_country>("country", usersPostResponse.country);
     writer.writeDateValue("created_at", usersPostResponse.createdAt);
     writer.writeStringValue("default_role", usersPostResponse.defaultRole);
     writer.writeStringValue("default_role_id", usersPostResponse.defaultRoleId);
@@ -244,7 +244,7 @@ export function serializeUsersPostResponse(writer: SerializationWriter, usersPos
     writer.writeStringValue("phone", usersPostResponse.phone);
     writer.writeStringValue("postal_code", usersPostResponse.postalCode);
     writer.writeStringValue("role", usersPostResponse.role);
-    writer.writeStringValue("state_or_province", usersPostResponse.stateOrProvince);
+    writer.writeEnumValue<UsersPostResponse_state_or_province>("state_or_province", usersPostResponse.stateOrProvince);
     writer.writeStringValue("status", usersPostResponse.status);
     writer.writeStringValue("uid", usersPostResponse.uid);
     writer.writeDateValue("updated_at", usersPostResponse.updatedAt);
@@ -252,7 +252,7 @@ export function serializeUsersPostResponse(writer: SerializationWriter, usersPos
 }
 export interface UsersGetResponse extends AdditionalDataHolder, Parsable {
     /**
-     * | Short description about the user | | Max length: 255
+     * | Short description about the user|| Max length: 255
      */
     aboutMe?: string | null;
     /**
@@ -260,19 +260,19 @@ export interface UsersGetResponse extends AdditionalDataHolder, Parsable {
      */
     accountId?: Guid | null;
     /**
-     * | User's address line 1 | | Max length: 255
+     * | User's address line 1|| Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * | User's address line 2 | | Max length: 255
+     * | User's address line 2|| Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * | City in which user is located | | Max length: 255
+     * | City in which user is located|| Max length: 255
      */
     city?: string | null;
     /**
-     * | Company information from the Autodesk user profile | | Max length: 255 | | Note that this is different from company in BIM 360.
+     * | Company information from the Autodesk user profile|| Max length: 255|| Note that this is different from company in BIM 360.
      */
     company?: string | null;
     /**
@@ -284,27 +284,27 @@ export interface UsersGetResponse extends AdditionalDataHolder, Parsable {
      */
     companyName?: string | null;
     /**
-     * | Country for this user | | Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: string | null;
+    country?: UsersGetResponse_country | null;
     /**
      * | ``YYYY-MM-DDThh:mm:ss.sssZ`` format
      */
     createdAt?: Date | null;
     /**
-     * | The user's default role. |
+     * | The user's default role.|
      */
     defaultRole?: string | null;
     /**
-     * | The ID of the default role. |
+     * | The ID of the default role.|
      */
     defaultRoleId?: string | null;
     /**
-     * | User's email | | Max length: 255
+     * | User's email|| Max length: 255
      */
     email?: string | null;
     /**
-     * | User's first name | | Max length: 255
+     * | User's first name|| Max length: 255
      */
     firstName?: string | null;
     /**
@@ -312,19 +312,19 @@ export interface UsersGetResponse extends AdditionalDataHolder, Parsable {
      */
     id?: Guid | null;
     /**
-     * | URL for user's profile image | | Max length: 255
+     * | URL for user's profile image|| Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * | Industry information for user | | Max length: 255
+     * | Industry information for user|| Max length: 255
      */
     industry?: string | null;
     /**
-     * | User's job title | | Max length: 255
+     * | User's job title|| Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * | User's last name | | Max length: 255
+     * | User's last name|| Max length: 255
      */
     lastName?: string | null;
     /**
@@ -332,31 +332,31 @@ export interface UsersGetResponse extends AdditionalDataHolder, Parsable {
      */
     lastSignIn?: Date | null;
     /**
-     * | Default display name | | Max length: 255
+     * | Default display name|| Max length: 255
      */
     name?: string | null;
     /**
-     * | Nick name for user | | Max length: 255
+     * | Nick name for user|| Max length: 255
      */
     nickname?: string | null;
     /**
-     * | Contact phone number for the user | | Max length: 255
+     * | Contact phone number for the user|| Max length: 255
      */
     phone?: string | null;
     /**
-     * | Postal code for the user's location | | Max length: 255
+     * | Postal code for the user's location|| Max length: 255
      */
     postalCode?: string | null;
     /**
-     * | The role of the user in the account | | Possible values: | ``account_admin``: user has BIM 360 account administration access | ``account_user`` : normal project user | ``project_admin``: user has Project administration privileges at a service level
+     * | The role of the user in the account|| Possible values:| ``account_admin``: user has BIM 360 account administration access| ``account_user`` : normal project user| ``project_admin``: user has Project administration privileges at a service level
      */
     role?: string | null;
     /**
-     * | State or province in which user is located | | Max length: 255 | | Note that the ``state_or_province`` value depends on the selected ``country`` value; see the valid values in the ``state_or_province`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: string | null;
+    stateOrProvince?: UsersGetResponse_state_or_province | null;
     /**
-     * | Status of the user in the system | | Possible values: | ``active``: user is active and has logged into the system sucessfully | ``inactive``: user is disabled | ``pending``: user is invited and is yet to accept the invitation | ``not_invited``: user is not invited
+     * | Status of the user in the system|| Possible values:| ``active``: user is active and has logged into the system sucessfully| ``inactive``: user is disabled| ``pending``: user is invited and is yet to accept the invitation| ``not_invited``: user is not invited
      */
     status?: string | null;
     /**
@@ -368,25 +368,27 @@ export interface UsersGetResponse extends AdditionalDataHolder, Parsable {
      */
     updatedAt?: Date | null;
 }
+export type UsersGetResponse_country = (typeof UsersGetResponse_countryObject)[keyof typeof UsersGetResponse_countryObject];
+export type UsersGetResponse_state_or_province = (typeof UsersGetResponse_state_or_provinceObject)[keyof typeof UsersGetResponse_state_or_provinceObject];
 export interface UsersPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
-     * | Short description about the user | | Max length: 255
+     * | Short description about the user|| Max length: 255
      */
     aboutMe?: string | null;
     /**
-     * | User's address line 1 | | Max length: 255
+     * | User's address line 1|| Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * | User's address line 2 | | Max length: 255
+     * | User's address line 2|| Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * | City in which user is located | | Max length: 255
+     * | City in which user is located|| Max length: 255
      */
     city?: string | null;
     /**
-     * | Company information from the Autodesk user profile | | Max length: 255 | | Note that this is different from company in BIM 360.
+     * | Company information from the Autodesk user profile|| Max length: 255|| Note that this is different from company in BIM 360.
      */
     company?: string | null;
     /**
@@ -394,57 +396,59 @@ export interface UsersPostRequestBody extends AdditionalDataHolder, Parsable {
      */
     companyId?: Guid | null;
     /**
-     * | Country for this user | | Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: string | null;
+    country?: UsersPostRequestBody_country | null;
     /**
-     * | The user's default role | | Max length: 255
+     * | The user's default role|| Max length: 255
      */
     defaultRole?: string | null;
     /**
-     * | User's email | | Max length: 255
+     * | User's email|| Max length: 255
      */
     email?: string | null;
     /**
-     * | User's first name | | Max length: 255
+     * | User's first name|| Max length: 255
      */
     firstName?: string | null;
     /**
-     * | URL for user's profile image | | Max length: 255
+     * | URL for user's profile image|| Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * | Industry information for user | | Max length: 255
+     * | Industry information for user|| Max length: 255
      */
     industry?: string | null;
     /**
-     * | User's job title | | Max length: 255
+     * | User's job title|| Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * | User's last name | | Max length: 255
+     * | User's last name|| Max length: 255
      */
     lastName?: string | null;
     /**
-     * | Nick name for user | | Max length: 255
+     * | Nick name for user|| Max length: 255
      */
     nickname?: string | null;
     /**
-     * | Contact phone number for the user | | Max length: 255
+     * | Contact phone number for the user|| Max length: 255
      */
     phone?: string | null;
     /**
-     * | Postal code for the user's location | | Max length: 255
+     * | Postal code for the user's location|| Max length: 255
      */
     postalCode?: string | null;
     /**
-     * | State or province in which user is located | | Max length: 255 | | Note that the ``state_or_province`` value depends on the selected ``country`` value; see the valid values in the ``state_or_province`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: string | null;
+    stateOrProvince?: UsersPostRequestBody_state_or_province | null;
 }
+export type UsersPostRequestBody_country = (typeof UsersPostRequestBody_countryObject)[keyof typeof UsersPostRequestBody_countryObject];
+export type UsersPostRequestBody_state_or_province = (typeof UsersPostRequestBody_state_or_provinceObject)[keyof typeof UsersPostRequestBody_state_or_provinceObject];
 export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
     /**
-     * | Short description about the user |
+     * | Short description about the user|
      */
     aboutMe?: string | null;
     /**
@@ -452,19 +456,19 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     accountId?: Guid | null;
     /**
-     * | User's address line 1 | | Max length: 255
+     * | User's address line 1|| Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * | User's address line 2 | | Max length: 255
+     * | User's address line 2|| Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * | City in which user is located | | Max length: 255
+     * | City in which user is located|| Max length: 255
      */
     city?: string | null;
     /**
-     * | Company information from the Autodesk user profile | | Max length: 255 | | Note that this is different from company in BIM 360.
+     * | Company information from the Autodesk user profile|| Max length: 255|| Note that this is different from company in BIM 360.
      */
     company?: string | null;
     /**
@@ -476,27 +480,27 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     companyName?: string | null;
     /**
-     * | Country for this user | | Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: string | null;
+    country?: UsersPostResponse_country | null;
     /**
      * | ``YYYY-MM-DDThh:mm:ss.sssZ`` format
      */
     createdAt?: Date | null;
     /**
-     * | The user's default role. |
+     * | The user's default role.|
      */
     defaultRole?: string | null;
     /**
-     * | The ID of the default role. | | Max length: 255
+     * | The ID of the default role.|| Max length: 255
      */
     defaultRoleId?: string | null;
     /**
-     * | User's email | | Max length: 255
+     * | User's email|| Max length: 255
      */
     email?: string | null;
     /**
-     * | User's first name | | Max length: 255
+     * | User's first name|| Max length: 255
      */
     firstName?: string | null;
     /**
@@ -504,19 +508,19 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     id?: Guid | null;
     /**
-     * | URL for user's profile image | | Max length: 255
+     * | URL for user's profile image|| Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * | Industry information for user | | Max length: 255
+     * | Industry information for user|| Max length: 255
      */
     industry?: string | null;
     /**
-     * | User's job title | | Max length: 255
+     * | User's job title|| Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * | User's last name | | Max length: 255
+     * | User's last name|| Max length: 255
      */
     lastName?: string | null;
     /**
@@ -524,31 +528,31 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     lastSignIn?: Date | null;
     /**
-     * | Default display name | | Max length: 255
+     * | Default display name|| Max length: 255
      */
     name?: string | null;
     /**
-     * | Nick name for user | | Max length: 255
+     * | Nick name for user|| Max length: 255
      */
     nickname?: string | null;
     /**
-     * | Contact phone number for the user | | Max length: 255
+     * | Contact phone number for the user|| Max length: 255
      */
     phone?: string | null;
     /**
-     * | Postal code for the user's location | | Max length: 255
+     * | Postal code for the user's location|| Max length: 255
      */
     postalCode?: string | null;
     /**
-     * | The role of the user in the account | | New user should be ``account_user`` only.
+     * | The role of the user in the account|| New user should be ``account_user`` only.
      */
     role?: string | null;
     /**
-     * | State or province in which user is located | | Max length: 255 | | Note that the ``state_or_province`` value depends on the selected ``country`` value; see the valid values in the ``state_or_province`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: string | null;
+    stateOrProvince?: UsersPostResponse_state_or_province | null;
     /**
-     * | Status of the user in the system | | A new account user is always ``not_invited``.
+     * | Status of the user in the system|| A new account user is always ``not_invited``.
      */
     status?: string | null;
     /**
@@ -560,6 +564,8 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     updatedAt?: Date | null;
 }
+export type UsersPostResponse_country = (typeof UsersPostResponse_countryObject)[keyof typeof UsersPostResponse_countryObject];
+export type UsersPostResponse_state_or_province = (typeof UsersPostResponse_state_or_provinceObject)[keyof typeof UsersPostResponse_state_or_provinceObject];
 /**
  * Builds and executes requests for operations under /hq/v1/accounts/{account_id}/users
  */
@@ -605,6 +611,45 @@ export interface UsersRequestBuilder extends BaseRequestBuilder<UsersRequestBuil
  * Uri template for the request builder.
  */
 export const UsersRequestBuilderUriTemplate = "{+baseurl}/hq/v1/accounts/{account_id}/users";
+/**
+ * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const UsersGetResponse_countryObject = {
+    Country: "country",
+} as const;
+/**
+ * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const UsersGetResponse_state_or_provinceObject = {
+    State_or_province: "state_or_province",
+    Country: "country",
+} as const;
+/**
+ * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const UsersPostRequestBody_countryObject = {
+    Country: "country",
+} as const;
+/**
+ * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const UsersPostRequestBody_state_or_provinceObject = {
+    State_or_province: "state_or_province",
+    Country: "country",
+} as const;
+/**
+ * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const UsersPostResponse_countryObject = {
+    Country: "country",
+} as const;
+/**
+ * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const UsersPostResponse_state_or_provinceObject = {
+    State_or_province: "state_or_province",
+    Country: "country",
+} as const;
 /**
  * Metadata for all the navigation properties in the request builder.
  */

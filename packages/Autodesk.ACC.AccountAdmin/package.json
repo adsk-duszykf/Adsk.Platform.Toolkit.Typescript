@@ -1,13 +1,14 @@
 {
   "name": "@adsk-platform/acc-accountadmin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Autodesk ACC Account Admin SDK for TypeScript",
   "type": "module",
   "scripts": {
     "build": "rimraf ./_dist && tsc -p tsconfig.build.json",
     "build:watch": "tsc -p tsconfig.build.json --watch",
     "publish": "bun run build && bun publish --production",
-    "test": "bun test"
+    "test": "bun test",
+    "lint": "bun biome check --write"
   },
   "exports": {
     ".": {

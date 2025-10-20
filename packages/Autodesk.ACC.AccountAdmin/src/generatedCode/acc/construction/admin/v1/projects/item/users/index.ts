@@ -219,7 +219,7 @@ export function deserializeIntoUsersGetResponse_results_phone(usersGetResponse_r
     return {
         "extension": n => { usersGetResponse_results_phone.extension = n.getStringValue(); },
         "number": n => { usersGetResponse_results_phone.number = n.getStringValue(); },
-        "phoneType": n => { usersGetResponse_results_phone.phoneType = n.getStringValue(); },
+        "phoneType": n => { usersGetResponse_results_phone.phoneType = n.getEnumValue<UsersGetResponse_results_phone_phoneType>(UsersGetResponse_results_phone_phoneTypeObject); },
     }
 }
 /**
@@ -230,8 +230,8 @@ export function deserializeIntoUsersGetResponse_results_phone(usersGetResponse_r
 // @ts-ignore
 export function deserializeIntoUsersGetResponse_results_products(usersGetResponse_results_products: Partial<UsersGetResponse_results_products> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "access": n => { usersGetResponse_results_products.access = n.getStringValue(); },
-        "key": n => { usersGetResponse_results_products.key = n.getStringValue(); },
+        "access": n => { usersGetResponse_results_products.access = n.getEnumValue<UsersGetResponse_results_products_access>(UsersGetResponse_results_products_accessObject); },
+        "key": n => { usersGetResponse_results_products.key = n.getEnumValue<UsersGetResponse_results_products_key>(UsersGetResponse_results_products_keyObject); },
     }
 }
 /**
@@ -269,8 +269,8 @@ export function deserializeIntoUsersPostRequestBody(usersPostRequestBody: Partia
 // @ts-ignore
 export function deserializeIntoUsersPostRequestBody_products(usersPostRequestBody_products: Partial<UsersPostRequestBody_products> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "access": n => { usersPostRequestBody_products.access = n.getStringValue(); },
-        "key": n => { usersPostRequestBody_products.key = n.getStringValue(); },
+        "access": n => { usersPostRequestBody_products.access = n.getEnumValue<UsersPostRequestBody_products_access>(UsersPostRequestBody_products_accessObject); },
+        "key": n => { usersPostRequestBody_products.key = n.getEnumValue<UsersPostRequestBody_products_key>(UsersPostRequestBody_products_keyObject); },
     }
 }
 /**
@@ -334,7 +334,7 @@ export function deserializeIntoUsersPostResponse_phone(usersPostResponse_phone: 
     return {
         "extension": n => { usersPostResponse_phone.extension = n.getStringValue(); },
         "number": n => { usersPostResponse_phone.number = n.getStringValue(); },
-        "phoneType": n => { usersPostResponse_phone.phoneType = n.getStringValue(); },
+        "phoneType": n => { usersPostResponse_phone.phoneType = n.getEnumValue<UsersPostResponse_phone_phoneType>(UsersPostResponse_phone_phoneTypeObject); },
     }
 }
 /**
@@ -345,8 +345,8 @@ export function deserializeIntoUsersPostResponse_phone(usersPostResponse_phone: 
 // @ts-ignore
 export function deserializeIntoUsersPostResponse_products(usersPostResponse_products: Partial<UsersPostResponse_products> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "access": n => { usersPostResponse_products.access = n.getStringValue(); },
-        "key": n => { usersPostResponse_products.key = n.getStringValue(); },
+        "access": n => { usersPostResponse_products.access = n.getEnumValue<UsersPostResponse_products_access>(UsersPostResponse_products_accessObject); },
+        "key": n => { usersPostResponse_products.key = n.getEnumValue<UsersPostResponse_products_key>(UsersPostResponse_products_keyObject); },
     }
 }
 /**
@@ -361,6 +361,7 @@ export function deserializeIntoUsersPostResponse_roles(usersPostResponse_roles: 
         "name": n => { usersPostResponse_roles.name = n.getStringValue(); },
     }
 }
+export type GetFilterTextMatchQueryParameterType = (typeof GetFilterTextMatchQueryParameterTypeObject)[keyof typeof GetFilterTextMatchQueryParameterTypeObject];
 /**
  * Serializes information the current object
  * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
@@ -453,7 +454,7 @@ export function serializeUsersGetResponse_results_phone(writer: SerializationWri
     if (!usersGetResponse_results_phone || isSerializingDerivedType) { return; }
     writer.writeStringValue("extension", usersGetResponse_results_phone.extension);
     writer.writeStringValue("number", usersGetResponse_results_phone.number);
-    writer.writeStringValue("phoneType", usersGetResponse_results_phone.phoneType);
+    writer.writeEnumValue<UsersGetResponse_results_phone_phoneType>("phoneType", usersGetResponse_results_phone.phoneType);
     writer.writeAdditionalData(usersGetResponse_results_phone.additionalData);
 }
 /**
@@ -465,8 +466,8 @@ export function serializeUsersGetResponse_results_phone(writer: SerializationWri
 // @ts-ignore
 export function serializeUsersGetResponse_results_products(writer: SerializationWriter, usersGetResponse_results_products: Partial<UsersGetResponse_results_products> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!usersGetResponse_results_products || isSerializingDerivedType) { return; }
-    writer.writeStringValue("access", usersGetResponse_results_products.access);
-    writer.writeStringValue("key", usersGetResponse_results_products.key);
+    writer.writeEnumValue<UsersGetResponse_results_products_access>("access", usersGetResponse_results_products.access);
+    writer.writeEnumValue<UsersGetResponse_results_products_key>("key", usersGetResponse_results_products.key);
     writer.writeAdditionalData(usersGetResponse_results_products.additionalData);
 }
 /**
@@ -507,8 +508,8 @@ export function serializeUsersPostRequestBody(writer: SerializationWriter, users
 // @ts-ignore
 export function serializeUsersPostRequestBody_products(writer: SerializationWriter, usersPostRequestBody_products: Partial<UsersPostRequestBody_products> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!usersPostRequestBody_products || isSerializingDerivedType) { return; }
-    writer.writeStringValue("access", usersPostRequestBody_products.access);
-    writer.writeStringValue("key", usersPostRequestBody_products.key);
+    writer.writeEnumValue<UsersPostRequestBody_products_access>("access", usersPostRequestBody_products.access);
+    writer.writeEnumValue<UsersPostRequestBody_products_key>("key", usersPostRequestBody_products.key);
     writer.writeAdditionalData(usersPostRequestBody_products.additionalData);
 }
 /**
@@ -575,7 +576,7 @@ export function serializeUsersPostResponse_phone(writer: SerializationWriter, us
     if (!usersPostResponse_phone || isSerializingDerivedType) { return; }
     writer.writeStringValue("extension", usersPostResponse_phone.extension);
     writer.writeStringValue("number", usersPostResponse_phone.number);
-    writer.writeStringValue("phoneType", usersPostResponse_phone.phoneType);
+    writer.writeEnumValue<UsersPostResponse_phone_phoneType>("phoneType", usersPostResponse_phone.phoneType);
     writer.writeAdditionalData(usersPostResponse_phone.additionalData);
 }
 /**
@@ -587,8 +588,8 @@ export function serializeUsersPostResponse_phone(writer: SerializationWriter, us
 // @ts-ignore
 export function serializeUsersPostResponse_products(writer: SerializationWriter, usersPostResponse_products: Partial<UsersPostResponse_products> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!usersPostResponse_products || isSerializingDerivedType) { return; }
-    writer.writeStringValue("access", usersPostResponse_products.access);
-    writer.writeStringValue("key", usersPostResponse_products.key);
+    writer.writeEnumValue<UsersPostResponse_products_access>("access", usersPostResponse_products.access);
+    writer.writeEnumValue<UsersPostResponse_products_key>("key", usersPostResponse_products.key);
     writer.writeAdditionalData(usersPostResponse_products.additionalData);
 }
 /**
@@ -623,7 +624,7 @@ export interface UsersGetResponse_pagination extends AdditionalDataHolder, Parsa
      */
     limit?: number | null;
     /**
-     * The URL for the next page of records, if more results are available. Max length: 2000 characters.
+     * The URL for the next page of records, if more results are available. Max length: 2000 characters.Max length: 2000
      */
     nextUrl?: string | null;
     /**
@@ -631,7 +632,7 @@ export interface UsersGetResponse_pagination extends AdditionalDataHolder, Parsa
      */
     offset?: number | null;
     /**
-     * The URL for the previous page of records, if applicable. Max length: 2000 characters.
+     * The URL for the previous page of records, if applicable. Max length: 2000 characters.Max length: 2000
      */
     previousUrl?: string | null;
     /**
@@ -641,7 +642,7 @@ export interface UsersGetResponse_pagination extends AdditionalDataHolder, Parsa
 }
 export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable {
     /**
-     * A short bio about the user. This data syncs from the user's Autodesk profile.
+     * A short bio about the user. This data syncs from the user's Autodesk profile.Max length: 255
      */
     aboutMe?: string | null;
     /**
@@ -653,11 +654,11 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
      */
     addedOn?: Date | null;
     /**
-     * The user's address line 1. This data syncs from the user's Autodesk profile.
+     * The user's address line 1. This data syncs from the user's Autodesk profile.Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * The user's address line 2. This data syncs from the user's Autodesk profile.
+     * The user's address line 2. This data syncs from the user's Autodesk profile.Max length: 255
      */
     addressLine2?: string | null;
     /**
@@ -665,11 +666,11 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
      */
     analyticsId?: string | null;
     /**
-     * The ID of the user's Autodesk profile.
+     * The ID of the user's Autodesk profile.Max length: 255
      */
     autodeskId?: string | null;
     /**
-     * The User's city. This data syncs from the user's Autodesk profile.
+     * The User's city. This data syncs from the user's Autodesk profile.Max length: 255
      */
     city?: string | null;
     /**
@@ -677,19 +678,19 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
      */
     companyId?: string | null;
     /**
-     * The name of the company to which the user belongs.
+     * The name of the company to which the user belongs.Max length: 255
      */
     companyName?: string | null;
     /**
-     * The user's country. This data syncs from the user's Autodesk profile.
+     * The user's country. This data syncs from the user's Autodesk profile.Max length: 255
      */
     country?: string | null;
     /**
-     * The email of the user.
+     * The email of the user.Max length: 255
      */
     email?: string | null;
     /**
-     * The user's first name. This data syncs from the user's Autodesk profile.
+     * The user's first name. This data syncs from the user's Autodesk profile.Max length: 255
      */
     firstName?: string | null;
     /**
@@ -697,23 +698,23 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
      */
     id?: Guid | null;
     /**
-     * The URL of the user's avatar. This data syncs from the user's Autodesk profile.
+     * The URL of the user's avatar. This data syncs from the user's Autodesk profile.Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * The industry the user works in. This data syncs from the user's Autodesk profile.
+     * The industry the user works in. This data syncs from the user's Autodesk profile.Max length: 255
      */
     industry?: string | null;
     /**
-     * The user's job title. This data syncs from the user's Autodesk profile.
+     * The user's job title. This data syncs from the user's Autodesk profile.Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * The user's last name. This data syncs from the user's Autodesk profile.
+     * The user's last name. This data syncs from the user's Autodesk profile.Max length: 255
      */
     lastName?: string | null;
     /**
-     * The full name of the user.
+     * The full name of the user.Max length: 255
      */
     name?: string | null;
     /**
@@ -721,7 +722,7 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
      */
     phone?: UsersGetResponse_results_phone | null;
     /**
-     * The zip or postal code of the user. This data syncs from the user's Autodesk profile.
+     * The zip or postal code of the user. This data syncs from the user's Autodesk profile.Max length: 255
      */
     postalCode?: string | null;
     /**
@@ -737,11 +738,11 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
      */
     roles?: UsersGetResponse_results_roles[] | null;
     /**
-     * The state or province of the user. The accepted values here change depending on which country is provided. This data syncs from the user's Autodesk profile.
+     * The state or province of the user. The accepted values here change depending on which country is provided. This data syncs from the user's Autodesk profile.Max length: 255
      */
     stateOrProvince?: string | null;
     /**
-     * The status of the user in the project. A pending user could be waiting for their products to activate, or the user hasn't accepted an email to create an account with Autodesk.
+     * The status of the user in the project. A pending user could be waiting for their products to activate, or the user hasn't accepted an email to create an account with Autodesk.Possible values:- ``active``: The user has been added to the project.- ``pending``: The user is in the process of being added to the project.- ``disabled``: The user has been temporarily suspended from the project.- ``deleted``: The user has been removed from the project.
      */
     status?: string | null;
     /**
@@ -754,15 +755,15 @@ export interface UsersGetResponse_results extends AdditionalDataHolder, Parsable
  */
 export interface UsersGetResponse_results_accessLevels extends AdditionalDataHolder, Parsable {
     /**
-     * Indicates whether the user is an account administrator for the account. Possible values:
+     * Indicates whether the user is an account administrator for the account. Possible values:- ``true``: The user is an account administrator.- ``false``: The user is not an account administrator.
      */
     accountAdmin?: boolean | null;
     /**
-     * Indicates whether the user is an executive in the account. Possible values:
+     * Indicates whether the user is an executive in the account. Possible values:- ``true``: The user is an executive.- ``false``: The user is not an executive.
      */
     executive?: boolean | null;
     /**
-     * Indicates whether the user is a project administrator for the project. Possible values:
+     * Indicates whether the user is a project administrator for the project. Possible values:- ``true``: The user is a project administrator.- ``false``: The user is not a project administrator.
      */
     projectAdmin?: boolean | null;
 }
@@ -779,20 +780,23 @@ export interface UsersGetResponse_results_phone extends AdditionalDataHolder, Pa
      */
     number?: string | null;
     /**
-     * The user's phone type.
+     * The user's phone type.Possible values: ``home``, ``mobile``, or ``office``. Default value: ``mobile``.
      */
-    phoneType?: string | null;
+    phoneType?: UsersGetResponse_results_phone_phoneType | null;
 }
+export type UsersGetResponse_results_phone_phoneType = (typeof UsersGetResponse_results_phone_phoneTypeObject)[keyof typeof UsersGetResponse_results_phone_phoneTypeObject];
 export interface UsersGetResponse_results_products extends AdditionalDataHolder, Parsable {
     /**
-     * The user's type of access to the product identified by ``key``. Possible values:
+     * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
      */
-    access?: string | null;
+    access?: UsersGetResponse_results_products_access | null;
     /**
-     * A machine-readable identifier for the product (e.g., docs, build).
+     * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
      */
-    key?: string | null;
+    key?: UsersGetResponse_results_products_key | null;
 }
+export type UsersGetResponse_results_products_access = (typeof UsersGetResponse_results_products_accessObject)[keyof typeof UsersGetResponse_results_products_accessObject];
+export type UsersGetResponse_results_products_key = (typeof UsersGetResponse_results_products_keyObject)[keyof typeof UsersGetResponse_results_products_keyObject];
 export interface UsersGetResponse_results_roles extends AdditionalDataHolder, Parsable {
     /**
      * The ID of a role that the user belongs to in the project.
@@ -809,7 +813,7 @@ export interface UsersPostRequestBody extends AdditionalDataHolder, Parsable {
      */
     companyId?: string | null;
     /**
-     * The email address of the user.
+     * The email address of the user.Max length: 255
      */
     email?: string | null;
     /**
@@ -827,17 +831,19 @@ export interface UsersPostRequestBody extends AdditionalDataHolder, Parsable {
 }
 export interface UsersPostRequestBody_products extends AdditionalDataHolder, Parsable {
     /**
-     * The user's type of access to the product identified by ``key``. Possible values:
+     * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
      */
-    access?: string | null;
+    access?: UsersPostRequestBody_products_access | null;
     /**
-     * A machine-readable identifier for the product (e.g., docs, build).
+     * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
      */
-    key?: string | null;
+    key?: UsersPostRequestBody_products_key | null;
 }
+export type UsersPostRequestBody_products_access = (typeof UsersPostRequestBody_products_accessObject)[keyof typeof UsersPostRequestBody_products_accessObject];
+export type UsersPostRequestBody_products_key = (typeof UsersPostRequestBody_products_keyObject)[keyof typeof UsersPostRequestBody_products_keyObject];
 export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
     /**
-     * A short bio about the user. This data syncs from the user's Autodesk profile.
+     * A short bio about the user. This data syncs from the user's Autodesk profile.Max length: 255
      */
     aboutMe?: string | null;
     /**
@@ -849,11 +855,11 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     addedOn?: Date | null;
     /**
-     * The user's address line 1. This data syncs from the user's Autodesk profile.
+     * The user's address line 1. This data syncs from the user's Autodesk profile.Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * The user's address line 2. This data syncs from the user's Autodesk profile.
+     * The user's address line 2. This data syncs from the user's Autodesk profile.Max length: 255
      */
     addressLine2?: string | null;
     /**
@@ -861,11 +867,11 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     analyticsId?: string | null;
     /**
-     * The ID of the user's Autodesk profile.
+     * The ID of the user's Autodesk profile.Max length: 255
      */
     autodeskId?: string | null;
     /**
-     * The User's city. This data syncs from the user's Autodesk profile.
+     * The User's city. This data syncs from the user's Autodesk profile.Max length: 255
      */
     city?: string | null;
     /**
@@ -873,19 +879,19 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     companyId?: string | null;
     /**
-     * The name of the company to which the user belongs.
+     * The name of the company to which the user belongs.Max length: 255
      */
     companyName?: string | null;
     /**
-     * The user's country. This data syncs from the user's Autodesk profile.
+     * The user's country. This data syncs from the user's Autodesk profile.Max length: 255
      */
     country?: string | null;
     /**
-     * The email of the user.
+     * The email of the user.Max length: 255
      */
     email?: string | null;
     /**
-     * The user's first name. This data syncs from the user's Autodesk profile.
+     * The user's first name. This data syncs from the user's Autodesk profile.Max length: 255
      */
     firstName?: string | null;
     /**
@@ -893,11 +899,11 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     id?: Guid | null;
     /**
-     * The URL of the user's avatar. This data syncs from the user's Autodesk profile.
+     * The URL of the user's avatar. This data syncs from the user's Autodesk profile.Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * The industry the user works in. This data syncs from the user's Autodesk profile.
+     * The industry the user works in. This data syncs from the user's Autodesk profile.Max length: 255
      */
     industry?: string | null;
     /**
@@ -905,15 +911,15 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     jobId?: Guid | null;
     /**
-     * The user's job title. This data syncs from the user's Autodesk profile.
+     * The user's job title. This data syncs from the user's Autodesk profile.Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * The user's last name. This data syncs from the user's Autodesk profile.
+     * The user's last name. This data syncs from the user's Autodesk profile.Max length: 255
      */
     lastName?: string | null;
     /**
-     * The full name of the user.
+     * The full name of the user.Max length: 255
      */
     name?: string | null;
     /**
@@ -921,7 +927,7 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     phone?: UsersPostResponse_phone | null;
     /**
-     * The zip or postal code of the user. This data syncs from the user's Autodesk profile.
+     * The zip or postal code of the user. This data syncs from the user's Autodesk profile.Max length: 255
      */
     postalCode?: string | null;
     /**
@@ -937,11 +943,11 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
      */
     roles?: UsersPostResponse_roles[] | null;
     /**
-     * The state or province of the user. The accepted values here change depending on which country is provided. This data syncs from the user's Autodesk profile.
+     * The state or province of the user. The accepted values here change depending on which country is provided. This data syncs from the user's Autodesk profile.Max length: 255
      */
     stateOrProvince?: string | null;
     /**
-     * The status of the user in the project. A pending user could be waiting for their products to activate, or the user hasn't accepted an email to create an account with Autodesk.
+     * The status of the user in the project. A pending user could be waiting for their products to activate, or the user hasn't accepted an email to create an account with Autodesk.Possible values:- ``active``: The user has been added to the project.- ``pending``: The user is in the process of being added to the project.- ``disabled``: The user has been temporarily suspended from the project.- ``deleted``: The user has been removed from the project.
      */
     status?: string | null;
     /**
@@ -954,15 +960,15 @@ export interface UsersPostResponse extends AdditionalDataHolder, Parsable {
  */
 export interface UsersPostResponse_accessLevels extends AdditionalDataHolder, Parsable {
     /**
-     * Indicates whether the user is an account administrator for the account. Possible values:
+     * Indicates whether the user is an account administrator for the account. Possible values:- ``true``: The user is an account administrator.- ``false``: The user is not an account administrator.
      */
     accountAdmin?: boolean | null;
     /**
-     * Indicates whether the user is an executive in the account. Possible values:
+     * Indicates whether the user is an executive in the account. Possible values:- ``true``: The user is an executive.- ``false``: The user is not an executive.
      */
     executive?: boolean | null;
     /**
-     * Indicates whether the user is a project administrator for the project. Possible values:
+     * Indicates whether the user is a project administrator for the project. Possible values:- ``true``: The user is a project administrator.- ``false``: The user is not a project administrator.
      */
     projectAdmin?: boolean | null;
 }
@@ -979,20 +985,23 @@ export interface UsersPostResponse_phone extends AdditionalDataHolder, Parsable 
      */
     number?: string | null;
     /**
-     * The user's phone type.
+     * The user's phone type.Possible values: ``home``, ``mobile``, or ``office``. Default value: ``mobile``.
      */
-    phoneType?: string | null;
+    phoneType?: UsersPostResponse_phone_phoneType | null;
 }
+export type UsersPostResponse_phone_phoneType = (typeof UsersPostResponse_phone_phoneTypeObject)[keyof typeof UsersPostResponse_phone_phoneTypeObject];
 export interface UsersPostResponse_products extends AdditionalDataHolder, Parsable {
     /**
-     * The user's type of access to the product identified by ``key``. Possible values:
+     * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
      */
-    access?: string | null;
+    access?: UsersPostResponse_products_access | null;
     /**
-     * A machine-readable identifier for the product (e.g., docs, build).
+     * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
      */
-    key?: string | null;
+    key?: UsersPostResponse_products_key | null;
 }
+export type UsersPostResponse_products_access = (typeof UsersPostResponse_products_accessObject)[keyof typeof UsersPostResponse_products_accessObject];
+export type UsersPostResponse_products_key = (typeof UsersPostResponse_products_keyObject)[keyof typeof UsersPostResponse_products_keyObject];
 export interface UsersPostResponse_roles extends AdditionalDataHolder, Parsable {
     /**
      * The ID of a role that the user belongs to in the project.
@@ -1045,11 +1054,11 @@ export interface UsersRequestBuilder extends BaseRequestBuilder<UsersRequestBuil
  */
 export interface UsersRequestBuilderGetQueryParameters {
     /**
-     * A list of the project fields to include in the response. Default value: all fields.
+     * A list of the project fields to include in the response. Default value: all fields.Possible values: ``name``, ``email``, ``firstName``, ``lastName``, ``autodeskId``, ``analyticsId``, ``addressLine1``, ``addressLine2``, ``city``, ``stateOrProvince``, ``postalCode``, ``country``, ``imageUrl``, ``phone``, ``jobTitle``, ``industry``, ``aboutMe``, ``companyId``, ``accessLevels``, ``roleIds``, ``roles``, ``status``, ``addedOn`` and ``products``.
      */
     fields?: string[];
     /**
-     * A list of user access levels that the returned users must have.
+     * A list of user access levels that the returned users must have.Possible values: ``accouantAdmin``, ``projectAdmin``, ``executive``.Max length: 255
      */
     filteraccessLevels?: string[];
     /**
@@ -1057,15 +1066,15 @@ export interface UsersRequestBuilderGetQueryParameters {
      */
     filterautodeskId?: string[];
     /**
-     * The ID of a company that the returned users must represent.
+     * The ID of a company that the returned users must represent.Max length: 255
      */
     filtercompanyId?: string;
     /**
-     * The name of a company that returned users must be associated with. Can be a partial match based on the value of ``filterTextMatch`` that you provide.
+     * The name of a company that returned users must be associated with. Can be a partial match based on the value of ``filterTextMatch`` that you provide.For example: ``filter[companyName]=Sample filterTextMatch=startsWith``Max length: 255
      */
     filtercompanyName?: string;
     /**
-     * A user email address or address pattern that the returned users must have. This can be a partial match based on the value of ``filterTextMatch`` that you provide.
+     * A user email address or address pattern that the returned users must have. This can be a partial match based on the value of ``filterTextMatch`` that you provide.For example:``filter[email]=sample filterTextMatch=startsWith``Max length: 255
      */
     filteremail?: string;
     /**
@@ -1073,43 +1082,43 @@ export interface UsersRequestBuilderGetQueryParameters {
      */
     filterid?: string[];
     /**
-     * A user name or name pattern that the returned users must have. Can be a partial match based on the value of ``filterTextMatch`` that you provide.
+     * A user name or name pattern that the returned users must have. Can be a partial match based on the value of ``filterTextMatch`` that you provide.For example:``filter[name]=Sample filterTextMatch=startsWith``Max length: 255
      */
     filtername?: string;
     /**
-     * A comma-separated list of the products that the returned users must have access to in the specified project. Only users that have access to one or more of the specified products are returned.
+     * A comma-separated list of the products that the returned users must have access to in the specified project. Only users that have access to one or more of the specified products are returned.Note that every product in the same account as the project is activated for the project, and a separate subset of these products is active for each user. This endpoint can retrieve users from ACC or BIM 360 projects.Some products are exclusive to ACC or to BIM 360, others are available on both platforms. Specify only the products on the appropriate platform for the users you want to retrieve.Possible ACC values: ``accountAdministration``, ``autoSpecs``, ``build``, ``buildingConnected``, ``capitalPlanning``, ``cloudWorksharing``, ``cost``, ``designCollaboration``, ``docs``, ``financials``, ``insight``, ``modelCoordination``, ``projectAdministration``, ``takeoff``, and ``workshopxr``.Possible BIM 360 values: ``accountAdministration``, ``assets``, ``cloudWorksharing``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.
      */
     filterproducts?: string[];
     /**
-     * The ID of a user role that the returned users must have.
+     * The ID of a user role that the returned users must have.To obtain a role ID for this filter, you can inspect the ``roleId`` field in previous responses to this endpoint or to the `GET projects/:projectId/users/:userId </en/docs/acc/v1/reference/http/admin-projects-projectId-users-userId-GET/>`_ endpoint.Max length: 255
      */
     filterroleId?: Guid;
     /**
-     * A list of the IDs of user roles that the returned users must have.
+     * A list of the IDs of user roles that the returned users must have.To obtain a role ID for this filter, you can inspect the ``roleId`` field in previous responses to this endpoint or to the `GET projects/:projectId/users/:userId </en/docs/acc/v1/reference/http/admin-projects-projectId-users-userId-GET/>`_ endpoint.
      */
     filterroleIds?: string[];
     /**
-     * A list of statuses that the returned project users must be in. The default values are ``active`` and ``pending``.
+     * A list of statuses that the returned project users must be in. The default values are ``active`` and ``pending``.Possible values: ``active``, ``pending``, and ``deleted``.
      */
     filterstatus?: string[];
     /**
-     * Specifies how text-based filters should match values in supported fields.
+     * Specifies how text-based filters should match values in supported fields.This parameter can be used in any endpoint that supports text-based filtering (e.g., ``filter[name]``, ``filter[jobNumber]``, ``filter[companyName]``, etc.).Possible values:``contains`` (default) – Matches if the field contains the specified text anywhere``startsWith`` – Matches if the field starts with the specified text``endsWith`` – Matches if the field ends with the specified text``equals`` – Matches only if the field exactly matches the specified textMatching is case-insensitive.Wildcards and regular expressions are not supported.
      */
-    filterTextMatch?: string;
+    filterTextMatch?: GetFilterTextMatchQueryParameterType;
     /**
-     * The maximum number of records to return in the response.
+     * The maximum number of records to return in the response.Default: ``20``Minimum: ``1``Maximum: ``200`` (If a larger value is provided, only 200 records are returned)
      */
     limit?: number;
     /**
-     * The index of the first record to return.
+     * The index of the first record to return.Used for pagination in combination with the ``limit`` parameter.Example: ``limit=20`` and ``offset=40`` returns records 41–60.
      */
     offset?: number;
     /**
-     * A list of user fields to combine with the SQL *OR* operator for filtering the returned project users. The *OR* is automatically incorporated between the fields; any one of them can produce a valid match.
+     * A list of user fields to combine with the SQL *OR* operator for filtering the returned project users. The *OR* is automatically incorporated between the fields; any one of them can produce a valid match.Possible values: ``id``, ``name``, ``email``, ``autodeskId``, ``status`` and ``accessLevels``.
      */
     orFilters?: string[];
     /**
-     * A list of fields to sort the returned users by. Multiple sort fields are applied in sequence order - each sort field produces groupings of projects with the same values of that field; the next sort field applies within the groupings produced by the previous sort field.
+     * A list of fields to sort the returned users by. Multiple sort fields are applied in sequence order - each sort field produces groupings of projects with the same values of that field; the next sort field applies within the groupings produced by the previous sort field.Each property can be followed by a direction modifier of either ``asc`` (ascending) or ``desc`` (descending). The default is ``asc``.Possible values: ``name``, ``email``, ``firstName``, ``lastName``, ``addressLine1``, ``addressLine2``, ``city``, ``companyName``, ``stateOrProvince``, ``status``, ``phone``, ``postalCode``, ``country`` and ``addedOn``. Default value: ``name``.
      */
     sort?: string[];
 }
@@ -1117,6 +1126,139 @@ export interface UsersRequestBuilderGetQueryParameters {
  * Uri template for the request builder.
  */
 export const UsersRequestBuilderUriTemplate = "{+baseurl}/construction/admin/v1/projects/{projectId}/users{?fields*,filterTextMatch*,filter%5BaccessLevels%5D*,filter%5BautodeskId%5D*,filter%5BcompanyId%5D*,filter%5BcompanyName%5D*,filter%5Bemail%5D*,filter%5Bid%5D*,filter%5Bname%5D*,filter%5Bproducts%5D*,filter%5BroleId%5D*,filter%5BroleIds%5D*,filter%5Bstatus%5D*,limit*,offset*,orFilters*,sort*}";
+export const GetFilterTextMatchQueryParameterTypeObject = {
+    FilterName: "filter[name]",
+    FilterJobNumber: "filter[jobNumber]",
+    FilterCompanyName: "filter[companyName]",
+    Contains: "contains",
+    StartsWith: "startsWith",
+    EndsWith: "endsWith",
+    Equals: "equals",
+} as const;
+/**
+ * The user's phone type.Possible values: ``home``, ``mobile``, or ``office``. Default value: ``mobile``.
+ */
+export const UsersGetResponse_results_phone_phoneTypeObject = {
+    Home: "home",
+    Mobile: "mobile",
+    Office: "office",
+} as const;
+/**
+ * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
+ */
+export const UsersGetResponse_results_products_accessObject = {
+    Key: "key",
+    Administrator: "administrator",
+    Member: "member",
+    None: "none",
+    ProjectAdministration: "projectAdministration",
+    Access: "access",
+} as const;
+/**
+ * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+ */
+export const UsersGetResponse_results_products_keyObject = {
+    FilterKey: "filter[key]",
+    AutoSpecs: "autoSpecs",
+    Build: "build",
+    Cost: "cost",
+    DesignCollaboration: "designCollaboration",
+    Docs: "docs",
+    Insight: "insight",
+    ModelCoordination: "modelCoordination",
+    ProjectAdministration: "projectAdministration",
+    Takeoff: "takeoff",
+    Assets: "assets",
+    CostManagement: "costManagement",
+    DocumentManagement: "documentManagement",
+    Field: "field",
+    FieldManagement: "fieldManagement",
+    Glue: "glue",
+    Plan: "plan",
+    ProjectHome: "projectHome",
+    ProjectManagement: "projectManagement",
+    Quantification: "quantification",
+} as const;
+/**
+ * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
+ */
+export const UsersPostRequestBody_products_accessObject = {
+    Key: "key",
+    Administrator: "administrator",
+    Member: "member",
+    None: "none",
+    ProjectAdministration: "projectAdministration",
+    Access: "access",
+} as const;
+/**
+ * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+ */
+export const UsersPostRequestBody_products_keyObject = {
+    FilterKey: "filter[key]",
+    AutoSpecs: "autoSpecs",
+    Build: "build",
+    Cost: "cost",
+    DesignCollaboration: "designCollaboration",
+    Docs: "docs",
+    Insight: "insight",
+    ModelCoordination: "modelCoordination",
+    ProjectAdministration: "projectAdministration",
+    Takeoff: "takeoff",
+    Assets: "assets",
+    CostManagement: "costManagement",
+    DocumentManagement: "documentManagement",
+    Field: "field",
+    FieldManagement: "fieldManagement",
+    Glue: "glue",
+    Plan: "plan",
+    ProjectHome: "projectHome",
+    ProjectManagement: "projectManagement",
+    Quantification: "quantification",
+} as const;
+/**
+ * The user's phone type.Possible values: ``home``, ``mobile``, or ``office``. Default value: ``mobile``.
+ */
+export const UsersPostResponse_phone_phoneTypeObject = {
+    Home: "home",
+    Mobile: "mobile",
+    Office: "office",
+} as const;
+/**
+ * The user's type of access to the product identified by ``key``. Possible values:- ``administrator``- ``member``- ``none``Note that when you're using a POST or PATCH endpoint to set this value, you must adhere to the following guidelines:- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``none``, all other products should be set to ``member`` access for the user.- If you set a product's ``key`` to ``projectAdministration`` and you set ``access`` to ``administrator``, all other products should be set to ``administrator`` access for the user.- You cannot set a product's ``key`` to ``projectAdministration`` and set ``access`` to ``member``.
+ */
+export const UsersPostResponse_products_accessObject = {
+    Key: "key",
+    Administrator: "administrator",
+    Member: "member",
+    None: "none",
+    ProjectAdministration: "projectAdministration",
+    Access: "access",
+} as const;
+/**
+ * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+ */
+export const UsersPostResponse_products_keyObject = {
+    FilterKey: "filter[key]",
+    AutoSpecs: "autoSpecs",
+    Build: "build",
+    Cost: "cost",
+    DesignCollaboration: "designCollaboration",
+    Docs: "docs",
+    Insight: "insight",
+    ModelCoordination: "modelCoordination",
+    ProjectAdministration: "projectAdministration",
+    Takeoff: "takeoff",
+    Assets: "assets",
+    CostManagement: "costManagement",
+    DocumentManagement: "documentManagement",
+    Field: "field",
+    FieldManagement: "fieldManagement",
+    Glue: "glue",
+    Plan: "plan",
+    ProjectHome: "projectHome",
+    ProjectManagement: "projectManagement",
+    Quantification: "quantification",
+} as const;
 /**
  * Mapper for query parameters from symbol name to serialization name represented as a constant.
  */

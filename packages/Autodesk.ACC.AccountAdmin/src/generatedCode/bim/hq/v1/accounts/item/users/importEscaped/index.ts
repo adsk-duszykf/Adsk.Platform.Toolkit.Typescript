@@ -54,7 +54,7 @@ export function deserializeIntoImportPostRequestBody(importPostRequestBody: Part
         "city": n => { importPostRequestBody.city = n.getStringValue(); },
         "company": n => { importPostRequestBody.company = n.getStringValue(); },
         "company_id": n => { importPostRequestBody.companyId = n.getGuidValue(); },
-        "country": n => { importPostRequestBody.country = n.getStringValue(); },
+        "country": n => { importPostRequestBody.country = n.getEnumValue<ImportPostRequestBody_country>(ImportPostRequestBody_countryObject); },
         "default_role": n => { importPostRequestBody.defaultRole = n.getStringValue(); },
         "email": n => { importPostRequestBody.email = n.getStringValue(); },
         "first_name": n => { importPostRequestBody.firstName = n.getStringValue(); },
@@ -65,7 +65,7 @@ export function deserializeIntoImportPostRequestBody(importPostRequestBody: Part
         "nickname": n => { importPostRequestBody.nickname = n.getStringValue(); },
         "phone": n => { importPostRequestBody.phone = n.getStringValue(); },
         "postal_code": n => { importPostRequestBody.postalCode = n.getStringValue(); },
-        "state_or_province": n => { importPostRequestBody.stateOrProvince = n.getStringValue(); },
+        "state_or_province": n => { importPostRequestBody.stateOrProvince = n.getEnumValue<ImportPostRequestBody_state_or_province>(ImportPostRequestBody_state_or_provinceObject); },
     }
 }
 /**
@@ -131,23 +131,23 @@ export function deserializeIntoImportPostResponse_success_items(importPostRespon
 }
 export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
-     * | Short description about the user | | Max length: 255
+     * | Short description about the user|| Max length: 255
      */
     aboutMe?: string | null;
     /**
-     * | User's address line 1 | | Max length: 255
+     * | User's address line 1|| Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * | User's address line 2 | | Max length: 255
+     * | User's address line 2|| Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * | City in which user is located | | Max length: 255
+     * | City in which user is located|| Max length: 255
      */
     city?: string | null;
     /**
-     * | Company information from the Autodesk user profile | | Max length: 255 | | Note that this is different from company in BIM 360.
+     * | Company information from the Autodesk user profile|| Max length: 255|| Note that this is different from company in BIM 360.
      */
     company?: string | null;
     /**
@@ -155,54 +155,56 @@ export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
      */
     companyId?: Guid | null;
     /**
-     * | Country for this user | | Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: string | null;
+    country?: ImportPostRequestBody_country | null;
     /**
-     * | The user's default role | | Max length: 255
+     * | The user's default role|| Max length: 255
      */
     defaultRole?: string | null;
     /**
-     * | User's email | | Max length: 255
+     * | User's email|| Max length: 255
      */
     email?: string | null;
     /**
-     * | User's first name | | Max length: 255
+     * | User's first name|| Max length: 255
      */
     firstName?: string | null;
     /**
-     * | URL for user's profile image | | Max length: 255
+     * | URL for user's profile image|| Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * | Industry information for user | | Max length: 255
+     * | Industry information for user|| Max length: 255
      */
     industry?: string | null;
     /**
-     * | User's job title | | Max length: 255
+     * | User's job title|| Max length: 255
      */
     jobTitle?: string | null;
     /**
-     * | User's last name | | Max length: 255
+     * | User's last name|| Max length: 255
      */
     lastName?: string | null;
     /**
-     * | Nick name for user | | Max length: 255
+     * | Nick name for user|| Max length: 255
      */
     nickname?: string | null;
     /**
-     * | Contact phone number for the user | | Max length: 255
+     * | Contact phone number for the user|| Max length: 255
      */
     phone?: string | null;
     /**
-     * | Postal code for the user's location | | Max length: 255
+     * | Postal code for the user's location|| Max length: 255
      */
     postalCode?: string | null;
     /**
-     * | State or province in which user is located | | Max length: 255 | | Note that the ``state_or_province`` value depends on the selected ``country`` value; see the valid values in the ``state_or_province`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+     * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: string | null;
+    stateOrProvince?: ImportPostRequestBody_state_or_province | null;
 }
+export type ImportPostRequestBody_country = (typeof ImportPostRequestBody_countryObject)[keyof typeof ImportPostRequestBody_countryObject];
+export type ImportPostRequestBody_state_or_province = (typeof ImportPostRequestBody_state_or_provinceObject)[keyof typeof ImportPostRequestBody_state_or_provinceObject];
 export interface ImportPostResponse extends AdditionalDataHolder, Parsable {
     /**
      * Import failure company count
@@ -367,7 +369,7 @@ export function serializeImportPostRequestBody(writer: SerializationWriter, impo
     writer.writeStringValue("city", importPostRequestBody.city);
     writer.writeStringValue("company", importPostRequestBody.company);
     writer.writeGuidValue("company_id", importPostRequestBody.companyId);
-    writer.writeStringValue("country", importPostRequestBody.country);
+    writer.writeEnumValue<ImportPostRequestBody_country>("country", importPostRequestBody.country);
     writer.writeStringValue("default_role", importPostRequestBody.defaultRole);
     writer.writeStringValue("email", importPostRequestBody.email);
     writer.writeStringValue("first_name", importPostRequestBody.firstName);
@@ -378,7 +380,7 @@ export function serializeImportPostRequestBody(writer: SerializationWriter, impo
     writer.writeStringValue("nickname", importPostRequestBody.nickname);
     writer.writeStringValue("phone", importPostRequestBody.phone);
     writer.writeStringValue("postal_code", importPostRequestBody.postalCode);
-    writer.writeStringValue("state_or_province", importPostRequestBody.stateOrProvince);
+    writer.writeEnumValue<ImportPostRequestBody_state_or_province>("state_or_province", importPostRequestBody.stateOrProvince);
     writer.writeAdditionalData(importPostRequestBody.additionalData);
 }
 /**
@@ -449,6 +451,19 @@ export function serializeImportPostResponse_success_items(writer: SerializationW
  * Uri template for the request builder.
  */
 export const ImportRequestBuilderUriTemplate = "{+baseurl}/hq/v1/accounts/{account_id}/users/import";
+/**
+ * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const ImportPostRequestBody_countryObject = {
+    Country: "country",
+} as const;
+/**
+ * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
+ */
+export const ImportPostRequestBody_state_or_provinceObject = {
+    State_or_province: "state_or_province",
+    Country: "country",
+} as const;
 /**
  * Metadata for all the requests in the request builder.
  */

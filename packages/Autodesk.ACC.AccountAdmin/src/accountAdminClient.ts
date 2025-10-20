@@ -4,17 +4,16 @@ import { createBaseAccountAdminClient as createACCbaseClient } from "./generated
 import type { ConstructionRequestBuilder } from "./generatedCode/acc/construction/index.js";
 import { createBaseAccountAdminClient as createBIMbaseClient } from "./generatedCode/bim/baseAccountAdminClient.js";
 import type { HqRequestBuilder } from "./generatedCode/bim/hq/index.js";
-import  {ProjectsManager}  from "./managers/projectsManager.js";
-import  {ProjectUsersManager}  from "./managers/projectUsersManager.js";
-import  {CompaniesManager}  from "./managers/companiesManager.js";
-import  {AccountUsersManager}  from "./managers/accountUsersManager.js";
-import  {BusinessUnitsManager}  from "./managers/businessUnitsManager.js";
+import { AccountUsersManager } from "./managers/accountUsersManager.js";
+import { BusinessUnitsManager } from "./managers/businessUnitsManager.js";
+import { CompaniesManager } from "./managers/companiesManager.js";
+import { ProjectsManager } from "./managers/projectsManager.js";
+import { ProjectUsersManager } from "./managers/projectUsersManager.js";
 
 /**
  * Main entry point for Autodesk Account Admin SDK
  */
 export class AccountAdminClient {
-
 	/**
 	 * All ACC API request builders
 	 */

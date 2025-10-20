@@ -16,6 +16,15 @@ export function createProjectsGetResponse_paginationFromDiscriminatorValue(parse
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ProjectsGetResponse_results_products}
+ */
+// @ts-ignore
+export function createProjectsGetResponse_results_productsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoProjectsGetResponse_results_products;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {ProjectsGetResponse_results_projectValue}
  */
 // @ts-ignore
@@ -88,6 +97,15 @@ export function createProjectsPostRequestBodyFromDiscriminatorValue(parseNode: P
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ProjectsPostResponse_products}
+ */
+// @ts-ignore
+export function createProjectsPostResponse_productsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoProjectsPostResponse_products;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {ProjectsPostResponse_projectValue}
  */
 // @ts-ignore
@@ -144,7 +162,7 @@ export function deserializeIntoProjectsGetResponse_results(projectsGetResponse_r
         "adminGroupId": n => { projectsGetResponse_results.adminGroupId = n.getStringValue(); },
         "businessUnitId": n => { projectsGetResponse_results.businessUnitId = n.getGuidValue(); },
         "city": n => { projectsGetResponse_results.city = n.getStringValue(); },
-        "classification": n => { projectsGetResponse_results.classification = n.getStringValue(); },
+        "classification": n => { projectsGetResponse_results.classification = n.getEnumValue<ProjectsGetResponse_results_classification>(ProjectsGetResponse_results_classificationObject); },
         "companyCount": n => { projectsGetResponse_results.companyCount = n.getNumberValue(); },
         "constructionType": n => { projectsGetResponse_results.constructionType = n.getStringValue(); },
         "contractType": n => { projectsGetResponse_results.contractType = n.getStringValue(); },
@@ -164,17 +182,32 @@ export function deserializeIntoProjectsGetResponse_results(projectsGetResponse_r
         "name": n => { projectsGetResponse_results.name = n.getStringValue(); },
         "platform": n => { projectsGetResponse_results.platform = n.getEnumValue<ProjectsGetResponse_results_platform>(ProjectsGetResponse_results_platformObject); },
         "postalCode": n => { projectsGetResponse_results.postalCode = n.getStringValue(); },
-        "products": n => { projectsGetResponse_results.products = n.getCollectionOfPrimitiveValues<string>(); },
+        "products": n => { projectsGetResponse_results.products = n.getCollectionOfObjectValues<ProjectsGetResponse_results_products>(createProjectsGetResponse_results_productsFromDiscriminatorValue); },
         "projectValue": n => { projectsGetResponse_results.projectValue = n.getObjectValue<ProjectsGetResponse_results_projectValue>(createProjectsGetResponse_results_projectValueFromDiscriminatorValue); },
         "sheetCount": n => { projectsGetResponse_results.sheetCount = n.getNumberValue(); },
         "startDate": n => { projectsGetResponse_results.startDate = n.getStringValue(); },
         "stateOrProvince": n => { projectsGetResponse_results.stateOrProvince = n.getStringValue(); },
-        "status": n => { projectsGetResponse_results.status = n.getStringValue(); },
+        "status": n => { projectsGetResponse_results.status = n.getEnumValue<ProjectsGetResponse_results_status>(ProjectsGetResponse_results_statusObject); },
         "templateId": n => { projectsGetResponse_results.templateId = n.getGuidValue(); },
         "thumbnailImageUrl": n => { projectsGetResponse_results.thumbnailImageUrl = n.getStringValue(); },
         "timezone": n => { projectsGetResponse_results.timezone = n.getStringValue(); },
         "type": n => { projectsGetResponse_results.type = n.getStringValue(); },
         "updatedAt": n => { projectsGetResponse_results.updatedAt = n.getDateValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @param ProjectsGetResponse_results_products The instance to deserialize into.
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoProjectsGetResponse_results_products(projectsGetResponse_results_products: Partial<ProjectsGetResponse_results_products> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "icon": n => { projectsGetResponse_results_products.icon = n.getStringValue(); },
+        "key": n => { projectsGetResponse_results_products.key = n.getEnumValue<ProjectsGetResponse_results_products_key>(ProjectsGetResponse_results_products_keyObject); },
+        "language": n => { projectsGetResponse_results_products.language = n.getEnumValue<ProjectsGetResponse_results_products_language>(ProjectsGetResponse_results_products_languageObject); },
+        "name": n => { projectsGetResponse_results_products.name = n.getStringValue(); },
+        "status": n => { projectsGetResponse_results_products.status = n.getEnumValue<ProjectsGetResponse_results_products_status>(ProjectsGetResponse_results_products_statusObject); },
     }
 }
 /**
@@ -201,7 +234,7 @@ export function deserializeIntoProjectsPostRequestBody(projectsPostRequestBody: 
         "addressLine2": n => { projectsPostRequestBody.addressLine2 = n.getStringValue(); },
         "businessUnitId": n => { projectsPostRequestBody.businessUnitId = n.getGuidValue(); },
         "city": n => { projectsPostRequestBody.city = n.getStringValue(); },
-        "classification": n => { projectsPostRequestBody.classification = n.getStringValue(); },
+        "classification": n => { projectsPostRequestBody.classification = n.getEnumValue<ProjectsPostRequestBody_classification>(ProjectsPostRequestBody_classificationObject); },
         "companyCount": n => { projectsPostRequestBody.companyCount = n.getNumberValue(); },
         "constructionType": n => { projectsPostRequestBody.constructionType = n.getStringValue(); },
         "contractType": n => { projectsPostRequestBody.contractType = n.getStringValue(); },
@@ -286,7 +319,7 @@ export function deserializeIntoProjectsPostResponse(projectsPostResponse: Partia
         "adminGroupId": n => { projectsPostResponse.adminGroupId = n.getStringValue(); },
         "businessUnitId": n => { projectsPostResponse.businessUnitId = n.getGuidValue(); },
         "city": n => { projectsPostResponse.city = n.getStringValue(); },
-        "classification": n => { projectsPostResponse.classification = n.getStringValue(); },
+        "classification": n => { projectsPostResponse.classification = n.getEnumValue<ProjectsPostResponse_classification>(ProjectsPostResponse_classificationObject); },
         "companyCount": n => { projectsPostResponse.companyCount = n.getNumberValue(); },
         "constructionType": n => { projectsPostResponse.constructionType = n.getStringValue(); },
         "contractType": n => { projectsPostResponse.contractType = n.getStringValue(); },
@@ -307,17 +340,32 @@ export function deserializeIntoProjectsPostResponse(projectsPostResponse: Partia
         "name": n => { projectsPostResponse.name = n.getStringValue(); },
         "platform": n => { projectsPostResponse.platform = n.getEnumValue<ProjectsPostResponse_platform>(ProjectsPostResponse_platformObject); },
         "postalCode": n => { projectsPostResponse.postalCode = n.getStringValue(); },
-        "products": n => { projectsPostResponse.products = n.getCollectionOfPrimitiveValues<string>(); },
+        "products": n => { projectsPostResponse.products = n.getCollectionOfObjectValues<ProjectsPostResponse_products>(createProjectsPostResponse_productsFromDiscriminatorValue); },
         "projectValue": n => { projectsPostResponse.projectValue = n.getObjectValue<ProjectsPostResponse_projectValue>(createProjectsPostResponse_projectValueFromDiscriminatorValue); },
         "sheetCount": n => { projectsPostResponse.sheetCount = n.getNumberValue(); },
         "startDate": n => { projectsPostResponse.startDate = n.getStringValue(); },
         "stateOrProvince": n => { projectsPostResponse.stateOrProvince = n.getStringValue(); },
-        "status": n => { projectsPostResponse.status = n.getStringValue(); },
+        "status": n => { projectsPostResponse.status = n.getEnumValue<ProjectsPostResponse_status>(ProjectsPostResponse_statusObject); },
         "templateId": n => { projectsPostResponse.templateId = n.getGuidValue(); },
         "thumbnailImageUrl": n => { projectsPostResponse.thumbnailImageUrl = n.getStringValue(); },
         "timezone": n => { projectsPostResponse.timezone = n.getStringValue(); },
         "type": n => { projectsPostResponse.type = n.getStringValue(); },
         "updatedAt": n => { projectsPostResponse.updatedAt = n.getDateValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @param ProjectsPostResponse_products The instance to deserialize into.
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoProjectsPostResponse_products(projectsPostResponse_products: Partial<ProjectsPostResponse_products> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "icon": n => { projectsPostResponse_products.icon = n.getStringValue(); },
+        "key": n => { projectsPostResponse_products.key = n.getEnumValue<ProjectsPostResponse_products_key>(ProjectsPostResponse_products_keyObject); },
+        "language": n => { projectsPostResponse_products.language = n.getEnumValue<ProjectsPostResponse_products_language>(ProjectsPostResponse_products_languageObject); },
+        "name": n => { projectsPostResponse_products.name = n.getStringValue(); },
+        "status": n => { projectsPostResponse_products.status = n.getEnumValue<ProjectsPostResponse_products_status>(ProjectsPostResponse_products_statusObject); },
     }
 }
 /**
@@ -332,6 +380,7 @@ export function deserializeIntoProjectsPostResponse_projectValue(projectsPostRes
         "value": n => { projectsPostResponse_projectValue.value = n.getNumberValue() ?? 0; },
     }
 }
+export type GetFilterTextMatchQueryParameterType = (typeof GetFilterTextMatchQueryParameterTypeObject)[keyof typeof GetFilterTextMatchQueryParameterTypeObject];
 export interface ProjectsGetResponse extends AdditionalDataHolder, Parsable {
     /**
      * Contains pagination details for the records returned by the endpoint.
@@ -351,7 +400,7 @@ export interface ProjectsGetResponse_pagination extends AdditionalDataHolder, Pa
      */
     limit?: number | null;
     /**
-     * The URL for the next page of records, if more results are available. Max length: 2000 characters.
+     * The URL for the next page of records, if more results are available. Max length: 2000 characters.Max length: 2000
      */
     nextUrl?: string | null;
     /**
@@ -359,7 +408,7 @@ export interface ProjectsGetResponse_pagination extends AdditionalDataHolder, Pa
      */
     offset?: number | null;
     /**
-     * The URL for the previous page of records, if applicable. Max length: 2000 characters.
+     * The URL for the previous page of records, if applicable. Max length: 2000 characters.Max length: 2000
      */
     previousUrl?: string | null;
     /**
@@ -373,15 +422,15 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     accountId?: Guid | null;
     /**
-     * The first line of the project’s address.
+     * The first line of the project’s address.Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * Additional address details for the project location.
+     * Additional address details for the project location.Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * Not relevant
+     * Not relevantMax length: 25
      */
     adminGroupId?: string | null;
     /**
@@ -389,15 +438,15 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     businessUnitId?: Guid | null;
     /**
-     * The city wher the project is located.
+     * The city wher the project is located.Max length: 255
      */
     city?: string | null;
     /**
-     * The classification of the project. Possible values:
+     * The classification of the project. Possible values:- ``production`` – Standard project.- ``template`` – A project that serves as a template for creating new projects.- ``component`` – A placeholder project containing reusable components (e.g., forms). Only one component project is allowed per account. Known as a library in the ACC UI.- ``sample`` – A single sample project automatically created for ACC trials (limited to one per account).
      */
-    classification?: string | null;
+    classification?: ProjectsGetResponse_results_classification | null;
     /**
-     * The total number of companies associated with the project.
+     * The total number of companies associated with the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     companyCount?: number | null;
     /**
@@ -409,7 +458,7 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     contractType?: string | null;
     /**
-     * The country where the project is located, using an ISO 3166-1 code.
+     * The country where the project is located, using an ISO 3166-1 code.Max length: 255
      */
     country?: string | null;
     /**
@@ -417,7 +466,7 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     createdAt?: Date | null;
     /**
-     * The current phase of the project. Recommended values include, ``Concept``, ``Design``, ``Bidding``, ``Planning``, ``Preconstruction``, ``Construction``, ``Commissioning``, ``Warranty``, ``Complete``, ``Facility Management``, ``Operation``, ``Strategic Definition``, ``Preparation and Brief``, ``Concept Design``, ``Developed Design``, ``Technical Design``, ``Construction``, ``Handover and Close Out`` and ``In Use``.
+     * The current phase of the project. Recommended values include, ``Concept``, ``Design``, ``Bidding``, ``Planning``, ``Preconstruction``, ``Construction``, ``Commissioning``, ``Warranty``, ``Complete``, ``Facility Management``, ``Operation``, ``Strategic Definition``, ``Preparation and Brief``, ``Concept Design``, ``Developed Design``, ``Technical Design``, ``Construction``, ``Handover and Close Out`` and ``In Use``.Any value is accepted.
      */
     currentPhase?: string | null;
     /**
@@ -433,11 +482,11 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     id?: Guid | null;
     /**
-     * The URL of the main image associated with the project. This field can be ``null``.
+     * The URL of the main image associated with the project. This field can be ``null``.Max length: 255
      */
     imageUrl?: string | null;
     /**
-     * A user-defined identifier for the project. This value is assigned when the project is created and can be used to filter projects. It supports partial matches when used with ``filterTextMatch``.
+     * A user-defined identifier for the project. This value is assigned when the project is created and can be used to filter projects. It supports partial matches when used with ``filterTextMatch``.Max length: 100
      */
     jobNumber?: string | null;
     /**
@@ -445,43 +494,43 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     lastSignIn?: Date | null;
     /**
-     * The latitude coordinate of the project location.
+     * The latitude coordinate of the project location.Max length: 25
      */
     latitude?: string | null;
     /**
-     * The longitude coordinate of the project location.
+     * The longitude coordinate of the project location.Max length: 25
      */
     longitude?: string | null;
     /**
-     * The total number of members on the project.
+     * The total number of members on the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     memberCount?: number | null;
     /**
-     * Not relevant
+     * Not relevantMax length: 25
      */
     memberGroupId?: string | null;
     /**
-     * The name of the project.
+     * The name of the project.Max length: 255
      */
     name?: string | null;
     /**
-     * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.
+     * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.Note that this field is relevant only in responses. It is ignored in requests.
      */
     platform?: ProjectsGetResponse_results_platform | null;
     /**
-     * The postal or ZIP code of the project location.
+     * The postal or ZIP code of the project location.Max length: 255
      */
     postalCode?: string | null;
     /**
-     * An array of the product objects associated with the project.
+     * An array of the product objects associated with the project.Note that this array is relevant only in responses. It is ignored in requests.When a project is created, every product in the same account as the project is activated for the project. You can call `PATCH users/:userId </en/docs/acc/v1/reference/http/admin-projects-projectId-users-userId-PATCH/>`_ to separately activate one or more of the returned products for each user assigned to the project.
      */
-    products?: string[] | null;
+    products?: ProjectsGetResponse_results_products[] | null;
     /**
      * Contains details about the estimated cost of the project, including the amount (``value``) and the currency (``currency``).
      */
     projectValue?: ProjectsGetResponse_results_projectValue | null;
     /**
-     * The total number of sheets associated with the project.
+     * The total number of sheets associated with the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     sheetCount?: number | null;
     /**
@@ -489,27 +538,27 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     startDate?: string | null;
     /**
-     * The state or province where the project is located. It must be a valid name or an ISO 3166-2 code. The provided state or province must exist in the country of the project.
+     * The state or province where the project is located. It must be a valid name or an ISO 3166-2 code. The provided state or province must exist in the country of the project.Max length: 255
      */
     stateOrProvince?: string | null;
     /**
-     * The status of the project.
+     * The status of the project.Possible values: ``active``, ``pending``, ``archived`` and ``suspended``.
      */
-    status?: string | null;
+    status?: ProjectsGetResponse_results_status | null;
     /**
      * The ID of the project that was used as a template to create this project.
      */
     templateId?: Guid | null;
     /**
-     * The URL of the project’s thumbnail image. This field can be ``null``.
+     * The URL of the project’s thumbnail image. This field can be ``null``.Max length: 255
      */
     thumbnailImageUrl?: string | null;
     /**
-     * The time zone where the project is located. It must be a valid IANA time zone name from the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (e.g., ``America/New_York``). If no time zone is set, this field may be ``null``. Possible values: ``Pacific/Honolulu``, ``America/Juneau``, ``America/Los_Angeles``, ``America/Phoenix``, ``America/Denver``, ``America/Chicago``, ``America/New_York``, ``America/Indiana/Indianapolis``, ``Pacific/Pago_Pago``, ``Pacific/Midway``, ``America/Tijuana``, ``America/Chihuahua``, ``America/Mazatlan``, ``America/Guatemala``, ``America/Mexico_City``, ``America/Monterrey``, ``America/Regina``, ``America/Bogota``, ``America/Lima``, ``America/Caracas``, ``America/Halifax``, ``America/Guyana``, ``America/La_Paz``, ``America/Santiago``, ``America/St_Johns``, ``America/Sao_Paulo``, ``America/Argentina/Buenos_Aires``, ``America/Godthab``, ``Atlantic/South_Georgia``, ``Atlantic/Azores``, ``Atlantic/Cape_Verde``, ``Africa/Casablanca``, ``Europe/Dublin``, ``Europe/Lisbon``, ``Europe/London``, ``Africa/Monrovia``, ``Etc/UTC``, ``Europe/Amsterdam``, ``Europe/Belgrade``, ``Europe/Berlin``, ``Europe/Bratislava``, ``Europe/Brussels``, ``Europe/Budapest``, ``Europe/Copenhagen``, ``Europe/Ljubljana``, ``Europe/Madrid``, ``Europe/Paris``, ``Europe/Prague``, ``Europe/Rome``, ``Europe/Sarajevo``, ``Europe/Skopje``, ``Europe/Stockholm``, ``Europe/Vienna``, ``Europe/Warsaw``, ``Africa/Algiers``, ``Europe/Zagreb``, ``Europe/Athens``, ``Europe/Bucharest``, ``Africa/Cairo``, ``Africa/Harare``, ``Europe/Helsinki``, ``Europe/Istanbul``, ``Asia/Jerusalem``, ``Europe/Kiev``, ``Africa/Johannesburg``, ``Europe/Riga``, ``Europe/Sofia``, ``Europe/Tallinn``, ``Europe/Vilnius``, ``Asia/Baghdad``, ``Asia/Kuwait``, ``Europe/Minsk``, ``Africa/Nairobi``, ``Asia/Riyadh``, ``Asia/Tehran``, ``Asia/Muscat``, ``Asia/Baku``, ``Europe/Moscow``, ``Asia/Tbilisi``, ``Asia/Yerevan``, ``Asia/Kabul``, ``Asia/Karachi``, ``Asia/Tashkent``, ``Asia/Kolkata``, ``Asia/Colombo``, ``Asia/Kathmandu``, ``Asia/Almaty``, ``Asia/Dhaka``, ``Asia/Yekaterinburg``, ``Asia/Rangoon``, ``Asia/Bangkok``, ``Asia/Jakarta``, ``Asia/Novosibirsk``, ``Asia/Shanghai``, ``Asia/Chongqing``, ``Asia/Hong_Kong``, ``Asia/Krasnoyarsk``, ``Asia/Kuala_Lumpur``, ``Australia/Perth``, ``Asia/Singapore``, ``Asia/Taipei``, ``Asia/Ulaanbaatar``, ``Asia/Urumqi``, ``Asia/Irkutsk``, ``Asia/Tokyo``, ``Asia/Seoul``, ``Australia/Adelaide``, ``Australia/Darwin``, ``Australia/Brisbane``, ``Australia/Melbourne``, ``Pacific/Guam``, ``Australia/Hobart``, ``Pacific/Port_Moresby``, ``Australia/Sydney``, ``Asia/Yakutsk``, ``Pacific/Noumea``, ``Asia/Vladivostok``, ``Pacific/Auckland``, ``Pacific/Fiji``, ``Asia/Kamchatka``, ``Asia/Magadan``, ``Pacific/Majuro``, ``Pacific/Guadalcanal``, ``Pacific/Tongatapu``, ``Pacific/Apia``, ``Pacific/Fakaofo``
+     * The time zone where the project is located. It must be a valid IANA time zone name from the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (e.g., ``America/New_York``). If no time zone is set, this field may be ``null``.Possible values: ``Pacific/Honolulu``, ``America/Juneau``, ``America/Los_Angeles``, ``America/Phoenix``, ``America/Denver``, ``America/Chicago``, ``America/New_York``, ``America/Indiana/Indianapolis``, ``Pacific/Pago_Pago``, ``Pacific/Midway``, ``America/Tijuana``, ``America/Chihuahua``, ``America/Mazatlan``, ``America/Guatemala``, ``America/Mexico_City``, ``America/Monterrey``, ``America/Regina``, ``America/Bogota``, ``America/Lima``, ``America/Caracas``, ``America/Halifax``, ``America/Guyana``, ``America/La_Paz``, ``America/Santiago``, ``America/St_Johns``, ``America/Sao_Paulo``, ``America/Argentina/Buenos_Aires``, ``America/Godthab``, ``Atlantic/South_Georgia``, ``Atlantic/Azores``, ``Atlantic/Cape_Verde``, ``Africa/Casablanca``, ``Europe/Dublin``, ``Europe/Lisbon``, ``Europe/London``, ``Africa/Monrovia``, ``Etc/UTC``, ``Europe/Amsterdam``, ``Europe/Belgrade``, ``Europe/Berlin``, ``Europe/Bratislava``, ``Europe/Brussels``, ``Europe/Budapest``, ``Europe/Copenhagen``, ``Europe/Ljubljana``, ``Europe/Madrid``, ``Europe/Paris``, ``Europe/Prague``, ``Europe/Rome``, ``Europe/Sarajevo``, ``Europe/Skopje``, ``Europe/Stockholm``, ``Europe/Vienna``, ``Europe/Warsaw``, ``Africa/Algiers``, ``Europe/Zagreb``, ``Europe/Athens``, ``Europe/Bucharest``, ``Africa/Cairo``, ``Africa/Harare``, ``Europe/Helsinki``, ``Europe/Istanbul``, ``Asia/Jerusalem``, ``Europe/Kiev``, ``Africa/Johannesburg``, ``Europe/Riga``, ``Europe/Sofia``, ``Europe/Tallinn``, ``Europe/Vilnius``, ``Asia/Baghdad``, ``Asia/Kuwait``, ``Europe/Minsk``, ``Africa/Nairobi``, ``Asia/Riyadh``, ``Asia/Tehran``, ``Asia/Muscat``, ``Asia/Baku``, ``Europe/Moscow``, ``Asia/Tbilisi``, ``Asia/Yerevan``, ``Asia/Kabul``, ``Asia/Karachi``, ``Asia/Tashkent``, ``Asia/Kolkata``, ``Asia/Colombo``, ``Asia/Kathmandu``, ``Asia/Almaty``, ``Asia/Dhaka``, ``Asia/Yekaterinburg``, ``Asia/Rangoon``, ``Asia/Bangkok``, ``Asia/Jakarta``, ``Asia/Novosibirsk``, ``Asia/Shanghai``, ``Asia/Chongqing``, ``Asia/Hong_Kong``, ``Asia/Krasnoyarsk``, ``Asia/Kuala_Lumpur``, ``Australia/Perth``, ``Asia/Singapore``, ``Asia/Taipei``, ``Asia/Ulaanbaatar``, ``Asia/Urumqi``, ``Asia/Irkutsk``, ``Asia/Tokyo``, ``Asia/Seoul``, ``Australia/Adelaide``, ``Australia/Darwin``, ``Australia/Brisbane``, ``Australia/Melbourne``, ``Pacific/Guam``, ``Australia/Hobart``, ``Pacific/Port_Moresby``, ``Australia/Sydney``, ``Asia/Yakutsk``, ``Pacific/Noumea``, ``Asia/Vladivostok``, ``Pacific/Auckland``, ``Pacific/Fiji``, ``Asia/Kamchatka``, ``Asia/Magadan``, ``Pacific/Majuro``, ``Pacific/Guadalcanal``, ``Pacific/Tongatapu``, ``Pacific/Apia``, ``Pacific/Fakaofo``
      */
     timezone?: string | null;
     /**
-     * The type of the project. Any value is accepted, but the following are recommended:
+     * The type of the project. Any value is accepted, but the following are recommended:Possible values: ``Convention Center``, ``Data Center``, ``Hotel / Motel``, ``Office``, ``Parking Structure / Garage``, ``Performing Arts``, ``Restaurant``, ``Retail``, ``Stadium / Arena``, ``Theme Park``, ``Warehouse (non-manufacturing)``, ``Assisted Living / Nursing Home``, ``Hospital``, ``Medical Laboratory``, ``Medical Office``, ``OutPatient Surgery Center``, ``Court House``, ``Dormitory``, ``Education Facility``, ``Government Building``, ``Library``, ``Military Facility``, ``Museum``, ``Prison / Correctional Facility``, ``Recreation Building``, ``Religious Building``, ``Research Facility / Laboratory``, ``Multi-Family Housing``, ``Single-Family Housing``, ``Airport``, ``Bridge``, ``Canal / Waterway``, ``Dams / Flood Control / Reservoirs``, ``Harbor / River Development``, ``Rail``, ``Seaport``, ``Streets / Roads / Highways``, ``Transportation Building``, ``Tunnel``, ``Waste Water / Sewers``, ``Water Supply``, ``Manufacturing / Factory``, ``Mining Facility``, ``Oil & Gas``, ``Plant``, ``Power Plant``, ``Solar Farm``, ``Utilities``, ``Wind Farm``, ``Demonstration Project``, ``Template Project`` and ``Training Project``.Max length: 255
      */
     type?: string | null;
     /**
@@ -517,13 +566,39 @@ export interface ProjectsGetResponse_results extends AdditionalDataHolder, Parsa
      */
     updatedAt?: Date | null;
 }
+export type ProjectsGetResponse_results_classification = (typeof ProjectsGetResponse_results_classificationObject)[keyof typeof ProjectsGetResponse_results_classificationObject];
 export type ProjectsGetResponse_results_platform = (typeof ProjectsGetResponse_results_platformObject)[keyof typeof ProjectsGetResponse_results_platformObject];
+export interface ProjectsGetResponse_results_products extends AdditionalDataHolder, Parsable {
+    /**
+     * The URL of the icon associated with the product.
+     */
+    icon?: string | null;
+    /**
+     * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+     */
+    key?: ProjectsGetResponse_results_products_key | null;
+    /**
+     * The language for the project. Only valid for the ``field`` product.Possible values: ``en``, ``de``, ``nl``, ``zh``, ``de-CH``
+     */
+    language?: ProjectsGetResponse_results_products_language | null;
+    /**
+     * The name of the product.
+     */
+    name?: string | null;
+    /**
+     * The current status of the product. Possible values:- ``activating``: Product activation is in progress.- ``activationFailed``: Product activation has failed.- ``active``: Product activation is completed.- ``deactivating``: Product deactivation is in progress. (Applicable to BIM 360 only)- ``deactivationFailed``: Product deactivation has failed. (Applicable to BIM 360 only)- ``inactive``: Product deactivation is completed. (Applicable to BIM 360 only)- ``available``: Product is available for activation. (Applicable to BIM 360 only)
+     */
+    status?: ProjectsGetResponse_results_products_status | null;
+}
+export type ProjectsGetResponse_results_products_key = (typeof ProjectsGetResponse_results_products_keyObject)[keyof typeof ProjectsGetResponse_results_products_keyObject];
+export type ProjectsGetResponse_results_products_language = (typeof ProjectsGetResponse_results_products_languageObject)[keyof typeof ProjectsGetResponse_results_products_languageObject];
+export type ProjectsGetResponse_results_products_status = (typeof ProjectsGetResponse_results_products_statusObject)[keyof typeof ProjectsGetResponse_results_products_statusObject];
 /**
  * Contains details about the estimated cost of the project, including the amount (``value``) and the currency (``currency``).
  */
 export interface ProjectsGetResponse_results_projectValue extends AdditionalDataHolder, Parsable {
     /**
-     * The currency of the project value. Default: ``USD``. Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
+     * The currency of the project value. Default: ``USD``.Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
      */
     currency?: ProjectsGetResponse_results_projectValue_currency | null;
     /**
@@ -532,13 +607,14 @@ export interface ProjectsGetResponse_results_projectValue extends AdditionalData
     value?: number | null;
 }
 export type ProjectsGetResponse_results_projectValue_currency = (typeof ProjectsGetResponse_results_projectValue_currencyObject)[keyof typeof ProjectsGetResponse_results_projectValue_currencyObject];
+export type ProjectsGetResponse_results_status = (typeof ProjectsGetResponse_results_statusObject)[keyof typeof ProjectsGetResponse_results_statusObject];
 export interface ProjectsPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
-     * The first line of the project’s address.
+     * The first line of the project’s address.Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * Additional address details for the project location.
+     * Additional address details for the project location.Max length: 255
      */
     addressLine2?: string | null;
     /**
@@ -546,15 +622,15 @@ export interface ProjectsPostRequestBody extends AdditionalDataHolder, Parsable 
      */
     businessUnitId?: Guid | null;
     /**
-     * The city wher the project is located.
+     * The city wher the project is located.Max length: 255
      */
     city?: string | null;
     /**
-     * The classification of the project. Possible values:
+     * The classification of the project. Possible values:- ``production`` – Standard project.- ``template`` – A project that serves as a template for creating new projects.- ``component`` – A placeholder project containing reusable components (e.g., forms). Only one component project is allowed per account. Known as a library in the ACC UI.- ``sample`` – A single sample project automatically created for ACC trials (limited to one per account).
      */
-    classification?: string | null;
+    classification?: ProjectsPostRequestBody_classification | null;
     /**
-     * The total number of companies associated with the project.
+     * The total number of companies associated with the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     companyCount?: number | null;
     /**
@@ -566,11 +642,11 @@ export interface ProjectsPostRequestBody extends AdditionalDataHolder, Parsable 
      */
     contractType?: string | null;
     /**
-     * The country where the project is located, using an ISO 3166-1 code.
+     * The country where the project is located, using an ISO 3166-1 code.Max length: 255
      */
     country?: string | null;
     /**
-     * The current phase of the project. Recommended values include, ``Concept``, ``Design``, ``Bidding``, ``Planning``, ``Preconstruction``, ``Construction``, ``Commissioning``, ``Warranty``, ``Complete``, ``Facility Management``, ``Operation``, ``Strategic Definition``, ``Preparation and Brief``, ``Concept Design``, ``Developed Design``, ``Technical Design``, ``Construction``, ``Handover and Close Out`` and ``In Use``.
+     * The current phase of the project. Recommended values include, ``Concept``, ``Design``, ``Bidding``, ``Planning``, ``Preconstruction``, ``Construction``, ``Commissioning``, ``Warranty``, ``Complete``, ``Facility Management``, ``Operation``, ``Strategic Definition``, ``Preparation and Brief``, ``Concept Design``, ``Developed Design``, ``Technical Design``, ``Construction``, ``Handover and Close Out`` and ``In Use``.Any value is accepted.
      */
     currentPhase?: string | null;
     /**
@@ -582,31 +658,31 @@ export interface ProjectsPostRequestBody extends AdditionalDataHolder, Parsable 
      */
     endDate?: string | null;
     /**
-     * A user-defined identifier for the project. This value is assigned when the project is created and can be used to filter projects. It supports partial matches when used with ``filterTextMatch``.
+     * A user-defined identifier for the project. This value is assigned when the project is created and can be used to filter projects. It supports partial matches when used with ``filterTextMatch``.Max length: 100
      */
     jobNumber?: string | null;
     /**
-     * The latitude coordinate of the project location.
+     * The latitude coordinate of the project location.Max length: 25
      */
     latitude?: string | null;
     /**
-     * The longitude coordinate of the project location.
+     * The longitude coordinate of the project location.Max length: 25
      */
     longitude?: string | null;
     /**
-     * The total number of members on the project.
+     * The total number of members on the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     memberCount?: number | null;
     /**
-     * The name of the project.
+     * The name of the project.Max length: 255
      */
     name?: string | null;
     /**
-     * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.
+     * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.Note that this field is relevant only in responses. It is ignored in requests.
      */
     platform?: ProjectsPostRequestBody_platform | null;
     /**
-     * The postal or ZIP code of the project location.
+     * The postal or ZIP code of the project location.Max length: 255
      */
     postalCode?: string | null;
     /**
@@ -614,7 +690,7 @@ export interface ProjectsPostRequestBody extends AdditionalDataHolder, Parsable 
      */
     projectValue?: ProjectsPostRequestBody_projectValue | null;
     /**
-     * The total number of sheets associated with the project.
+     * The total number of sheets associated with the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     sheetCount?: number | null;
     /**
@@ -622,29 +698,30 @@ export interface ProjectsPostRequestBody extends AdditionalDataHolder, Parsable 
      */
     startDate?: string | null;
     /**
-     * The state or province where the project is located. It must be a valid name or an ISO 3166-2 code. The provided state or province must exist in the country of the project.
+     * The state or province where the project is located. It must be a valid name or an ISO 3166-2 code. The provided state or province must exist in the country of the project.Max length: 255
      */
     stateOrProvince?: string | null;
     /**
-     * Information about a project in the current user's account that is configured as a template from which to copy products and settings when creating a new project:
+     * Information about a project in the current user's account that is configured as a template from which to copy products and settings when creating a new project:- If you *include* this object in a `POST accounts/:accountId/projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-POST/>`_ request, the cloned project's products and settings will match those of the template project.- If you *omit* this object from a `POST accounts/:accountId/projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-POST/>`_ request, all of the current ACC account's products are added to the cloned project and activated.
      */
     template?: ProjectsPostRequestBody_template | null;
     /**
-     * The time zone where the project is located. It must be a valid IANA time zone name from the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (e.g., ``America/New_York``). If no time zone is set, this field may be ``null``. Possible values: ``Pacific/Honolulu``, ``America/Juneau``, ``America/Los_Angeles``, ``America/Phoenix``, ``America/Denver``, ``America/Chicago``, ``America/New_York``, ``America/Indiana/Indianapolis``, ``Pacific/Pago_Pago``, ``Pacific/Midway``, ``America/Tijuana``, ``America/Chihuahua``, ``America/Mazatlan``, ``America/Guatemala``, ``America/Mexico_City``, ``America/Monterrey``, ``America/Regina``, ``America/Bogota``, ``America/Lima``, ``America/Caracas``, ``America/Halifax``, ``America/Guyana``, ``America/La_Paz``, ``America/Santiago``, ``America/St_Johns``, ``America/Sao_Paulo``, ``America/Argentina/Buenos_Aires``, ``America/Godthab``, ``Atlantic/South_Georgia``, ``Atlantic/Azores``, ``Atlantic/Cape_Verde``, ``Africa/Casablanca``, ``Europe/Dublin``, ``Europe/Lisbon``, ``Europe/London``, ``Africa/Monrovia``, ``Etc/UTC``, ``Europe/Amsterdam``, ``Europe/Belgrade``, ``Europe/Berlin``, ``Europe/Bratislava``, ``Europe/Brussels``, ``Europe/Budapest``, ``Europe/Copenhagen``, ``Europe/Ljubljana``, ``Europe/Madrid``, ``Europe/Paris``, ``Europe/Prague``, ``Europe/Rome``, ``Europe/Sarajevo``, ``Europe/Skopje``, ``Europe/Stockholm``, ``Europe/Vienna``, ``Europe/Warsaw``, ``Africa/Algiers``, ``Europe/Zagreb``, ``Europe/Athens``, ``Europe/Bucharest``, ``Africa/Cairo``, ``Africa/Harare``, ``Europe/Helsinki``, ``Europe/Istanbul``, ``Asia/Jerusalem``, ``Europe/Kiev``, ``Africa/Johannesburg``, ``Europe/Riga``, ``Europe/Sofia``, ``Europe/Tallinn``, ``Europe/Vilnius``, ``Asia/Baghdad``, ``Asia/Kuwait``, ``Europe/Minsk``, ``Africa/Nairobi``, ``Asia/Riyadh``, ``Asia/Tehran``, ``Asia/Muscat``, ``Asia/Baku``, ``Europe/Moscow``, ``Asia/Tbilisi``, ``Asia/Yerevan``, ``Asia/Kabul``, ``Asia/Karachi``, ``Asia/Tashkent``, ``Asia/Kolkata``, ``Asia/Colombo``, ``Asia/Kathmandu``, ``Asia/Almaty``, ``Asia/Dhaka``, ``Asia/Yekaterinburg``, ``Asia/Rangoon``, ``Asia/Bangkok``, ``Asia/Jakarta``, ``Asia/Novosibirsk``, ``Asia/Shanghai``, ``Asia/Chongqing``, ``Asia/Hong_Kong``, ``Asia/Krasnoyarsk``, ``Asia/Kuala_Lumpur``, ``Australia/Perth``, ``Asia/Singapore``, ``Asia/Taipei``, ``Asia/Ulaanbaatar``, ``Asia/Urumqi``, ``Asia/Irkutsk``, ``Asia/Tokyo``, ``Asia/Seoul``, ``Australia/Adelaide``, ``Australia/Darwin``, ``Australia/Brisbane``, ``Australia/Melbourne``, ``Pacific/Guam``, ``Australia/Hobart``, ``Pacific/Port_Moresby``, ``Australia/Sydney``, ``Asia/Yakutsk``, ``Pacific/Noumea``, ``Asia/Vladivostok``, ``Pacific/Auckland``, ``Pacific/Fiji``, ``Asia/Kamchatka``, ``Asia/Magadan``, ``Pacific/Majuro``, ``Pacific/Guadalcanal``, ``Pacific/Tongatapu``, ``Pacific/Apia``, ``Pacific/Fakaofo``
+     * The time zone where the project is located. It must be a valid IANA time zone name from the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (e.g., ``America/New_York``). If no time zone is set, this field may be ``null``.Possible values: ``Pacific/Honolulu``, ``America/Juneau``, ``America/Los_Angeles``, ``America/Phoenix``, ``America/Denver``, ``America/Chicago``, ``America/New_York``, ``America/Indiana/Indianapolis``, ``Pacific/Pago_Pago``, ``Pacific/Midway``, ``America/Tijuana``, ``America/Chihuahua``, ``America/Mazatlan``, ``America/Guatemala``, ``America/Mexico_City``, ``America/Monterrey``, ``America/Regina``, ``America/Bogota``, ``America/Lima``, ``America/Caracas``, ``America/Halifax``, ``America/Guyana``, ``America/La_Paz``, ``America/Santiago``, ``America/St_Johns``, ``America/Sao_Paulo``, ``America/Argentina/Buenos_Aires``, ``America/Godthab``, ``Atlantic/South_Georgia``, ``Atlantic/Azores``, ``Atlantic/Cape_Verde``, ``Africa/Casablanca``, ``Europe/Dublin``, ``Europe/Lisbon``, ``Europe/London``, ``Africa/Monrovia``, ``Etc/UTC``, ``Europe/Amsterdam``, ``Europe/Belgrade``, ``Europe/Berlin``, ``Europe/Bratislava``, ``Europe/Brussels``, ``Europe/Budapest``, ``Europe/Copenhagen``, ``Europe/Ljubljana``, ``Europe/Madrid``, ``Europe/Paris``, ``Europe/Prague``, ``Europe/Rome``, ``Europe/Sarajevo``, ``Europe/Skopje``, ``Europe/Stockholm``, ``Europe/Vienna``, ``Europe/Warsaw``, ``Africa/Algiers``, ``Europe/Zagreb``, ``Europe/Athens``, ``Europe/Bucharest``, ``Africa/Cairo``, ``Africa/Harare``, ``Europe/Helsinki``, ``Europe/Istanbul``, ``Asia/Jerusalem``, ``Europe/Kiev``, ``Africa/Johannesburg``, ``Europe/Riga``, ``Europe/Sofia``, ``Europe/Tallinn``, ``Europe/Vilnius``, ``Asia/Baghdad``, ``Asia/Kuwait``, ``Europe/Minsk``, ``Africa/Nairobi``, ``Asia/Riyadh``, ``Asia/Tehran``, ``Asia/Muscat``, ``Asia/Baku``, ``Europe/Moscow``, ``Asia/Tbilisi``, ``Asia/Yerevan``, ``Asia/Kabul``, ``Asia/Karachi``, ``Asia/Tashkent``, ``Asia/Kolkata``, ``Asia/Colombo``, ``Asia/Kathmandu``, ``Asia/Almaty``, ``Asia/Dhaka``, ``Asia/Yekaterinburg``, ``Asia/Rangoon``, ``Asia/Bangkok``, ``Asia/Jakarta``, ``Asia/Novosibirsk``, ``Asia/Shanghai``, ``Asia/Chongqing``, ``Asia/Hong_Kong``, ``Asia/Krasnoyarsk``, ``Asia/Kuala_Lumpur``, ``Australia/Perth``, ``Asia/Singapore``, ``Asia/Taipei``, ``Asia/Ulaanbaatar``, ``Asia/Urumqi``, ``Asia/Irkutsk``, ``Asia/Tokyo``, ``Asia/Seoul``, ``Australia/Adelaide``, ``Australia/Darwin``, ``Australia/Brisbane``, ``Australia/Melbourne``, ``Pacific/Guam``, ``Australia/Hobart``, ``Pacific/Port_Moresby``, ``Australia/Sydney``, ``Asia/Yakutsk``, ``Pacific/Noumea``, ``Asia/Vladivostok``, ``Pacific/Auckland``, ``Pacific/Fiji``, ``Asia/Kamchatka``, ``Asia/Magadan``, ``Pacific/Majuro``, ``Pacific/Guadalcanal``, ``Pacific/Tongatapu``, ``Pacific/Apia``, ``Pacific/Fakaofo``
      */
     timezone?: string | null;
     /**
-     * The type of the project. Any value is accepted, but the following are recommended:
+     * The type of the project. Any value is accepted, but the following are recommended:Possible values: ``Convention Center``, ``Data Center``, ``Hotel / Motel``, ``Office``, ``Parking Structure / Garage``, ``Performing Arts``, ``Restaurant``, ``Retail``, ``Stadium / Arena``, ``Theme Park``, ``Warehouse (non-manufacturing)``, ``Assisted Living / Nursing Home``, ``Hospital``, ``Medical Laboratory``, ``Medical Office``, ``OutPatient Surgery Center``, ``Court House``, ``Dormitory``, ``Education Facility``, ``Government Building``, ``Library``, ``Military Facility``, ``Museum``, ``Prison / Correctional Facility``, ``Recreation Building``, ``Religious Building``, ``Research Facility / Laboratory``, ``Multi-Family Housing``, ``Single-Family Housing``, ``Airport``, ``Bridge``, ``Canal / Waterway``, ``Dams / Flood Control / Reservoirs``, ``Harbor / River Development``, ``Rail``, ``Seaport``, ``Streets / Roads / Highways``, ``Transportation Building``, ``Tunnel``, ``Waste Water / Sewers``, ``Water Supply``, ``Manufacturing / Factory``, ``Mining Facility``, ``Oil & Gas``, ``Plant``, ``Power Plant``, ``Solar Farm``, ``Utilities``, ``Wind Farm``, ``Demonstration Project``, ``Template Project`` and ``Training Project``.Max length: 255
      */
     type?: string | null;
 }
+export type ProjectsPostRequestBody_classification = (typeof ProjectsPostRequestBody_classificationObject)[keyof typeof ProjectsPostRequestBody_classificationObject];
 export type ProjectsPostRequestBody_platform = (typeof ProjectsPostRequestBody_platformObject)[keyof typeof ProjectsPostRequestBody_platformObject];
 /**
  * Contains details about the estimated cost of the project, including the amount (``value``) and the currency (``currency``).
  */
 export interface ProjectsPostRequestBody_projectValue extends AdditionalDataHolder, Parsable {
     /**
-     * The currency of the project value. Default: ``USD``. Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
+     * The currency of the project value. Default: ``USD``.Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
      */
     currency?: ProjectsPostRequestBody_projectValue_currency | null;
     /**
@@ -654,7 +731,7 @@ export interface ProjectsPostRequestBody_projectValue extends AdditionalDataHold
 }
 export type ProjectsPostRequestBody_projectValue_currency = (typeof ProjectsPostRequestBody_projectValue_currencyObject)[keyof typeof ProjectsPostRequestBody_projectValue_currencyObject];
 /**
- * Information about a project in the current user's account that is configured as a template from which to copy products and settings when creating a new project:
+ * Information about a project in the current user's account that is configured as a template from which to copy products and settings when creating a new project:- If you *include* this object in a `POST accounts/:accountId/projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-POST/>`_ request, the cloned project's products and settings will match those of the template project.- If you *omit* this object from a `POST accounts/:accountId/projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-POST/>`_ request, all of the current ACC account's products are added to the cloned project and activated.
  */
 export interface ProjectsPostRequestBody_template extends AdditionalDataHolder, Parsable {
     /**
@@ -662,7 +739,7 @@ export interface ProjectsPostRequestBody_template extends AdditionalDataHolder, 
      */
     options?: ProjectsPostRequestBody_template_options | null;
     /**
-     * The ID of a project template in the current ACC account from which to clone the new project and copy products and settings.
+     * The ID of a project template in the current ACC account from which to clone the new project and copy products and settings.Note that you cannot create a project template from another project template, but you can base it on a production project. Set this field to the project ``id`` of the production project. The new project template is not completely configured for use, but it will get you started.For more information about project templates, see `Project Templates <https://help.autodesk.com/view/BUILD/ENU/?guid=Account_Admin_Project_Templates>`_ in the Build help.
      */
     projectId?: Guid | null;
 }
@@ -680,11 +757,11 @@ export interface ProjectsPostRequestBody_template_options extends AdditionalData
  */
 export interface ProjectsPostRequestBody_template_options_field extends AdditionalDataHolder, Parsable {
     /**
-     * Indicates whether to include company data when copying from the project template.
+     * Indicates whether to include company data when copying from the project template.- ``true``: Include company data.- ``false``: Exclude company data.
      */
     includeCompanies?: boolean | null;
     /**
-     * Indicates whether to include location data when copying from the project template.
+     * Indicates whether to include location data when copying from the project template.- ``true``: Include location data.- ``false``: Exclude location data.
      */
     includeLocations?: boolean | null;
 }
@@ -694,15 +771,15 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     accountId?: Guid | null;
     /**
-     * The first line of the project’s address.
+     * The first line of the project’s address.Max length: 255
      */
     addressLine1?: string | null;
     /**
-     * Additional address details for the project location.
+     * Additional address details for the project location.Max length: 255
      */
     addressLine2?: string | null;
     /**
-     * Not relevant
+     * Not relevantMax length: 25
      */
     adminGroupId?: string | null;
     /**
@@ -710,15 +787,15 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     businessUnitId?: Guid | null;
     /**
-     * The city wher the project is located.
+     * The city wher the project is located.Max length: 255
      */
     city?: string | null;
     /**
-     * The classification of the project. Possible values:
+     * The classification of the project. Possible values:- ``production`` – Standard project.- ``template`` – A project that serves as a template for creating new projects.- ``component`` – A placeholder project containing reusable components (e.g., forms). Only one component project is allowed per account. Known as a library in the ACC UI.- ``sample`` – A single sample project automatically created for ACC trials (limited to one per account).
      */
-    classification?: string | null;
+    classification?: ProjectsPostResponse_classification | null;
     /**
-     * The total number of companies associated with the project.
+     * The total number of companies associated with the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     companyCount?: number | null;
     /**
@@ -730,7 +807,7 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     contractType?: string | null;
     /**
-     * The country where the project is located, using an ISO 3166-1 code.
+     * The country where the project is located, using an ISO 3166-1 code.Max length: 255
      */
     country?: string | null;
     /**
@@ -738,7 +815,7 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     createdAt?: Date | null;
     /**
-     * The current phase of the project. Recommended values include, ``Concept``, ``Design``, ``Bidding``, ``Planning``, ``Preconstruction``, ``Construction``, ``Commissioning``, ``Warranty``, ``Complete``, ``Facility Management``, ``Operation``, ``Strategic Definition``, ``Preparation and Brief``, ``Concept Design``, ``Developed Design``, ``Technical Design``, ``Construction``, ``Handover and Close Out`` and ``In Use``.
+     * The current phase of the project. Recommended values include, ``Concept``, ``Design``, ``Bidding``, ``Planning``, ``Preconstruction``, ``Construction``, ``Commissioning``, ``Warranty``, ``Complete``, ``Facility Management``, ``Operation``, ``Strategic Definition``, ``Preparation and Brief``, ``Concept Design``, ``Developed Design``, ``Technical Design``, ``Construction``, ``Handover and Close Out`` and ``In Use``.Any value is accepted.
      */
     currentPhase?: string | null;
     /**
@@ -754,7 +831,7 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     id?: Guid | null;
     /**
-     * The URL of the main image associated with the project. This field can be ``null``.
+     * The URL of the main image associated with the project. This field can be ``null``.Max length: 255
      */
     imageUrl?: string | null;
     /**
@@ -762,7 +839,7 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     jobId?: Guid | null;
     /**
-     * A user-defined identifier for the project. This value is assigned when the project is created and can be used to filter projects. It supports partial matches when used with ``filterTextMatch``.
+     * A user-defined identifier for the project. This value is assigned when the project is created and can be used to filter projects. It supports partial matches when used with ``filterTextMatch``.Max length: 100
      */
     jobNumber?: string | null;
     /**
@@ -770,43 +847,43 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     lastSignIn?: Date | null;
     /**
-     * The latitude coordinate of the project location.
+     * The latitude coordinate of the project location.Max length: 25
      */
     latitude?: string | null;
     /**
-     * The longitude coordinate of the project location.
+     * The longitude coordinate of the project location.Max length: 25
      */
     longitude?: string | null;
     /**
-     * The total number of members on the project.
+     * The total number of members on the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     memberCount?: number | null;
     /**
-     * Not relevant
+     * Not relevantMax length: 25
      */
     memberGroupId?: string | null;
     /**
-     * The name of the project.
+     * The name of the project.Max length: 255
      */
     name?: string | null;
     /**
-     * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.
+     * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.Note that this field is relevant only in responses. It is ignored in requests.
      */
     platform?: ProjectsPostResponse_platform | null;
     /**
-     * The postal or ZIP code of the project location.
+     * The postal or ZIP code of the project location.Max length: 255
      */
     postalCode?: string | null;
     /**
-     * An array of the product objects associated with the project.
+     * An array of the product objects associated with the project.Note that this array is relevant only in responses. It is ignored in requests.When a project is created, every product in the same account as the project is activated for the project. You can call `PATCH users/:userId </en/docs/acc/v1/reference/http/admin-projects-projectId-users-userId-PATCH/>`_ to separately activate one or more of the returned products for each user assigned to the project.
      */
-    products?: string[] | null;
+    products?: ProjectsPostResponse_products[] | null;
     /**
      * Contains details about the estimated cost of the project, including the amount (``value``) and the currency (``currency``).
      */
     projectValue?: ProjectsPostResponse_projectValue | null;
     /**
-     * The total number of sheets associated with the project.
+     * The total number of sheets associated with the project.Note that this field is relevant only in responses. It is ignored in requests.
      */
     sheetCount?: number | null;
     /**
@@ -814,27 +891,27 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     startDate?: string | null;
     /**
-     * The state or province where the project is located. It must be a valid name or an ISO 3166-2 code. The provided state or province must exist in the country of the project.
+     * The state or province where the project is located. It must be a valid name or an ISO 3166-2 code. The provided state or province must exist in the country of the project.Max length: 255
      */
     stateOrProvince?: string | null;
     /**
-     * The status of the project.
+     * The status of the project.Possible values: ``active``, ``pending``, ``archived`` and ``suspended``.
      */
-    status?: string | null;
+    status?: ProjectsPostResponse_status | null;
     /**
      * The ID of the project that was used as a template to create this project.
      */
     templateId?: Guid | null;
     /**
-     * The URL of the project’s thumbnail image. This field can be ``null``.
+     * The URL of the project’s thumbnail image. This field can be ``null``.Max length: 255
      */
     thumbnailImageUrl?: string | null;
     /**
-     * The time zone where the project is located. It must be a valid IANA time zone name from the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (e.g., ``America/New_York``). If no time zone is set, this field may be ``null``. Possible values: ``Pacific/Honolulu``, ``America/Juneau``, ``America/Los_Angeles``, ``America/Phoenix``, ``America/Denver``, ``America/Chicago``, ``America/New_York``, ``America/Indiana/Indianapolis``, ``Pacific/Pago_Pago``, ``Pacific/Midway``, ``America/Tijuana``, ``America/Chihuahua``, ``America/Mazatlan``, ``America/Guatemala``, ``America/Mexico_City``, ``America/Monterrey``, ``America/Regina``, ``America/Bogota``, ``America/Lima``, ``America/Caracas``, ``America/Halifax``, ``America/Guyana``, ``America/La_Paz``, ``America/Santiago``, ``America/St_Johns``, ``America/Sao_Paulo``, ``America/Argentina/Buenos_Aires``, ``America/Godthab``, ``Atlantic/South_Georgia``, ``Atlantic/Azores``, ``Atlantic/Cape_Verde``, ``Africa/Casablanca``, ``Europe/Dublin``, ``Europe/Lisbon``, ``Europe/London``, ``Africa/Monrovia``, ``Etc/UTC``, ``Europe/Amsterdam``, ``Europe/Belgrade``, ``Europe/Berlin``, ``Europe/Bratislava``, ``Europe/Brussels``, ``Europe/Budapest``, ``Europe/Copenhagen``, ``Europe/Ljubljana``, ``Europe/Madrid``, ``Europe/Paris``, ``Europe/Prague``, ``Europe/Rome``, ``Europe/Sarajevo``, ``Europe/Skopje``, ``Europe/Stockholm``, ``Europe/Vienna``, ``Europe/Warsaw``, ``Africa/Algiers``, ``Europe/Zagreb``, ``Europe/Athens``, ``Europe/Bucharest``, ``Africa/Cairo``, ``Africa/Harare``, ``Europe/Helsinki``, ``Europe/Istanbul``, ``Asia/Jerusalem``, ``Europe/Kiev``, ``Africa/Johannesburg``, ``Europe/Riga``, ``Europe/Sofia``, ``Europe/Tallinn``, ``Europe/Vilnius``, ``Asia/Baghdad``, ``Asia/Kuwait``, ``Europe/Minsk``, ``Africa/Nairobi``, ``Asia/Riyadh``, ``Asia/Tehran``, ``Asia/Muscat``, ``Asia/Baku``, ``Europe/Moscow``, ``Asia/Tbilisi``, ``Asia/Yerevan``, ``Asia/Kabul``, ``Asia/Karachi``, ``Asia/Tashkent``, ``Asia/Kolkata``, ``Asia/Colombo``, ``Asia/Kathmandu``, ``Asia/Almaty``, ``Asia/Dhaka``, ``Asia/Yekaterinburg``, ``Asia/Rangoon``, ``Asia/Bangkok``, ``Asia/Jakarta``, ``Asia/Novosibirsk``, ``Asia/Shanghai``, ``Asia/Chongqing``, ``Asia/Hong_Kong``, ``Asia/Krasnoyarsk``, ``Asia/Kuala_Lumpur``, ``Australia/Perth``, ``Asia/Singapore``, ``Asia/Taipei``, ``Asia/Ulaanbaatar``, ``Asia/Urumqi``, ``Asia/Irkutsk``, ``Asia/Tokyo``, ``Asia/Seoul``, ``Australia/Adelaide``, ``Australia/Darwin``, ``Australia/Brisbane``, ``Australia/Melbourne``, ``Pacific/Guam``, ``Australia/Hobart``, ``Pacific/Port_Moresby``, ``Australia/Sydney``, ``Asia/Yakutsk``, ``Pacific/Noumea``, ``Asia/Vladivostok``, ``Pacific/Auckland``, ``Pacific/Fiji``, ``Asia/Kamchatka``, ``Asia/Magadan``, ``Pacific/Majuro``, ``Pacific/Guadalcanal``, ``Pacific/Tongatapu``, ``Pacific/Apia``, ``Pacific/Fakaofo``
+     * The time zone where the project is located. It must be a valid IANA time zone name from the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (e.g., ``America/New_York``). If no time zone is set, this field may be ``null``.Possible values: ``Pacific/Honolulu``, ``America/Juneau``, ``America/Los_Angeles``, ``America/Phoenix``, ``America/Denver``, ``America/Chicago``, ``America/New_York``, ``America/Indiana/Indianapolis``, ``Pacific/Pago_Pago``, ``Pacific/Midway``, ``America/Tijuana``, ``America/Chihuahua``, ``America/Mazatlan``, ``America/Guatemala``, ``America/Mexico_City``, ``America/Monterrey``, ``America/Regina``, ``America/Bogota``, ``America/Lima``, ``America/Caracas``, ``America/Halifax``, ``America/Guyana``, ``America/La_Paz``, ``America/Santiago``, ``America/St_Johns``, ``America/Sao_Paulo``, ``America/Argentina/Buenos_Aires``, ``America/Godthab``, ``Atlantic/South_Georgia``, ``Atlantic/Azores``, ``Atlantic/Cape_Verde``, ``Africa/Casablanca``, ``Europe/Dublin``, ``Europe/Lisbon``, ``Europe/London``, ``Africa/Monrovia``, ``Etc/UTC``, ``Europe/Amsterdam``, ``Europe/Belgrade``, ``Europe/Berlin``, ``Europe/Bratislava``, ``Europe/Brussels``, ``Europe/Budapest``, ``Europe/Copenhagen``, ``Europe/Ljubljana``, ``Europe/Madrid``, ``Europe/Paris``, ``Europe/Prague``, ``Europe/Rome``, ``Europe/Sarajevo``, ``Europe/Skopje``, ``Europe/Stockholm``, ``Europe/Vienna``, ``Europe/Warsaw``, ``Africa/Algiers``, ``Europe/Zagreb``, ``Europe/Athens``, ``Europe/Bucharest``, ``Africa/Cairo``, ``Africa/Harare``, ``Europe/Helsinki``, ``Europe/Istanbul``, ``Asia/Jerusalem``, ``Europe/Kiev``, ``Africa/Johannesburg``, ``Europe/Riga``, ``Europe/Sofia``, ``Europe/Tallinn``, ``Europe/Vilnius``, ``Asia/Baghdad``, ``Asia/Kuwait``, ``Europe/Minsk``, ``Africa/Nairobi``, ``Asia/Riyadh``, ``Asia/Tehran``, ``Asia/Muscat``, ``Asia/Baku``, ``Europe/Moscow``, ``Asia/Tbilisi``, ``Asia/Yerevan``, ``Asia/Kabul``, ``Asia/Karachi``, ``Asia/Tashkent``, ``Asia/Kolkata``, ``Asia/Colombo``, ``Asia/Kathmandu``, ``Asia/Almaty``, ``Asia/Dhaka``, ``Asia/Yekaterinburg``, ``Asia/Rangoon``, ``Asia/Bangkok``, ``Asia/Jakarta``, ``Asia/Novosibirsk``, ``Asia/Shanghai``, ``Asia/Chongqing``, ``Asia/Hong_Kong``, ``Asia/Krasnoyarsk``, ``Asia/Kuala_Lumpur``, ``Australia/Perth``, ``Asia/Singapore``, ``Asia/Taipei``, ``Asia/Ulaanbaatar``, ``Asia/Urumqi``, ``Asia/Irkutsk``, ``Asia/Tokyo``, ``Asia/Seoul``, ``Australia/Adelaide``, ``Australia/Darwin``, ``Australia/Brisbane``, ``Australia/Melbourne``, ``Pacific/Guam``, ``Australia/Hobart``, ``Pacific/Port_Moresby``, ``Australia/Sydney``, ``Asia/Yakutsk``, ``Pacific/Noumea``, ``Asia/Vladivostok``, ``Pacific/Auckland``, ``Pacific/Fiji``, ``Asia/Kamchatka``, ``Asia/Magadan``, ``Pacific/Majuro``, ``Pacific/Guadalcanal``, ``Pacific/Tongatapu``, ``Pacific/Apia``, ``Pacific/Fakaofo``
      */
     timezone?: string | null;
     /**
-     * The type of the project. Any value is accepted, but the following are recommended:
+     * The type of the project. Any value is accepted, but the following are recommended:Possible values: ``Convention Center``, ``Data Center``, ``Hotel / Motel``, ``Office``, ``Parking Structure / Garage``, ``Performing Arts``, ``Restaurant``, ``Retail``, ``Stadium / Arena``, ``Theme Park``, ``Warehouse (non-manufacturing)``, ``Assisted Living / Nursing Home``, ``Hospital``, ``Medical Laboratory``, ``Medical Office``, ``OutPatient Surgery Center``, ``Court House``, ``Dormitory``, ``Education Facility``, ``Government Building``, ``Library``, ``Military Facility``, ``Museum``, ``Prison / Correctional Facility``, ``Recreation Building``, ``Religious Building``, ``Research Facility / Laboratory``, ``Multi-Family Housing``, ``Single-Family Housing``, ``Airport``, ``Bridge``, ``Canal / Waterway``, ``Dams / Flood Control / Reservoirs``, ``Harbor / River Development``, ``Rail``, ``Seaport``, ``Streets / Roads / Highways``, ``Transportation Building``, ``Tunnel``, ``Waste Water / Sewers``, ``Water Supply``, ``Manufacturing / Factory``, ``Mining Facility``, ``Oil & Gas``, ``Plant``, ``Power Plant``, ``Solar Farm``, ``Utilities``, ``Wind Farm``, ``Demonstration Project``, ``Template Project`` and ``Training Project``.Max length: 255
      */
     type?: string | null;
     /**
@@ -842,13 +919,39 @@ export interface ProjectsPostResponse extends AdditionalDataHolder, Parsable {
      */
     updatedAt?: Date | null;
 }
+export type ProjectsPostResponse_classification = (typeof ProjectsPostResponse_classificationObject)[keyof typeof ProjectsPostResponse_classificationObject];
 export type ProjectsPostResponse_platform = (typeof ProjectsPostResponse_platformObject)[keyof typeof ProjectsPostResponse_platformObject];
+export interface ProjectsPostResponse_products extends AdditionalDataHolder, Parsable {
+    /**
+     * The URL of the icon associated with the product.
+     */
+    icon?: string | null;
+    /**
+     * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+     */
+    key?: ProjectsPostResponse_products_key | null;
+    /**
+     * The language for the project. Only valid for the ``field`` product.Possible values: ``en``, ``de``, ``nl``, ``zh``, ``de-CH``
+     */
+    language?: ProjectsPostResponse_products_language | null;
+    /**
+     * The name of the product.
+     */
+    name?: string | null;
+    /**
+     * The current status of the product. Possible values:- ``activating``: Product activation is in progress.- ``activationFailed``: Product activation has failed.- ``active``: Product activation is completed.- ``deactivating``: Product deactivation is in progress. (Applicable to BIM 360 only)- ``deactivationFailed``: Product deactivation has failed. (Applicable to BIM 360 only)- ``inactive``: Product deactivation is completed. (Applicable to BIM 360 only)- ``available``: Product is available for activation. (Applicable to BIM 360 only)
+     */
+    status?: ProjectsPostResponse_products_status | null;
+}
+export type ProjectsPostResponse_products_key = (typeof ProjectsPostResponse_products_keyObject)[keyof typeof ProjectsPostResponse_products_keyObject];
+export type ProjectsPostResponse_products_language = (typeof ProjectsPostResponse_products_languageObject)[keyof typeof ProjectsPostResponse_products_languageObject];
+export type ProjectsPostResponse_products_status = (typeof ProjectsPostResponse_products_statusObject)[keyof typeof ProjectsPostResponse_products_statusObject];
 /**
  * Contains details about the estimated cost of the project, including the amount (``value``) and the currency (``currency``).
  */
 export interface ProjectsPostResponse_projectValue extends AdditionalDataHolder, Parsable {
     /**
-     * The currency of the project value. Default: ``USD``. Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
+     * The currency of the project value. Default: ``USD``.Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
      */
     currency?: ProjectsPostResponse_projectValue_currency | null;
     /**
@@ -857,6 +960,7 @@ export interface ProjectsPostResponse_projectValue extends AdditionalDataHolder,
     value?: number | null;
 }
 export type ProjectsPostResponse_projectValue_currency = (typeof ProjectsPostResponse_projectValue_currencyObject)[keyof typeof ProjectsPostResponse_projectValue_currencyObject];
+export type ProjectsPostResponse_status = (typeof ProjectsPostResponse_statusObject)[keyof typeof ProjectsPostResponse_statusObject];
 /**
  * Builds and executes requests for operations under /construction/admin/v1/accounts/{accountId}/projects
  */
@@ -893,31 +997,31 @@ export interface ProjectsRequestBuilder extends BaseRequestBuilder<ProjectsReque
  */
 export interface ProjectsRequestBuilderGetQueryParameters {
     /**
-     * A comma-separated list of the project fields to include in the response. Default value: all fields.
+     * A comma-separated list of the project fields to include in the response. Default value: all fields.Possible values: ``accountId``, ``addressLine1``, ``addressLine2``, ``businessUnitId``, ``city``, ``companyCount``, ``constructionType``, ``country``, ``createdAt``, ``deliveryMethod``, ``endDate``, ``imageUrl``, ``jobNumber``, ``lastSignIn``, ``latitude``, ``longitude``, ``memberCount``, ``name``, ``platform``, ``postalCode``, ``products``, ``projectValue``, ``sheetCount``, ``startDate``, ``stateOrProvince``, ``status``, ``thumbnailImageUrl``, ``timezone``, ``type`` and ``updatedAt``.
      */
     fields?: string[];
     /**
-     * The ID of the business unit that returned projects must be associated with.
+     * The ID of the business unit that returned projects must be associated with.Note that you can obtain this ID value by calling the `GET business_units_structure </en/docs/acc/v1/reference/http/business_units_structure-GET/>`_ endpoint to retrieve a list of business units. Use the ``id`` field of the returned business unit that you want to filter by.Max length: 255
      */
     filterbusinessUnitId?: Guid;
     /**
-     * Filters projects by classification. Possible values:
+     * Filters projects by classification. Possible values:``production`` – Standard production projects.``template`` – Project templates that can be cloned to create production projects.``component`` – Placeholder projects that contain standardized components (e.g., forms) for use across projects. Only one component project is permitted per account. Known as a library in the ACC unified products UI.``sample`` – The single sample project automatically created upon ACC trial setup. Only one sample project is permitted per account.Max length: 255
      */
     filterclassification?: string[];
     /**
-     * Filters by a user-defined project identifier. Supports partial matches when used with ``filterTextMatch``. For example, ``filter[jobNumber]=HP-0002&filterTextMatch=equals`` returns projects where the job number is exactly ``HP-0002``.
+     * Filters by a user-defined project identifier. Supports partial matches when used with ``filterTextMatch``. For example, ``filter[jobNumber]=HP-0002&filterTextMatch=equals`` returns projects where the job number is exactly ``HP-0002``.Max length: 255
      */
     filterjobNumber?: string;
     /**
-     * Filters projects by name. Supports partial matches when used with ``filterTextMatch``. For example ``filter[name]=ABCco&filterTextMatch=startsWith`` returns projects whose names start with ``ABCco``.
+     * Filters projects by name. Supports partial matches when used with ``filterTextMatch``. For example ``filter[name]=ABCco&filterTextMatch=startsWith`` returns projects whose names start with ``ABCco``.Max length: 255
      */
     filtername?: string;
     /**
-     * Filters by platform. Possible values: ``acc`` (Autodesk Construction Cloud) and ``bim360`` (BIM 360).
+     * Filters by platform. Possible values: ``acc`` (Autodesk Construction Cloud) and ``bim360`` (BIM 360).Max length: 255
      */
     filterplatform?: string[];
     /**
-     * A comma-separated list of the products that the returned projects must use. Only projects that use one or more of the listed products are returned.
+     * A comma-separated list of the products that the returned projects must use. Only projects that use one or more of the listed products are returned.Note that every product that can be used in a project on the same platform (ACC or BIM 360) is activated for the project. All products associated with the project are returned in the response.Some products are exclusive to ACC or to BIM 360, others are available on both platforms. Specify only the products on the appropriate platform for the projects you want to retrieve.Possible ACC values: ``accountAdministration``, ``autoSpecs``, ``build``, ``buildingConnected``, ``capitalPlanning``, ``cloudWorksharing``, ``cost``, ``designCollaboration``, ``docs``, ``financials``, ``insight``, ``modelCoordination``, ``projectAdministration``, ``takeoff``, and ``workshopxr``.Possible BIM 360 values: ``accountAdministration``, ``assets``, ``cloudWorksharing``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.
      */
     filterproducts?: string[];
     /**
@@ -925,27 +1029,27 @@ export interface ProjectsRequestBuilderGetQueryParameters {
      */
     filterstatus?: string[];
     /**
-     * Specifies how text-based filters should match values in supported fields.
+     * Specifies how text-based filters should match values in supported fields.This parameter can be used in any endpoint that supports text-based filtering (e.g., ``filter[name]``, ``filter[jobNumber]``, ``filter[companyName]``, etc.).Possible values:``contains`` (default) – Matches if the field contains the specified text anywhere``startsWith`` – Matches if the field starts with the specified text``endsWith`` – Matches if the field ends with the specified text``equals`` – Matches only if the field exactly matches the specified textMatching is case-insensitive.Wildcards and regular expressions are not supported.
      */
-    filterTextMatch?: string;
+    filterTextMatch?: GetFilterTextMatchQueryParameterType;
     /**
-     * Filters by project type. To exclude a type, prefix it with ``-`` (e.g., ``-Bridge`` excludes bridge projects).
+     * Filters by project type. To exclude a type, prefix it with ``-`` (e.g., ``-Bridge`` excludes bridge projects).Possible values: ``Airport``, ``Assisted Living / Nursing Home``, ``Bridge``, ``Canal / Waterway``, ``Convention Center``, ``Court House``, ``Data Center``, ``Dams / Flood Control / Reservoirs``, ``Demonstration Project``, ``Dormitory``, ``Education Facility``, ``Government Building``, ``Harbor / River Development``, ``Hospital``, ``Hotel / Motel``, ``Library``, ``Manufacturing / Factory``, ``Medical Laboratory``, ``Medical Office``, ``Military Facility``, ``Mining Facility``, ``Multi-Family Housing``, ``Museum``, ``Oil & Gas``,``Plant``, ``Office``, ``OutPatient Surgery Center``, ``Parking Structure / Garage``, ``Performing Arts``, ``Power Plant``, ``Prison / Correctional Facility``, ``Rail``, ``Recreation Building``, ``Religious Building``, ``Research Facility / Laboratory``, ``Restaurant``, ``Retail``, ``Seaport``, ``Single-Family Housing``, ``Solar Farm``, ``Stadium/Arena``, ``Streets / Roads / Highways``, ``Template Project``, ``Theme Park``, ``Training Project``, ``Transportation Building``, ``Tunnel``, ``Utilities``, ``Warehouse (non-manufacturing)``, ``Waste Water / Sewers``, ``Water Supply``, ``Wind Farm``.
      */
     filtertype?: string[];
     /**
-     * Filters projects updated within a specific date range in ISO 8601 format. For example:
+     * Filters projects updated within a specific date range in ISO 8601 format. For example:Date range: ``2023-03-02T00:00:00.000Z..2023-03-03T23:59:59 .999Z``Specific start date: ``2023-03-02T00:00:00.000Z..``Specific end date: ``..2023-03-02T23:59:59.999Z``For more details, see `JSON API Filtering <https://jsonapi.org/format/#fetching-filtering>`_.Max length: 100
      */
     filterupdatedAt?: string;
     /**
-     * The maximum number of records to return in the response.
+     * The maximum number of records to return in the response.Default: ``20``Minimum: ``1``Maximum: ``200`` (If a larger value is provided, only 200 records are returned)
      */
     limit?: number;
     /**
-     * The index of the first record to return.
+     * The index of the first record to return.Used for pagination in combination with the ``limit`` parameter.Example: ``limit=20`` and ``offset=40`` returns records 41–60.
      */
     offset?: number;
     /**
-     * Sorts results by specified fields. Multiple fields can be used in order of priority. Each field can be followed by ``asc`` (ascending) or ``desc`` (descending). Default: ``asc``.
+     * Sorts results by specified fields. Multiple fields can be used in order of priority. Each field can be followed by ``asc`` (ascending) or ``desc`` (descending). Default: ``asc``.For example, ``sort=name,createdAt desc`` sorts projects by name, then by creation date (newest first).Possible values: ``name`` (the default), ``startDate``, ``endDate``, ``type``, ``status``, ``jobNumber``, ``constructionType``, ``deliveryMethod``, ``contractType``, ``currentPhase``, ``companyCount``, ``memberCount``, ``createdAt`` and ``updatedAt``.
      */
     sort?: string[];
 }
@@ -993,7 +1097,7 @@ export function serializeProjectsGetResponse_results(writer: SerializationWriter
     writer.writeStringValue("adminGroupId", projectsGetResponse_results.adminGroupId);
     writer.writeGuidValue("businessUnitId", projectsGetResponse_results.businessUnitId);
     writer.writeStringValue("city", projectsGetResponse_results.city);
-    writer.writeStringValue("classification", projectsGetResponse_results.classification);
+    writer.writeEnumValue<ProjectsGetResponse_results_classification>("classification", projectsGetResponse_results.classification);
     writer.writeNumberValue("companyCount", projectsGetResponse_results.companyCount);
     writer.writeStringValue("constructionType", projectsGetResponse_results.constructionType);
     writer.writeStringValue("contractType", projectsGetResponse_results.contractType);
@@ -1013,18 +1117,34 @@ export function serializeProjectsGetResponse_results(writer: SerializationWriter
     writer.writeStringValue("name", projectsGetResponse_results.name);
     writer.writeEnumValue<ProjectsGetResponse_results_platform>("platform", projectsGetResponse_results.platform);
     writer.writeStringValue("postalCode", projectsGetResponse_results.postalCode);
-    writer.writeCollectionOfPrimitiveValues<string>("products", projectsGetResponse_results.products);
+    writer.writeCollectionOfObjectValues<ProjectsGetResponse_results_products>("products", projectsGetResponse_results.products, serializeProjectsGetResponse_results_products);
     writer.writeObjectValue<ProjectsGetResponse_results_projectValue>("projectValue", projectsGetResponse_results.projectValue, serializeProjectsGetResponse_results_projectValue);
     writer.writeNumberValue("sheetCount", projectsGetResponse_results.sheetCount);
     writer.writeStringValue("startDate", projectsGetResponse_results.startDate);
     writer.writeStringValue("stateOrProvince", projectsGetResponse_results.stateOrProvince);
-    writer.writeStringValue("status", projectsGetResponse_results.status);
+    writer.writeEnumValue<ProjectsGetResponse_results_status>("status", projectsGetResponse_results.status);
     writer.writeGuidValue("templateId", projectsGetResponse_results.templateId);
     writer.writeStringValue("thumbnailImageUrl", projectsGetResponse_results.thumbnailImageUrl);
     writer.writeStringValue("timezone", projectsGetResponse_results.timezone);
     writer.writeStringValue("type", projectsGetResponse_results.type);
     writer.writeDateValue("updatedAt", projectsGetResponse_results.updatedAt);
     writer.writeAdditionalData(projectsGetResponse_results.additionalData);
+}
+/**
+ * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param ProjectsGetResponse_results_products The instance to serialize from.
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeProjectsGetResponse_results_products(writer: SerializationWriter, projectsGetResponse_results_products: Partial<ProjectsGetResponse_results_products> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!projectsGetResponse_results_products || isSerializingDerivedType) { return; }
+    writer.writeStringValue("icon", projectsGetResponse_results_products.icon);
+    writer.writeEnumValue<ProjectsGetResponse_results_products_key>("key", projectsGetResponse_results_products.key);
+    writer.writeEnumValue<ProjectsGetResponse_results_products_language>("language", projectsGetResponse_results_products.language);
+    writer.writeStringValue("name", projectsGetResponse_results_products.name);
+    writer.writeEnumValue<ProjectsGetResponse_results_products_status>("status", projectsGetResponse_results_products.status);
+    writer.writeAdditionalData(projectsGetResponse_results_products.additionalData);
 }
 /**
  * Serializes information the current object
@@ -1052,7 +1172,7 @@ export function serializeProjectsPostRequestBody(writer: SerializationWriter, pr
     writer.writeStringValue("addressLine2", projectsPostRequestBody.addressLine2);
     writer.writeGuidValue("businessUnitId", projectsPostRequestBody.businessUnitId);
     writer.writeStringValue("city", projectsPostRequestBody.city);
-    writer.writeStringValue("classification", projectsPostRequestBody.classification);
+    writer.writeEnumValue<ProjectsPostRequestBody_classification>("classification", projectsPostRequestBody.classification);
     writer.writeNumberValue("companyCount", projectsPostRequestBody.companyCount);
     writer.writeStringValue("constructionType", projectsPostRequestBody.constructionType);
     writer.writeStringValue("contractType", projectsPostRequestBody.contractType);
@@ -1142,7 +1262,7 @@ export function serializeProjectsPostResponse(writer: SerializationWriter, proje
     writer.writeStringValue("adminGroupId", projectsPostResponse.adminGroupId);
     writer.writeGuidValue("businessUnitId", projectsPostResponse.businessUnitId);
     writer.writeStringValue("city", projectsPostResponse.city);
-    writer.writeStringValue("classification", projectsPostResponse.classification);
+    writer.writeEnumValue<ProjectsPostResponse_classification>("classification", projectsPostResponse.classification);
     writer.writeNumberValue("companyCount", projectsPostResponse.companyCount);
     writer.writeStringValue("constructionType", projectsPostResponse.constructionType);
     writer.writeStringValue("contractType", projectsPostResponse.contractType);
@@ -1163,18 +1283,34 @@ export function serializeProjectsPostResponse(writer: SerializationWriter, proje
     writer.writeStringValue("name", projectsPostResponse.name);
     writer.writeEnumValue<ProjectsPostResponse_platform>("platform", projectsPostResponse.platform);
     writer.writeStringValue("postalCode", projectsPostResponse.postalCode);
-    writer.writeCollectionOfPrimitiveValues<string>("products", projectsPostResponse.products);
+    writer.writeCollectionOfObjectValues<ProjectsPostResponse_products>("products", projectsPostResponse.products, serializeProjectsPostResponse_products);
     writer.writeObjectValue<ProjectsPostResponse_projectValue>("projectValue", projectsPostResponse.projectValue, serializeProjectsPostResponse_projectValue);
     writer.writeNumberValue("sheetCount", projectsPostResponse.sheetCount);
     writer.writeStringValue("startDate", projectsPostResponse.startDate);
     writer.writeStringValue("stateOrProvince", projectsPostResponse.stateOrProvince);
-    writer.writeStringValue("status", projectsPostResponse.status);
+    writer.writeEnumValue<ProjectsPostResponse_status>("status", projectsPostResponse.status);
     writer.writeGuidValue("templateId", projectsPostResponse.templateId);
     writer.writeStringValue("thumbnailImageUrl", projectsPostResponse.thumbnailImageUrl);
     writer.writeStringValue("timezone", projectsPostResponse.timezone);
     writer.writeStringValue("type", projectsPostResponse.type);
     writer.writeDateValue("updatedAt", projectsPostResponse.updatedAt);
     writer.writeAdditionalData(projectsPostResponse.additionalData);
+}
+/**
+ * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param ProjectsPostResponse_products The instance to serialize from.
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeProjectsPostResponse_products(writer: SerializationWriter, projectsPostResponse_products: Partial<ProjectsPostResponse_products> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!projectsPostResponse_products || isSerializingDerivedType) { return; }
+    writer.writeStringValue("icon", projectsPostResponse_products.icon);
+    writer.writeEnumValue<ProjectsPostResponse_products_key>("key", projectsPostResponse_products.key);
+    writer.writeEnumValue<ProjectsPostResponse_products_language>("language", projectsPostResponse_products.language);
+    writer.writeStringValue("name", projectsPostResponse_products.name);
+    writer.writeEnumValue<ProjectsPostResponse_products_status>("status", projectsPostResponse_products.status);
+    writer.writeAdditionalData(projectsPostResponse_products.additionalData);
 }
 /**
  * Serializes information the current object
@@ -1193,17 +1329,83 @@ export function serializeProjectsPostResponse_projectValue(writer: Serialization
  * Uri template for the request builder.
  */
 export const ProjectsRequestBuilderUriTemplate = "{+baseurl}/construction/admin/v1/accounts/{accountId}/projects{?fields*,filterTextMatch*,filter%5BbusinessUnitId%5D*,filter%5Bclassification%5D*,filter%5BjobNumber%5D*,filter%5Bname%5D*,filter%5Bplatform%5D*,filter%5Bproducts%5D*,filter%5Bstatus%5D*,filter%5Btype%5D*,filter%5BupdatedAt%5D*,limit*,offset*,sort*}";
+export const GetFilterTextMatchQueryParameterTypeObject = {
+    FilterName: "filter[name]",
+    FilterJobNumber: "filter[jobNumber]",
+    FilterCompanyName: "filter[companyName]",
+    Contains: "contains",
+    StartsWith: "startsWith",
+    EndsWith: "endsWith",
+    Equals: "equals",
+} as const;
 /**
- * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.
+ * The classification of the project. Possible values:- ``production`` – Standard project.- ``template`` – A project that serves as a template for creating new projects.- ``component`` – A placeholder project containing reusable components (e.g., forms). Only one component project is allowed per account. Known as a library in the ACC UI.- ``sample`` – A single sample project automatically created for ACC trials (limited to one per account).
+ */
+export const ProjectsGetResponse_results_classificationObject = {
+    Production: "production",
+    Template: "template",
+    Component: "component",
+    Sample: "sample",
+} as const;
+/**
+ * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.Note that this field is relevant only in responses. It is ignored in requests.
  */
 export const ProjectsGetResponse_results_platformObject = {
     Acc: "acc",
-    Bim360: "bim360``.",
+    Bim360: "bim360",
 } as const;
 /**
- * The currency of the project value. Default: ``USD``. Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
+ * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+ */
+export const ProjectsGetResponse_results_products_keyObject = {
+    FilterKey: "filter[key]",
+    AutoSpecs: "autoSpecs",
+    Build: "build",
+    Cost: "cost",
+    DesignCollaboration: "designCollaboration",
+    Docs: "docs",
+    Insight: "insight",
+    ModelCoordination: "modelCoordination",
+    ProjectAdministration: "projectAdministration",
+    Takeoff: "takeoff",
+    Assets: "assets",
+    CostManagement: "costManagement",
+    DocumentManagement: "documentManagement",
+    Field: "field",
+    FieldManagement: "fieldManagement",
+    Glue: "glue",
+    Plan: "plan",
+    ProjectHome: "projectHome",
+    ProjectManagement: "projectManagement",
+    Quantification: "quantification",
+} as const;
+/**
+ * The language for the project. Only valid for the ``field`` product.Possible values: ``en``, ``de``, ``nl``, ``zh``, ``de-CH``
+ */
+export const ProjectsGetResponse_results_products_languageObject = {
+    Field: "field",
+    En: "en",
+    De: "de",
+    Nl: "nl",
+    Zh: "zh",
+} as const;
+/**
+ * The current status of the product. Possible values:- ``activating``: Product activation is in progress.- ``activationFailed``: Product activation has failed.- ``active``: Product activation is completed.- ``deactivating``: Product deactivation is in progress. (Applicable to BIM 360 only)- ``deactivationFailed``: Product deactivation has failed. (Applicable to BIM 360 only)- ``inactive``: Product deactivation is completed. (Applicable to BIM 360 only)- ``available``: Product is available for activation. (Applicable to BIM 360 only)
+ */
+export const ProjectsGetResponse_results_products_statusObject = {
+    Activating: "activating",
+    ActivationFailed: "activationFailed",
+    Active: "active",
+    Deactivating: "deactivating",
+    DeactivationFailed: "deactivationFailed",
+    Inactive: "inactive",
+    Available: "available",
+} as const;
+/**
+ * The currency of the project value. Default: ``USD``.Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
  */
 export const ProjectsGetResponse_results_projectValue_currencyObject = {
+    USD: "USD",
     AED: "AED",
     AFN: "AFN",
     ALL: "ALL",
@@ -1358,7 +1560,6 @@ export const ProjectsGetResponse_results_projectValue_currencyObject = {
     TZS: "TZS",
     UAH: "UAH",
     UGX: "UGX",
-    USD: "USD",
     USN: "USN",
     UYI: "UYI",
     UYU: "UYU",
@@ -1392,16 +1593,35 @@ export const ProjectsGetResponse_results_projectValue_currencyObject = {
     ZWL: "ZWL",
 } as const;
 /**
- * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.
+ * The status of the project.Possible values: ``active``, ``pending``, ``archived`` and ``suspended``.
+ */
+export const ProjectsGetResponse_results_statusObject = {
+    Active: "active",
+    Pending: "pending",
+    Archived: "archived",
+    Suspended: "suspended",
+} as const;
+/**
+ * The classification of the project. Possible values:- ``production`` – Standard project.- ``template`` – A project that serves as a template for creating new projects.- ``component`` – A placeholder project containing reusable components (e.g., forms). Only one component project is allowed per account. Known as a library in the ACC UI.- ``sample`` – A single sample project automatically created for ACC trials (limited to one per account).
+ */
+export const ProjectsPostRequestBody_classificationObject = {
+    Production: "production",
+    Template: "template",
+    Component: "component",
+    Sample: "sample",
+} as const;
+/**
+ * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.Note that this field is relevant only in responses. It is ignored in requests.
  */
 export const ProjectsPostRequestBody_platformObject = {
     Acc: "acc",
-    Bim360: "bim360``.",
+    Bim360: "bim360",
 } as const;
 /**
- * The currency of the project value. Default: ``USD``. Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
+ * The currency of the project value. Default: ``USD``.Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
  */
 export const ProjectsPostRequestBody_projectValue_currencyObject = {
+    USD: "USD",
     AED: "AED",
     AFN: "AFN",
     ALL: "ALL",
@@ -1556,7 +1776,6 @@ export const ProjectsPostRequestBody_projectValue_currencyObject = {
     TZS: "TZS",
     UAH: "UAH",
     UGX: "UGX",
-    USD: "USD",
     USN: "USN",
     UYI: "UYI",
     UYU: "UYU",
@@ -1590,16 +1809,73 @@ export const ProjectsPostRequestBody_projectValue_currencyObject = {
     ZWL: "ZWL",
 } as const;
 /**
- * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.
+ * The classification of the project. Possible values:- ``production`` – Standard project.- ``template`` – A project that serves as a template for creating new projects.- ``component`` – A placeholder project containing reusable components (e.g., forms). Only one component project is allowed per account. Known as a library in the ACC UI.- ``sample`` – A single sample project automatically created for ACC trials (limited to one per account).
+ */
+export const ProjectsPostResponse_classificationObject = {
+    Production: "production",
+    Template: "template",
+    Component: "component",
+    Sample: "sample",
+} as const;
+/**
+ * The APS platform where the project is stored. Possible values: ``acc``, ``bim360``.Note that this field is relevant only in responses. It is ignored in requests.
  */
 export const ProjectsPostResponse_platformObject = {
     Acc: "acc",
-    Bim360: "bim360``.",
+    Bim360: "bim360",
 } as const;
 /**
- * The currency of the project value. Default: ``USD``. Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
+ * A machine-readable identifier for the product (e.g., docs, build).Each product has a unique key used throughout the API for identification, filtering, and integration logic (e.g., in query parameters like ``filter[key]``).Possible values:ACC - ``autoSpecs``, ``build``, ``cost``, ``designCollaboration``, ``docs``, ``insight``, ``modelCoordination``, ``projectAdministration``, and ``takeoff``.BIM 360 - ``assets``, ``costManagement``, ``designCollaboration``, ``documentManagement``, ``field``, ``fieldManagement``, ``glue``, ``insight``, ``modelCoordination``, ``plan``, ``projectAdministration``, ``projectHome``, ``projectManagement``, and ``quantification``.Note that this endpoint returns only ACC products. Other endpoints, such as `GET projects </en/docs/acc/v1/reference/http/admin-accountsaccountidprojects-GET/>`_ and `GET projects/:projectId </en/docs/acc/v1/reference/http/admin-projects-projectId-GET/>`_, may return both ACC and BIM 360 projects. In those responses, product keys may include BIM 360 values.
+ */
+export const ProjectsPostResponse_products_keyObject = {
+    FilterKey: "filter[key]",
+    AutoSpecs: "autoSpecs",
+    Build: "build",
+    Cost: "cost",
+    DesignCollaboration: "designCollaboration",
+    Docs: "docs",
+    Insight: "insight",
+    ModelCoordination: "modelCoordination",
+    ProjectAdministration: "projectAdministration",
+    Takeoff: "takeoff",
+    Assets: "assets",
+    CostManagement: "costManagement",
+    DocumentManagement: "documentManagement",
+    Field: "field",
+    FieldManagement: "fieldManagement",
+    Glue: "glue",
+    Plan: "plan",
+    ProjectHome: "projectHome",
+    ProjectManagement: "projectManagement",
+    Quantification: "quantification",
+} as const;
+/**
+ * The language for the project. Only valid for the ``field`` product.Possible values: ``en``, ``de``, ``nl``, ``zh``, ``de-CH``
+ */
+export const ProjectsPostResponse_products_languageObject = {
+    Field: "field",
+    En: "en",
+    De: "de",
+    Nl: "nl",
+    Zh: "zh",
+} as const;
+/**
+ * The current status of the product. Possible values:- ``activating``: Product activation is in progress.- ``activationFailed``: Product activation has failed.- ``active``: Product activation is completed.- ``deactivating``: Product deactivation is in progress. (Applicable to BIM 360 only)- ``deactivationFailed``: Product deactivation has failed. (Applicable to BIM 360 only)- ``inactive``: Product deactivation is completed. (Applicable to BIM 360 only)- ``available``: Product is available for activation. (Applicable to BIM 360 only)
+ */
+export const ProjectsPostResponse_products_statusObject = {
+    Activating: "activating",
+    ActivationFailed: "activationFailed",
+    Active: "active",
+    Deactivating: "deactivating",
+    DeactivationFailed: "deactivationFailed",
+    Inactive: "inactive",
+    Available: "available",
+} as const;
+/**
+ * The currency of the project value. Default: ``USD``.Possible values: ``AED``, ``AFN``, ``ALL``, ``AMD``, ``ANG``, ``AOA``, ``ARS``, ``AUD``, ``AWG``, ``AZN``, ``BAM``, ``BBD``, ``BDT``, ``BGN``, ``BHD``, ``BIF``, ``BMD``, ``BND``, ``BOB``, ``BOV``, ``BRL``, ``BSD``, ``BTN``, ``BWP``, ``BYN``, ``BYR``, ``BZD``, ``CAD``, ``CDF``, ``CHE``, ``CHF``, ``CHW``, ``CLF``, ``CLP``, ``CNY``, ``COP``, ``COU``, ``CRC``, ``CUC``, ``CUP``, ``CVE``, ``CZK``, ``DJF``, ``DKK``, ``DOP``, ``DZD``, ``EEK``, ``EGP``, ``ERN``, ``ETB``, ``EUR``, ``FJD``, ``FKP``, ``GBP``, ``GEL``, ``GHS``, ``GIP``, ``GMD``, ``GNF``, ``GTQ``, ``GYD``, ``HKD``, ``HNL``, ``HRK``, ``HTG``, ``HUF``, ``IDR``, ``ILS``, ``INR``, ``IQD``, ``IRR``, ``ISK``, ``JMD``, ``JOD``, ``JPY``, ``KES``, ``KGS``, ``KHR``, ``KMF``, ``KPW``, ``KRW``, ``KWD``, ``KYD``, ``KZT``, ``LAK``, ``LBP``, ``LKR``, ``LRD``, ``LSL``, ``LTL``, ``LVL``, ``LYD``, ``MAD``, ``MDL``, ``MGA``, ``MKD``, ``MMK``, ``MNT``, ``MOP``, ``MRU``, ``MUR``, ``MVR``, ``MWK``, ``MXN``, ``MXV``, ``MYR``, ``MZN``, ``NAD``, ``NGN``, ``NIO``, ``NOK``, ``NPR``, ``NZD``, ``OMR``, ``PAB``, ``PEN``, ``PGK``, ``PHP``, ``PKR``, ``PLN``, ``PYG``, ``QAR``, ``RON``, ``RSD``, ``RUB``, ``RWF``, ``SAR``, ``SBD``, ``SCR``, ``SDG``, ``SEK``, ``SGD``, ``SHP``, ``SLE``, ``SLL``, ``SOS``, ``SRD``, ``SSP``, ``STN``, ``SVC``, ``SYP``, ``SZL``, ``THB``, ``TJS``, ``TMT``, ``TND``, ``TOP``, ``TRL``, ``TRY``, ``TTD``, ``TWD``, ``TZS``, ``UAH``, ``UGX``, ``USD``, ``USN``, ``UYI``, ``UYU``, ``UYW``, ``UZS``, ``VED``, ``VES``, ``VND``, ``VUV``, ``WST``, ``XAF``, ``XAG``, ``XAU``, ``XBA``, ``XBB``, ``XBC``, ``XBD``, ``XCD``, ``XDR``, ``XOF``, ``XPD``, ``XPF``, ``XPT``, ``XSU``, ``XTS``, ``XUA``, ``XXX``, ``YER``, ``ZAR``, ``ZMW``, ``ZWL``
  */
 export const ProjectsPostResponse_projectValue_currencyObject = {
+    USD: "USD",
     AED: "AED",
     AFN: "AFN",
     ALL: "ALL",
@@ -1754,7 +2030,6 @@ export const ProjectsPostResponse_projectValue_currencyObject = {
     TZS: "TZS",
     UAH: "UAH",
     UGX: "UGX",
-    USD: "USD",
     USN: "USN",
     UYI: "UYI",
     UYU: "UYU",
@@ -1786,6 +2061,15 @@ export const ProjectsPostResponse_projectValue_currencyObject = {
     ZAR: "ZAR",
     ZMW: "ZMW",
     ZWL: "ZWL",
+} as const;
+/**
+ * The status of the project.Possible values: ``active``, ``pending``, ``archived`` and ``suspended``.
+ */
+export const ProjectsPostResponse_statusObject = {
+    Active: "active",
+    Pending: "pending",
+    Archived: "archived",
+    Suspended: "suspended",
 } as const;
 /**
  * Mapper for query parameters from symbol name to serialization name represented as a constant.
