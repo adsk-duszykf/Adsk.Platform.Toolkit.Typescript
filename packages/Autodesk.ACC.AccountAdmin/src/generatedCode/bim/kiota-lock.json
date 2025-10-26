@@ -1,6 +1,6 @@
 {
-  "descriptionHash": "F984DCA39F6361641BBCA930ECDA5BD133CAD9FB1321BBC0D3122B4A6B8E33B733E9C261D3C0E6D415E2E4D6921511120781449593F9A69C1B0F9175200DF25D",
-  "descriptionLocation": "../../../../../../_spec/Autodesk.ACC.AccountAdmin/OpenAPI/bim360-account-admin-nav-openapi.yaml",
+  "descriptionHash": "CD87668C28E2902918633F0DDAB23326AA5026D89AC89CF026A4334D079AA16C3EFE5DC31A361D2C414187C95D5EA93F4166B9DEFCBA90258F69B76B1C2CA7C8",
+  "descriptionLocation": "../../../../../../_spec/Autodesk.ACC.AccountAdmin/OpenAPI/bim360-account-admin-nav-openapi-EDITED.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.28.0",
   "clientClassName": "BaseAccountAdminClient",

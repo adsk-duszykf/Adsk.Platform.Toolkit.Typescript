@@ -1,6 +1,6 @@
 import type { ApiRequestBuilder } from "../accountAdminClient.js";
 import type {
-	ImportPostRequestBody,
+	ImportEscaped,
 	ImportPostResponse,
 } from "../generatedCode/bim/hq/v1/accounts/item/companies/importEscaped/index.js";
 import type {
@@ -64,7 +64,7 @@ export class CompaniesManager {
 	 */
 	async importCompanies(
 		accountId: string,
-		companies: ImportPostRequestBody,
+		companies: ImportEscaped[],
 	): Promise<ImportPostResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)

@@ -1,6 +1,6 @@
 import type { ApiRequestBuilder } from "../accountAdminClient.js";
 import type {
-	ImportPostRequestBody,
+	ImportEscaped,
 	ImportPostResponse,
 } from "../generatedCode/bim/hq/v1/accounts/item/users/importEscaped/index.js";
 import type {
@@ -85,7 +85,7 @@ export class AccountUsersManager {
 	 */
 	async importUsers(
 		accountId: string,
-		users: ImportPostRequestBody,
+		users: ImportEscaped[],
 	): Promise<ImportPostResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)

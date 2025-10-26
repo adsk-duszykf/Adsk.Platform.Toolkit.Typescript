@@ -7,11 +7,11 @@ import { type AdditionalDataHolder, type BaseRequestBuilder, type Guid, type Par
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {ImportPostRequestBody}
+ * @returns {ImportEscaped}
  */
 // @ts-ignore
-export function createImportPostRequestBodyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoImportPostRequestBody;
+export function createImportEscapedFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoImportEscaped;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -42,30 +42,30 @@ export function createImportPostResponseFromDiscriminatorValue(parseNode: ParseN
 }
 /**
  * The deserialization information for the current model
- * @param ImportPostRequestBody The instance to deserialize into.
+ * @param ImportEscaped The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoImportPostRequestBody(importPostRequestBody: Partial<ImportPostRequestBody> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoImportEscaped(importEscaped: Partial<ImportEscaped> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "about_me": n => { importPostRequestBody.aboutMe = n.getStringValue(); },
-        "address_line_1": n => { importPostRequestBody.addressLine1 = n.getStringValue(); },
-        "address_line_2": n => { importPostRequestBody.addressLine2 = n.getStringValue(); },
-        "city": n => { importPostRequestBody.city = n.getStringValue(); },
-        "company": n => { importPostRequestBody.company = n.getStringValue(); },
-        "company_id": n => { importPostRequestBody.companyId = n.getGuidValue(); },
-        "country": n => { importPostRequestBody.country = n.getEnumValue<ImportPostRequestBody_country>(ImportPostRequestBody_countryObject); },
-        "default_role": n => { importPostRequestBody.defaultRole = n.getStringValue(); },
-        "email": n => { importPostRequestBody.email = n.getStringValue(); },
-        "first_name": n => { importPostRequestBody.firstName = n.getStringValue(); },
-        "image_url": n => { importPostRequestBody.imageUrl = n.getStringValue(); },
-        "industry": n => { importPostRequestBody.industry = n.getStringValue(); },
-        "job_title": n => { importPostRequestBody.jobTitle = n.getStringValue(); },
-        "last_name": n => { importPostRequestBody.lastName = n.getStringValue(); },
-        "nickname": n => { importPostRequestBody.nickname = n.getStringValue(); },
-        "phone": n => { importPostRequestBody.phone = n.getStringValue(); },
-        "postal_code": n => { importPostRequestBody.postalCode = n.getStringValue(); },
-        "state_or_province": n => { importPostRequestBody.stateOrProvince = n.getEnumValue<ImportPostRequestBody_state_or_province>(ImportPostRequestBody_state_or_provinceObject); },
+        "about_me": n => { importEscaped.aboutMe = n.getStringValue(); },
+        "address_line_1": n => { importEscaped.addressLine1 = n.getStringValue(); },
+        "address_line_2": n => { importEscaped.addressLine2 = n.getStringValue(); },
+        "city": n => { importEscaped.city = n.getStringValue(); },
+        "company": n => { importEscaped.company = n.getStringValue(); },
+        "company_id": n => { importEscaped.companyId = n.getGuidValue(); },
+        "country": n => { importEscaped.country = n.getEnumValue<Import_country>(Import_countryObject); },
+        "default_role": n => { importEscaped.defaultRole = n.getStringValue(); },
+        "email": n => { importEscaped.email = n.getStringValue(); },
+        "first_name": n => { importEscaped.firstName = n.getStringValue(); },
+        "image_url": n => { importEscaped.imageUrl = n.getStringValue(); },
+        "industry": n => { importEscaped.industry = n.getStringValue(); },
+        "job_title": n => { importEscaped.jobTitle = n.getStringValue(); },
+        "last_name": n => { importEscaped.lastName = n.getStringValue(); },
+        "nickname": n => { importEscaped.nickname = n.getStringValue(); },
+        "phone": n => { importEscaped.phone = n.getStringValue(); },
+        "postal_code": n => { importEscaped.postalCode = n.getStringValue(); },
+        "state_or_province": n => { importEscaped.stateOrProvince = n.getEnumValue<Import_state_or_province>(Import_state_or_provinceObject); },
     }
 }
 /**
@@ -129,7 +129,9 @@ export function deserializeIntoImportPostResponse_success_items(importPostRespon
         "updated_at": n => { importPostResponse_success_items.updatedAt = n.getStringValue(); },
     }
 }
-export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
+export type Import_country = (typeof Import_countryObject)[keyof typeof Import_countryObject];
+export type Import_state_or_province = (typeof Import_state_or_provinceObject)[keyof typeof Import_state_or_provinceObject];
+export interface ImportEscaped extends AdditionalDataHolder, Parsable {
     /**
      * | Short description about the user|| Max length: 255
      */
@@ -157,7 +159,7 @@ export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
      * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    country?: ImportPostRequestBody_country | null;
+    country?: Import_country | null;
     /**
      * | The user's default role|| Max length: 255
      */
@@ -201,10 +203,8 @@ export interface ImportPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
      * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
      */
-    stateOrProvince?: ImportPostRequestBody_state_or_province | null;
+    stateOrProvince?: Import_state_or_province | null;
 }
-export type ImportPostRequestBody_country = (typeof ImportPostRequestBody_countryObject)[keyof typeof ImportPostRequestBody_countryObject];
-export type ImportPostRequestBody_state_or_province = (typeof ImportPostRequestBody_state_or_provinceObject)[keyof typeof ImportPostRequestBody_state_or_provinceObject];
 export interface ImportPostResponse extends AdditionalDataHolder, Parsable {
     /**
      * Import failure company count
@@ -345,43 +345,43 @@ export interface ImportRequestBuilder extends BaseRequestBuilder<ImportRequestBu
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<ImportPostResponse>}
      */
-     post(body: ImportPostRequestBody, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<ImportPostResponse | undefined>;
+     post(body: ImportEscaped[], requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<ImportPostResponse | undefined>;
     /**
      * Bulk import users to the master member directory in a BIM 360 account. (50 users maximum can be included in each call.)
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */
-     toPostRequestInformation(body: ImportPostRequestBody, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
+     toPostRequestInformation(body: ImportEscaped[], requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }
 /**
  * Serializes information the current object
- * @param ImportPostRequestBody The instance to serialize from.
+ * @param ImportEscaped The instance to serialize from.
  * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeImportPostRequestBody(writer: SerializationWriter, importPostRequestBody: Partial<ImportPostRequestBody> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
-    if (!importPostRequestBody || isSerializingDerivedType) { return; }
-    writer.writeStringValue("about_me", importPostRequestBody.aboutMe);
-    writer.writeStringValue("address_line_1", importPostRequestBody.addressLine1);
-    writer.writeStringValue("address_line_2", importPostRequestBody.addressLine2);
-    writer.writeStringValue("city", importPostRequestBody.city);
-    writer.writeStringValue("company", importPostRequestBody.company);
-    writer.writeGuidValue("company_id", importPostRequestBody.companyId);
-    writer.writeEnumValue<ImportPostRequestBody_country>("country", importPostRequestBody.country);
-    writer.writeStringValue("default_role", importPostRequestBody.defaultRole);
-    writer.writeStringValue("email", importPostRequestBody.email);
-    writer.writeStringValue("first_name", importPostRequestBody.firstName);
-    writer.writeStringValue("image_url", importPostRequestBody.imageUrl);
-    writer.writeStringValue("industry", importPostRequestBody.industry);
-    writer.writeStringValue("job_title", importPostRequestBody.jobTitle);
-    writer.writeStringValue("last_name", importPostRequestBody.lastName);
-    writer.writeStringValue("nickname", importPostRequestBody.nickname);
-    writer.writeStringValue("phone", importPostRequestBody.phone);
-    writer.writeStringValue("postal_code", importPostRequestBody.postalCode);
-    writer.writeEnumValue<ImportPostRequestBody_state_or_province>("state_or_province", importPostRequestBody.stateOrProvince);
-    writer.writeAdditionalData(importPostRequestBody.additionalData);
+export function serializeImportEscaped(writer: SerializationWriter, importEscaped: Partial<ImportEscaped> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!importEscaped || isSerializingDerivedType) { return; }
+    writer.writeStringValue("about_me", importEscaped.aboutMe);
+    writer.writeStringValue("address_line_1", importEscaped.addressLine1);
+    writer.writeStringValue("address_line_2", importEscaped.addressLine2);
+    writer.writeStringValue("city", importEscaped.city);
+    writer.writeStringValue("company", importEscaped.company);
+    writer.writeGuidValue("company_id", importEscaped.companyId);
+    writer.writeEnumValue<Import_country>("country", importEscaped.country);
+    writer.writeStringValue("default_role", importEscaped.defaultRole);
+    writer.writeStringValue("email", importEscaped.email);
+    writer.writeStringValue("first_name", importEscaped.firstName);
+    writer.writeStringValue("image_url", importEscaped.imageUrl);
+    writer.writeStringValue("industry", importEscaped.industry);
+    writer.writeStringValue("job_title", importEscaped.jobTitle);
+    writer.writeStringValue("last_name", importEscaped.lastName);
+    writer.writeStringValue("nickname", importEscaped.nickname);
+    writer.writeStringValue("phone", importEscaped.phone);
+    writer.writeStringValue("postal_code", importEscaped.postalCode);
+    writer.writeEnumValue<Import_state_or_province>("state_or_province", importEscaped.stateOrProvince);
+    writer.writeAdditionalData(importEscaped.additionalData);
 }
 /**
  * Serializes information the current object
@@ -454,13 +454,13 @@ export const ImportRequestBuilderUriTemplate = "{+baseurl}/hq/v1/accounts/{accou
 /**
  * | Country for this user|| Refer to the ``country`` list in the `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
  */
-export const ImportPostRequestBody_countryObject = {
+export const Import_countryObject = {
     Country: "country",
 } as const;
 /**
  * | State or province in which user is located|| Max length: 255|| Note that the ``state_or_province`` value depends on the selected ``country`` value;see the valid values in the ``state_or_province`` list inthe `Parameters </en/docs/bim360/v1/overview/parameters>`_ guide.
  */
-export const ImportPostRequestBody_state_or_provinceObject = {
+export const Import_state_or_provinceObject = {
     State_or_province: "state_or_province",
     Country: "country",
 } as const;
@@ -474,7 +474,7 @@ export const ImportRequestBuilderRequestsMetadata: RequestsMetadata = {
         adapterMethodName: "send",
         responseBodyFactory:  createImportPostResponseFromDiscriminatorValue,
         requestBodyContentType: "application/json",
-        requestBodySerializer: serializeImportPostRequestBody,
+        requestBodySerializer: serializeImportEscaped,
         requestInformationContentSetMethod: "setContentFromParsable",
     },
 };
