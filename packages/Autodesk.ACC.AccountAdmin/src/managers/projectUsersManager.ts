@@ -5,17 +5,17 @@ import type {
 	UsersPostRequestBody,
 	UsersPostResponse,
 	UsersRequestBuilderGetQueryParameters,
-} from "../generatedCode/acc/construction/admin/v1/projects/item/users/index.js";
+} from "../generatedCode/construction/admin/v1/projects/item/users/index.js";
 import type {
 	WithUserGetResponse,
 	WithUserItemRequestBuilderGetQueryParameters,
 	WithUserPatchRequestBody,
 	WithUserPatchResponse,
-} from "../generatedCode/acc/construction/admin/v1/projects/item/users/item/index.js";
+} from "../generatedCode/construction/admin/v1/projects/item/users/item/index.js";
 import type {
 	UsersImportPostRequestBody,
 	UsersImportPostResponse,
-} from "../generatedCode/acc/construction/admin/v2/projects/item/usersImport/index.js";
+} from "../generatedCode/construction/admin/v2/projects/item/usersImport/index.js";
 /**
  * Manager for Project Users operations
  */

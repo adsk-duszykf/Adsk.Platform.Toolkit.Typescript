@@ -1,13 +1,14 @@
 import type { ApiRequestBuilder } from "../accountAdminClient.js";
 import type {
-	ImportEscaped,
+	
+	ImportPostRequestBody,
 	ImportPostResponse,
-} from "../generatedCode/bim/hq/v1/accounts/item/companies/importEscaped/index.js";
+} from "../generatedCode/hq/v1/accounts/item/companies/importEscaped/index.js";
 import type {
 	CompaniesGetResponse,
 	CompaniesPostRequestBody,
 	CompaniesPostResponse,
-} from "../generatedCode/bim/hq/v1/accounts/item/companies/index.js";
+} from "../generatedCode/hq/v1/accounts/item/companies/index.js";
 /**
  * Manager for Companies operations (BIM360)
  */
@@ -64,7 +65,7 @@ export class CompaniesManager {
 	 */
 	async importCompanies(
 		accountId: string,
-		companies: ImportEscaped[],
+		companies: ImportPostRequestBody,
 	): Promise<ImportPostResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)

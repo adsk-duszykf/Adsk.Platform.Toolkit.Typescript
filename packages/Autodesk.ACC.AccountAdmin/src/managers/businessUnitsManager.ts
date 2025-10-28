@@ -3,7 +3,7 @@ import type {
 	Business_units_structureGetResponse,
 	Business_units_structurePutRequestBody,
 	Business_units_structurePutResponse,
-} from "../generatedCode/bim/hq/v1/accounts/item/business_units_structure/index.js";
+} from "../generatedCode/hq/v1/accounts/item/business_units_structure/index.js";
 
 /**
  * Manager for Business Units operations (BIM360)

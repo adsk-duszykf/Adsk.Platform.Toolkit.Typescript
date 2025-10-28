@@ -5,11 +5,11 @@ import type {
 	ProjectsPostRequestBody,
 	ProjectsPostResponse,
 	ProjectsRequestBuilderGetQueryParameters,
-} from "../generatedCode/acc/construction/admin/v1/accounts/item/projects/index.js";
+} from "../generatedCode/construction/admin/v1/accounts/item/projects/index.js";
 import type {
 	WithProjectGetResponse,
 	WithProjectItemRequestBuilderGetQueryParameters,
-} from "../generatedCode/acc/construction/admin/v1/projects/item/index.js";
+} from "../generatedCode/construction/admin/v1/projects/item/index.js";
 
 /**
  * Manager for Projects operations

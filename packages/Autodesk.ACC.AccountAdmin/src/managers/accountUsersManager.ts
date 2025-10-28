@@ -1,13 +1,13 @@
 import type { ApiRequestBuilder } from "../accountAdminClient.js";
 import type {
-	ImportEscaped,
+	ImportPostRequestBody,
 	ImportPostResponse,
-} from "../generatedCode/bim/hq/v1/accounts/item/users/importEscaped/index.js";
+} from "../generatedCode/hq/v1/accounts/item/users/importEscaped/index.js";
 import type {
 	UsersGetResponse,
 	UsersPostRequestBody,
 	UsersPostResponse,
-} from "../generatedCode/bim/hq/v1/accounts/item/users/index.js";
+} from "../generatedCode/hq/v1/accounts/item/users/index.js";
 
 /**
  * Manager for Account Users operations (BIM360)
@@ -85,7 +85,7 @@ export class AccountUsersManager {
 	 */
 	async importUsers(
 		accountId: string,
-		users: ImportEscaped[],
+		users: ImportPostRequestBody,
 	): Promise<ImportPostResponse> {
 		const result = await this.api.hq.v1.accounts
 			.byAccount_id(accountId)

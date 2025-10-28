@@ -1,9 +1,8 @@
 import { HttpClientFactory } from "@adsk-platform/httpclient/httpClientFactory.js";
 import type { HttpClient } from "@microsoft/kiota-http-fetchlibrary";
-import { createBaseAccountAdminClient as createACCbaseClient } from "./generatedCode/acc/baseAccountAdminClient.js";
-import type { ConstructionRequestBuilder } from "./generatedCode/acc/construction/index.js";
-import { createBaseAccountAdminClient as createBIMbaseClient } from "./generatedCode/bim/baseAccountAdminClient.js";
-import type { HqRequestBuilder } from "./generatedCode/bim/hq/index.js";
+import { createBaseAccountAdminClient } from "./generatedCode/baseAccountAdminClient.js";
+import type { ConstructionRequestBuilder } from "./generatedCode/construction/index.js";
+import type { HqRequestBuilder } from "./generatedCode/hq/index.js";
 import { AccountUsersManager } from "./managers/accountUsersManager.js";
 import { BusinessUnitsManager } from "./managers/businessUnitsManager.js";
 import { CompaniesManager } from "./managers/companiesManager.js";
@@ -47,8 +46,8 @@ export class AccountAdminClient {
 			httpClient,
 		);
 		this.api = {
-			construction: createACCbaseClient(adapter).construction,
-			hq: createBIMbaseClient(adapter).hq,
+			construction: createBaseAccountAdminClient(adapter).construction,
+			hq: createBaseAccountAdminClient(adapter).hq,
 		};
 
 		// ACC Managers
